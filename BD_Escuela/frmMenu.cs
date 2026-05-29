@@ -9,12 +9,18 @@ namespace BD_Escuela
 
         private void frmMenu_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void profesoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormProfesores formProfesores = new FormProfesores();
+            formProfesores.Show();
         }
     }
 }
