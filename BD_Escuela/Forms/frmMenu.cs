@@ -1,3 +1,5 @@
+using BD_Escuela.Forms;
+
 namespace BD_Escuela
 {
     public partial class frmMenu : Form
@@ -15,12 +17,6 @@ namespace BD_Escuela
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void profesoresToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormProfesores formProfesores = new FormProfesores();
-            formProfesores.Show();
         }
     }
 }
