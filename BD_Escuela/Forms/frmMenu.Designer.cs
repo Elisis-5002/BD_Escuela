@@ -46,7 +46,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { archivoToolStripMenuItem, ventanasToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(800, 41);
+            menuStrip1.Size = new Size(733, 41);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -61,7 +61,7 @@
             // salirToolStripMenuItem
             // 
             salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            salirToolStripMenuItem.Size = new Size(270, 42);
+            salirToolStripMenuItem.Size = new Size(173, 42);
             salirToolStripMenuItem.Text = "Salir";
             salirToolStripMenuItem.Click += salirToolStripMenuItem_Click;
             // 
@@ -76,32 +76,33 @@
             // profesoresToolStripMenuItem
             // 
             profesoresToolStripMenuItem.Name = "profesoresToolStripMenuItem";
-            profesoresToolStripMenuItem.Size = new Size(237, 42);
+            profesoresToolStripMenuItem.Size = new Size(270, 42);
             profesoresToolStripMenuItem.Text = "Profesores";
             // 
             // alumnosToolStripMenuItem
             // 
             alumnosToolStripMenuItem.Name = "alumnosToolStripMenuItem";
-            alumnosToolStripMenuItem.Size = new Size(237, 42);
+            alumnosToolStripMenuItem.Size = new Size(270, 42);
             alumnosToolStripMenuItem.Text = "Alumnos";
+            alumnosToolStripMenuItem.Click += alumnosToolStripMenuItem_Click;
             // 
             // cursosToolStripMenuItem
             // 
             cursosToolStripMenuItem.Name = "cursosToolStripMenuItem";
-            cursosToolStripMenuItem.Size = new Size(237, 42);
+            cursosToolStripMenuItem.Size = new Size(270, 42);
             cursosToolStripMenuItem.Text = "Cursos";
             // 
             // asistenciaToolStripMenuItem
             // 
             asistenciaToolStripMenuItem.Name = "asistenciaToolStripMenuItem";
-            asistenciaToolStripMenuItem.Size = new Size(237, 42);
+            asistenciaToolStripMenuItem.Size = new Size(270, 42);
             asistenciaToolStripMenuItem.Text = "Asistencia";
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(232, 200);
+            label1.Location = new Point(213, 167);
             label1.Name = "label1";
             label1.Size = new Size(340, 41);
             label1.TabIndex = 1;
@@ -109,12 +110,13 @@
             // 
             // frmMenu
             // 
-            AutoScaleDimensions = new SizeF(12F, 30F);
+            AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(733, 375);
             Controls.Add(label1);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
+            Margin = new Padding(3, 2, 3, 2);
             Name = "frmMenu";
             Text = "Menu";
             Load += frmMenu_Load;
