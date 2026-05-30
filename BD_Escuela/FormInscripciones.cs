@@ -76,12 +76,6 @@ namespace BD_Escuela
             DataTable dt = Conexion.Consultar(consulta);
             dgvInscripciones.DataSource = dt;
         }
-        private void FormInscripciones_Load(object sender, EventArgs e)
-        {
-            CargarAlumnos();
-            CargarCursos();
-            CargarInscripciones();
-        }
 
         private void CargarAlumnos()
         {
@@ -103,6 +97,22 @@ namespace BD_Escuela
             cmbCurso.DataSource = dt;
             cmbCurso.DisplayMember = "DESCRIPCION";
             cmbCurso.ValueMember = "ID_CURSO";
+        }
+
+        private void FormInscripciones_Load_1(object sender, EventArgs e)
+        {
+            CargarAlumnos();
+            CargarCursos();
+            CargarInscripciones();
+        }
+
+        private void dgvInscripciones_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvInscripciones.CurrentRow != null)
+            {
+                cmbAlumno.SelectedValue = Convert.ToInt32(dgvInscripciones.CurrentRow.Cells["ID_ALUMNO"].Value);
+                cmbCurso.SelectedValue = Convert.ToInt32(dgvInscripciones.CurrentRow.Cells["ID_CURSO"].Value);
+            }
         }
     }
 }

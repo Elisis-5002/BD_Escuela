@@ -42,26 +42,29 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(56, 111);
+            label2.Location = new Point(77, 139);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(113, 28);
+            label2.Size = new Size(139, 34);
             label2.TabIndex = 1;
             label2.Text = "Nombre:";
             // 
             // txtNombre
             // 
             txtNombre.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtNombre.Location = new Point(202, 111);
+            txtNombre.Location = new Point(278, 139);
+            txtNombre.Margin = new Padding(4);
             txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(125, 35);
+            txtNombre.Size = new Size(285, 41);
             txtNombre.TabIndex = 3;
             // 
             // btnEliminar
             // 
             btnEliminar.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnEliminar.Location = new Point(642, 210);
+            btnEliminar.Location = new Point(883, 262);
+            btnEliminar.Margin = new Padding(4);
             btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(124, 39);
+            btnEliminar.Size = new Size(170, 49);
             btnEliminar.TabIndex = 13;
             btnEliminar.Text = "Eliminar";
             btnEliminar.UseVisualStyleBackColor = true;
@@ -70,9 +73,10 @@
             // btnModificar
             // 
             btnModificar.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnModificar.Location = new Point(375, 210);
+            btnModificar.Location = new Point(516, 262);
+            btnModificar.Margin = new Padding(4);
             btnModificar.Name = "btnModificar";
-            btnModificar.Size = new Size(124, 39);
+            btnModificar.Size = new Size(170, 49);
             btnModificar.TabIndex = 12;
             btnModificar.Text = "Modificar";
             btnModificar.UseVisualStyleBackColor = true;
@@ -81,9 +85,10 @@
             // btnGuardar
             // 
             btnGuardar.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnGuardar.Location = new Point(91, 210);
+            btnGuardar.Location = new Point(125, 262);
+            btnGuardar.Margin = new Padding(4);
             btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(124, 39);
+            btnGuardar.Size = new Size(170, 49);
             btnGuardar.TabIndex = 11;
             btnGuardar.Text = "Guardar";
             btnGuardar.UseVisualStyleBackColor = true;
@@ -92,27 +97,30 @@
             // dgvMaterias
             // 
             dgvMaterias.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvMaterias.Location = new Point(36, 280);
+            dgvMaterias.Location = new Point(50, 350);
+            dgvMaterias.Margin = new Padding(4);
             dgvMaterias.Name = "dgvMaterias";
             dgvMaterias.RowHeadersWidth = 51;
-            dgvMaterias.Size = new Size(776, 215);
+            dgvMaterias.Size = new Size(1067, 269);
             dgvMaterias.TabIndex = 14;
+            dgvMaterias.CellClick += dgvMaterias_CellClick;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Verdana", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(12, 9);
+            label5.Location = new Point(16, 11);
+            label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
-            label5.Size = new Size(192, 48);
+            label5.Size = new Size(229, 59);
             label5.TabIndex = 15;
             label5.Text = "Materias";
             // 
             // FormMaterias
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(847, 545);
+            ClientSize = new Size(1165, 681);
             Controls.Add(label5);
             Controls.Add(dgvMaterias);
             Controls.Add(btnEliminar);
@@ -120,8 +128,10 @@
             Controls.Add(btnGuardar);
             Controls.Add(txtNombre);
             Controls.Add(label2);
+            Margin = new Padding(4);
             Name = "FormMaterias";
             Text = "FormMaterias";
+            Load += FormMaterias_Load;
             ((System.ComponentModel.ISupportInitialize)dgvMaterias).EndInit();
             ResumeLayout(false);
             PerformLayout();

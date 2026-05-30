@@ -200,6 +200,8 @@
             dgvAlumnos.RowHeadersWidth = 62;
             dgvAlumnos.Size = new Size(900, 362);
             dgvAlumnos.TabIndex = 0;
+            dgvAlumnos.CellClick += dgvAlumnos_CellClick;
+            dgvAlumnos.CellContentClick += dgvAlumnos_CellContentClick;
             // 
             // frmAlumnos
             // 

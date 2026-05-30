@@ -21,7 +21,7 @@ namespace BD_Escuela
         {
             try
             {
-                string ejecutar = $"INSERT INTO materias(nombre) VALUES('{nombre}')";
+                string ejecutar = $"INSERT INTO materias(nombre_materia) VALUES('{nombre}')";
                 Conexion.Ejecutar(ejecutar, out int filasAfectadas, out string mensaje);
                 MessageBox.Show(mensaje, "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CargarMaterias();
@@ -37,7 +37,7 @@ namespace BD_Escuela
         {
             try
             {
-                string ejecutar = $"DELETE FROM materias WHERE nombre = '{nombre}'";
+                string ejecutar = $"DELETE FROM materias WHERE nombre_materia = '{nombre}'";
                 Conexion.Ejecutar(ejecutar, out int filasAfectadas, out string mensaje);
                 MessageBox.Show(mensaje, "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CargarMaterias();
@@ -55,7 +55,7 @@ namespace BD_Escuela
             {
                 int idMateria = Convert.ToInt32(dgvMaterias.CurrentRow.Cells["ID_MATERIA"].Value);
 
-                string ejecutar = $"UPDATE materias SET nombre = '{nombre}' WHERE id_materia = {idMateria}";
+                string ejecutar = $"UPDATE materias SET nombre_materia = '{nombre}' WHERE id_materia = {idMateria}";
                 Conexion.Ejecutar(ejecutar, out int filasAfectadas, out string mensaje);
                 MessageBox.Show(mensaje, "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CargarMaterias();
@@ -74,9 +74,17 @@ namespace BD_Escuela
             dgvMaterias.DataSource = dt;
         }
 
-        private void frmMaterias_Load(object sender, EventArgs e)
+        private void FormMaterias_Load(object sender, EventArgs e)
         {
             CargarMaterias();
+        }
+
+        private void dgvMaterias_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvMaterias.CurrentRow != null)
+            {
+                txtNombre.Text = dgvMaterias.CurrentRow.Cells["NOMBRE_MATERIA"].Value.ToString();
+            }
         }
     }
 }

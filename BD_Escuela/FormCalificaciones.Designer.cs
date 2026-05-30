@@ -43,18 +43,21 @@
             // dgvCalificaciones
             // 
             dgvCalificaciones.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCalificaciones.Location = new Point(38, 324);
+            dgvCalificaciones.Location = new Point(52, 405);
+            dgvCalificaciones.Margin = new Padding(4);
             dgvCalificaciones.Name = "dgvCalificaciones";
             dgvCalificaciones.RowHeadersWidth = 51;
-            dgvCalificaciones.Size = new Size(776, 251);
+            dgvCalificaciones.Size = new Size(1067, 314);
             dgvCalificaciones.TabIndex = 48;
+            dgvCalificaciones.CellClick += dgvCalificaciones_CellClick;
             // 
             // btnEliminar
             // 
             btnEliminar.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnEliminar.Location = new Point(630, 265);
+            btnEliminar.Location = new Point(866, 331);
+            btnEliminar.Margin = new Padding(4);
             btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(124, 39);
+            btnEliminar.Size = new Size(170, 49);
             btnEliminar.TabIndex = 46;
             btnEliminar.Text = "Eliminar";
             btnEliminar.UseVisualStyleBackColor = true;
@@ -63,9 +66,10 @@
             // btnModificar
             // 
             btnModificar.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnModificar.Location = new Point(363, 265);
+            btnModificar.Location = new Point(499, 331);
+            btnModificar.Margin = new Padding(4);
             btnModificar.Name = "btnModificar";
-            btnModificar.Size = new Size(124, 39);
+            btnModificar.Size = new Size(170, 49);
             btnModificar.TabIndex = 45;
             btnModificar.Text = "Modificar";
             btnModificar.UseVisualStyleBackColor = true;
@@ -74,9 +78,10 @@
             // btnGuardar
             // 
             btnGuardar.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnGuardar.Location = new Point(79, 265);
+            btnGuardar.Location = new Point(109, 331);
+            btnGuardar.Margin = new Padding(4);
             btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(124, 39);
+            btnGuardar.Size = new Size(170, 49);
             btnGuardar.TabIndex = 44;
             btnGuardar.Text = "Guardar";
             btnGuardar.UseVisualStyleBackColor = true;
@@ -86,18 +91,20 @@
             // 
             cmbInscripcion.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmbInscripcion.FormattingEnabled = true;
-            cmbInscripcion.Location = new Point(281, 118);
+            cmbInscripcion.Location = new Point(386, 148);
+            cmbInscripcion.Margin = new Padding(4);
             cmbInscripcion.Name = "cmbInscripcion";
-            cmbInscripcion.Size = new Size(151, 33);
+            cmbInscripcion.Size = new Size(327, 37);
             cmbInscripcion.TabIndex = 42;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(85, 119);
+            label3.Location = new Point(117, 149);
+            label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(138, 28);
+            label3.Size = new Size(173, 34);
             label3.TabIndex = 40;
             label3.Text = "Inscripcion";
             // 
@@ -105,9 +112,10 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Verdana", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(12, 9);
+            label2.Location = new Point(16, 11);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(294, 48);
+            label2.Size = new Size(349, 59);
             label2.TabIndex = 39;
             label2.Text = "Calificaciones";
             // 
@@ -115,25 +123,27 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(85, 181);
+            label4.Location = new Point(117, 226);
+            label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(76, 28);
+            label4.Size = new Size(94, 34);
             label4.TabIndex = 49;
             label4.Text = "Nota:";
             // 
             // txtNota
             // 
             txtNota.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtNota.Location = new Point(281, 178);
+            txtNota.Location = new Point(386, 222);
+            txtNota.Margin = new Padding(4);
             txtNota.Name = "txtNota";
-            txtNota.Size = new Size(125, 35);
+            txtNota.Size = new Size(327, 41);
             txtNota.TabIndex = 50;
             // 
             // FormCalificaciones
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(854, 599);
+            ClientSize = new Size(1174, 749);
             Controls.Add(txtNota);
             Controls.Add(label4);
             Controls.Add(dgvCalificaciones);
@@ -143,8 +153,10 @@
             Controls.Add(cmbInscripcion);
             Controls.Add(label3);
             Controls.Add(label2);
+            Margin = new Padding(4);
             Name = "FormCalificaciones";
             Text = "FormCalificaciones";
+            Load += FormCalificaciones_Load;
             ((System.ComponentModel.ISupportInitialize)dgvCalificaciones).EndInit();
             ResumeLayout(false);
             PerformLayout();

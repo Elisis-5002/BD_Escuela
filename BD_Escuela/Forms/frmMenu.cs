@@ -19,5 +19,10 @@ namespace BD_Escuela
             this.Close();
         }
 
+        private void calificacionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormCalificaciones formCalificaciones = new FormCalificaciones();
+            formCalificaciones.Show();
+        }
     }
 }

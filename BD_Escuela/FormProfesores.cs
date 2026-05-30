@@ -24,7 +24,7 @@ namespace BD_Escuela
         {
             try
             {
-                string ejecutar = $"INSERT INTO profesores(nombre, apellido, año_ingreso, email) VALUES('{nombre}', '{apellido}', '{email}')";
+                string ejecutar = $"INSERT INTO profesores(nombre, apellido, email) VALUES('{nombre}', '{apellido}', '{email}')";
                 Conexion.Ejecutar(ejecutar, out int filasAfectadas, out string mensaje);
                 MessageBox.Show(mensaje, "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CargarProfesores();
@@ -61,6 +61,11 @@ namespace BD_Escuela
                 string ejecutar = $"DELETE FROM profesores WHERE nombre = '{nombre}' AND apellido = '{apellido}' AND email = '{email}'";
                 Conexion.Ejecutar(ejecutar, out int filasAfectadas, out string mensaje);
                 MessageBox.Show(mensaje, "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if(filasAfectadas == 0)
+                {
+                    MessageBox.Show("Asegurese de que el profesor no está impartiendo cursos actualmente", "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
                 CargarProfesores();
             }
             catch
@@ -77,9 +82,19 @@ namespace BD_Escuela
             dgvProfesores.DataSource = dt;
         }
 
-        private void frmProfesores_Load(object sender, EventArgs e)
+        private void FormProfesores_Load(object sender, EventArgs e)
         {
             CargarProfesores();
+        }
+
+        private void dgvProfesores_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvProfesores.CurrentRow != null)
+            {
+                txtNombre.Text = dgvProfesores.CurrentRow.Cells["NOMBRE"].Value.ToString();
+                txtApellido.Text = dgvProfesores.CurrentRow.Cells["APELLIDO"].Value.ToString();
+                txtEmail.Text = dgvProfesores.CurrentRow.Cells["EMAIL"].Value.ToString();
+            }
         }
     }
 }

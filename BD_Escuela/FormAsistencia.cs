@@ -12,7 +12,7 @@ namespace BD_Escuela
     public partial class FormAsistencia : Form
     {
         private int idInscripcion => Convert.ToInt32(cmbInscripcion.SelectedValue);
-        private string fecha => Convert.ToDateTime(txtFecha.Text).ToString("yyyy-MM-dd");
+        private string fecha => dtpFecha.Value.ToString("yyyy-MM-dd");
         private string estado => cmbEstado.SelectedItem.ToString();
         public FormAsistencia()
         {
@@ -84,7 +84,7 @@ namespace BD_Escuela
             dgvAsistencia.DataSource = dt;
         }
 
-        private void FormAsistencia_Load(object sender, EventArgs e)
+        private void FormAsistencia_Load_1(object sender, EventArgs e)
         {
             CargarInscripciones();
             CargarEstados();
@@ -109,6 +109,17 @@ namespace BD_Escuela
             cmbEstado.Items.Add("Ausente");
             cmbEstado.Items.Add("Justificado");
             cmbEstado.SelectedIndex = 0; // selecciona Presente por defecto
+        }
+
+        private void dgvAsistencia_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvAsistencia.CurrentRow != null)
+            {
+                cmbInscripcion.SelectedValue = dgvAsistencia.CurrentRow.Cells["ID_INSCRIPCION"].Value;
+                DateTime fecha = Convert.ToDateTime(dgvAsistencia.CurrentRow.Cells["FECHA"].Value);
+                                dtpFecha.Value = fecha;
+                cmbEstado.SelectedItem = dgvAsistencia.CurrentRow.Cells["ESTADO"].Value.ToString();
+            }
         }
     }
 }

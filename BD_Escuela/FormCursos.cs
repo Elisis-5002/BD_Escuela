@@ -11,8 +11,8 @@ namespace BD_Escuela
 {
     public partial class FormCursos : Form
     {
-        private int idProfesor => Convert.ToInt32(cmbProfesor.SelectedValue);
-        private int idMateria => Convert.ToInt32(cmbMateria.SelectedValue);
+        private int idProfesor => Convert.ToInt32(cmbProfesor.ValueMember);
+        private int idMateria => Convert.ToInt32(cmbMateria.ValueMember);
         public FormCursos()
         {
             InitializeComponent();
@@ -77,12 +77,7 @@ namespace BD_Escuela
             dgvCursos.DataSource = dt;
         }
 
-        private void frmCursos_Load(object sender, EventArgs e)
-        {
-            CargarProfesores();
-            CargarMaterias();
-            CargarCursos();
-        }
+
 
         // Carga los profesores en el ComboBox
         private void CargarProfesores()
@@ -104,6 +99,27 @@ namespace BD_Escuela
             cmbMateria.DataSource = dt;
             cmbMateria.DisplayMember = "NOMBRE_MATERIA"; // lo que VE el usuario
             cmbMateria.ValueMember = "ID_MATERIA";       // lo que se GUARDA en BD
+        }
+
+        private void cmbProfesor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormCursos_Load(object sender, EventArgs e)
+        {
+            CargarProfesores();
+            CargarMaterias();
+            CargarCursos();
+        }
+
+        private void dgvCursos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvCursos.CurrentRow != null)
+            {
+                cmbProfesor.SelectedValue = Convert.ToInt32(dgvCursos.CurrentRow.Cells["ID_PROFESOR"].Value);
+                cmbMateria.SelectedValue = Convert.ToInt32(dgvCursos.CurrentRow.Cells["ID_MATERIA"].Value);
+            }
         }
     }
 }

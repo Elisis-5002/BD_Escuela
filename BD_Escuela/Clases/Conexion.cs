@@ -1,11 +1,9 @@
 ﻿using Oracle.ManagedDataAccess.Client;
-using System;
 using System.Data;
-using System.Threading.Tasks;
 
 namespace BD_Escuela.Clases
 {
-   
+
     internal static class Conexion
     {
 
@@ -16,7 +14,7 @@ namespace BD_Escuela.Clases
         private static string ConnectionString =>
             Environment.GetEnvironmentVariable("ORACLE_CONNECTION_STRING") ?? DefaultConnectionString;
 
-      
+
         public static OracleConnection Abrir()
         {
             var conn = new OracleConnection(ConnectionString);
@@ -78,7 +76,7 @@ namespace BD_Escuela.Clases
             }
         }
 
-       
+
         //Permite establecer la cadena de conexión en tiempo de ejecución
         // para escenarios de prueba o configuración manual.
         public static void EstablecerCadenaConexion(string cadena)

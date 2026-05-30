@@ -43,9 +43,10 @@
             // btnEliminar
             // 
             btnEliminar.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnEliminar.Location = new Point(615, 257);
+            btnEliminar.Location = new Point(846, 321);
+            btnEliminar.Margin = new Padding(4);
             btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(124, 39);
+            btnEliminar.Size = new Size(170, 49);
             btnEliminar.TabIndex = 35;
             btnEliminar.Text = "Eliminar";
             btnEliminar.UseVisualStyleBackColor = true;
@@ -54,9 +55,10 @@
             // btnModificar
             // 
             btnModificar.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnModificar.Location = new Point(348, 257);
+            btnModificar.Location = new Point(478, 321);
+            btnModificar.Margin = new Padding(4);
             btnModificar.Name = "btnModificar";
-            btnModificar.Size = new Size(124, 39);
+            btnModificar.Size = new Size(170, 49);
             btnModificar.TabIndex = 34;
             btnModificar.Text = "Modificar";
             btnModificar.UseVisualStyleBackColor = true;
@@ -65,9 +67,10 @@
             // btnGuardar
             // 
             btnGuardar.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnGuardar.Location = new Point(64, 257);
+            btnGuardar.Location = new Point(88, 321);
+            btnGuardar.Margin = new Padding(4);
             btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(124, 39);
+            btnGuardar.Size = new Size(170, 49);
             btnGuardar.TabIndex = 33;
             btnGuardar.Text = "Guardar";
             btnGuardar.UseVisualStyleBackColor = true;
@@ -77,27 +80,30 @@
             // 
             cmbCurso.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmbCurso.FormattingEnabled = true;
-            cmbCurso.Location = new Point(216, 172);
+            cmbCurso.Location = new Point(297, 215);
+            cmbCurso.Margin = new Padding(4);
             cmbCurso.Name = "cmbCurso";
-            cmbCurso.Size = new Size(151, 33);
+            cmbCurso.Size = new Size(393, 37);
             cmbCurso.TabIndex = 32;
             // 
             // cmbAlumno
             // 
             cmbAlumno.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmbAlumno.FormattingEnabled = true;
-            cmbAlumno.Location = new Point(216, 110);
+            cmbAlumno.Location = new Point(297, 138);
+            cmbAlumno.Margin = new Padding(4);
             cmbAlumno.Name = "cmbAlumno";
-            cmbAlumno.Size = new Size(151, 33);
+            cmbAlumno.Size = new Size(393, 37);
             cmbAlumno.TabIndex = 31;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(70, 173);
+            label4.Location = new Point(96, 216);
+            label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(89, 28);
+            label4.Size = new Size(110, 34);
             label4.TabIndex = 30;
             label4.Text = "Curso:";
             // 
@@ -105,9 +111,10 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(70, 111);
+            label3.Location = new Point(96, 139);
+            label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(110, 28);
+            label3.Size = new Size(136, 34);
             label3.TabIndex = 29;
             label3.Text = "Alumno:";
             // 
@@ -115,26 +122,29 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Verdana", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(12, 9);
+            label2.Location = new Point(16, 11);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(284, 48);
+            label2.Size = new Size(340, 59);
             label2.TabIndex = 28;
             label2.Text = "Inscripciones";
             // 
             // dgvInscripciones
             // 
             dgvInscripciones.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvInscripciones.Location = new Point(12, 317);
+            dgvInscripciones.Location = new Point(16, 396);
+            dgvInscripciones.Margin = new Padding(4);
             dgvInscripciones.Name = "dgvInscripciones";
             dgvInscripciones.RowHeadersWidth = 51;
-            dgvInscripciones.Size = new Size(776, 258);
+            dgvInscripciones.Size = new Size(1067, 322);
             dgvInscripciones.TabIndex = 37;
+            dgvInscripciones.CellClick += dgvInscripciones_CellClick;
             // 
             // FormInscripciones
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 597);
+            ClientSize = new Size(1100, 746);
             Controls.Add(dgvInscripciones);
             Controls.Add(btnEliminar);
             Controls.Add(btnModificar);
@@ -144,8 +154,10 @@
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
+            Margin = new Padding(4);
             Name = "FormInscripciones";
             Text = "FormInscripciones";
+            Load += FormInscripciones_Load_1;
             ((System.ComponentModel.ISupportInitialize)dgvInscripciones).EndInit();
             ResumeLayout(false);
             PerformLayout();

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            txtFecha = new TextBox();
             label4 = new Label();
             dgvAsistencia = new DataGridView();
             btnEliminar = new Button();
@@ -39,42 +38,39 @@
             label2 = new Label();
             label5 = new Label();
             cmbEstado = new ComboBox();
+            dtpFecha = new DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)dgvAsistencia).BeginInit();
             SuspendLayout();
-            // 
-            // txtFecha
-            // 
-            txtFecha.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtFecha.Location = new Point(299, 172);
-            txtFecha.Name = "txtFecha";
-            txtFecha.Size = new Size(125, 35);
-            txtFecha.TabIndex = 61;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(103, 175);
+            label4.Location = new Point(142, 219);
+            label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(89, 28);
+            label4.Size = new Size(110, 34);
             label4.TabIndex = 60;
             label4.Text = "Fecha:";
             // 
             // dgvAsistencia
             // 
             dgvAsistencia.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvAsistencia.Location = new Point(12, 341);
+            dgvAsistencia.Location = new Point(16, 426);
+            dgvAsistencia.Margin = new Padding(4);
             dgvAsistencia.Name = "dgvAsistencia";
             dgvAsistencia.RowHeadersWidth = 51;
-            dgvAsistencia.Size = new Size(851, 261);
+            dgvAsistencia.Size = new Size(1170, 326);
             dgvAsistencia.TabIndex = 59;
+            dgvAsistencia.CellClick += dgvAsistencia_CellClick;
             // 
             // btnEliminar
             // 
             btnEliminar.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnEliminar.Location = new Point(648, 285);
+            btnEliminar.Location = new Point(891, 356);
+            btnEliminar.Margin = new Padding(4);
             btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(124, 39);
+            btnEliminar.Size = new Size(170, 49);
             btnEliminar.TabIndex = 57;
             btnEliminar.Text = "Eliminar";
             btnEliminar.UseVisualStyleBackColor = true;
@@ -83,9 +79,10 @@
             // btnModificar
             // 
             btnModificar.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnModificar.Location = new Point(381, 285);
+            btnModificar.Location = new Point(524, 356);
+            btnModificar.Margin = new Padding(4);
             btnModificar.Name = "btnModificar";
-            btnModificar.Size = new Size(124, 39);
+            btnModificar.Size = new Size(170, 49);
             btnModificar.TabIndex = 56;
             btnModificar.Text = "Modificar";
             btnModificar.UseVisualStyleBackColor = true;
@@ -94,9 +91,10 @@
             // btnGuardar
             // 
             btnGuardar.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnGuardar.Location = new Point(97, 285);
+            btnGuardar.Location = new Point(133, 356);
+            btnGuardar.Margin = new Padding(4);
             btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(124, 39);
+            btnGuardar.Size = new Size(170, 49);
             btnGuardar.TabIndex = 55;
             btnGuardar.Text = "Guardar";
             btnGuardar.UseVisualStyleBackColor = true;
@@ -106,18 +104,20 @@
             // 
             cmbInscripcion.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmbInscripcion.FormattingEnabled = true;
-            cmbInscripcion.Location = new Point(299, 122);
+            cmbInscripcion.Location = new Point(411, 152);
+            cmbInscripcion.Margin = new Padding(4);
             cmbInscripcion.Name = "cmbInscripcion";
-            cmbInscripcion.Size = new Size(151, 33);
+            cmbInscripcion.Size = new Size(370, 37);
             cmbInscripcion.TabIndex = 54;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(103, 123);
+            label3.Location = new Point(142, 154);
+            label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(138, 28);
+            label3.Size = new Size(173, 34);
             label3.TabIndex = 53;
             label3.Text = "Inscripcion";
             // 
@@ -125,9 +125,10 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Verdana", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(30, 23);
+            label2.Location = new Point(41, 29);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(223, 48);
+            label2.Size = new Size(266, 59);
             label2.TabIndex = 52;
             label2.Text = "Asistencia";
             // 
@@ -135,9 +136,10 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(103, 226);
+            label5.Location = new Point(142, 282);
+            label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
-            label5.Size = new Size(100, 28);
+            label5.Size = new Size(123, 34);
             label5.TabIndex = 62;
             label5.Text = "Estado:";
             // 
@@ -145,19 +147,27 @@
             // 
             cmbEstado.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmbEstado.FormattingEnabled = true;
-            cmbEstado.Location = new Point(299, 225);
+            cmbEstado.Location = new Point(411, 281);
+            cmbEstado.Margin = new Padding(4);
             cmbEstado.Name = "cmbEstado";
-            cmbEstado.Size = new Size(151, 33);
+            cmbEstado.Size = new Size(370, 37);
             cmbEstado.TabIndex = 63;
+            // 
+            // dtpFecha
+            // 
+            dtpFecha.Location = new Point(411, 221);
+            dtpFecha.Name = "dtpFecha";
+            dtpFecha.Size = new Size(370, 33);
+            dtpFecha.TabIndex = 64;
             // 
             // FormAsistencia
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(875, 614);
+            ClientSize = new Size(1203, 768);
+            Controls.Add(dtpFecha);
             Controls.Add(cmbEstado);
             Controls.Add(label5);
-            Controls.Add(txtFecha);
             Controls.Add(label4);
             Controls.Add(dgvAsistencia);
             Controls.Add(btnEliminar);
@@ -166,16 +176,16 @@
             Controls.Add(cmbInscripcion);
             Controls.Add(label3);
             Controls.Add(label2);
+            Margin = new Padding(4);
             Name = "FormAsistencia";
             Text = "FormAsistencia";
+            Load += FormAsistencia_Load_1;
             ((System.ComponentModel.ISupportInitialize)dgvAsistencia).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private TextBox txtFecha;
         private Label label4;
         private DataGridView dgvAsistencia;
         private Button btnEliminar;
@@ -186,5 +196,6 @@
         private Label label2;
         private Label label5;
         private ComboBox cmbEstado;
+        private DateTimePicker dtpFecha;
     }
 }

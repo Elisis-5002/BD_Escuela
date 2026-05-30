@@ -77,11 +77,7 @@ namespace BD_Escuela
             dgvCalificaciones.DataSource = dt;
         }
 
-        private void FormCalificaciones_Load(object sender, EventArgs e)
-        {
-            CargarInscripciones();
-            CargarCalificaciones();
-        }
+
 
         private void CargarInscripciones()
         {
@@ -93,6 +89,17 @@ namespace BD_Escuela
             cmbInscripcion.DataSource = dt;
             cmbInscripcion.DisplayMember = "DESCRIPCION";
             cmbInscripcion.ValueMember = "ID_INSCRIPCION";
+        }
+
+        private void FormCalificaciones_Load(object sender, EventArgs e)
+        {
+            CargarInscripciones();
+            CargarCalificaciones();
+        }
+
+        private void dgvCalificaciones_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
         }
     }
 }

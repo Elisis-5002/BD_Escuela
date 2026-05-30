@@ -25,6 +25,7 @@ namespace BD_Escuela.Forms
 
         }
 
+
         private void button1_Click(object sender, EventArgs e)
         {
             try
@@ -47,7 +48,15 @@ namespace BD_Escuela.Forms
             {
                 string ejecutar = $"DELETE FROM alumnos WHERE nombre = '{nombre}' AND apellido = '{apellido}' AND año_ingreso = {añoIngreso} AND email = '{email}'";
                 Conexion.Ejecutar(ejecutar, out int filasAfectadas, out string mensaje);
-                MessageBox.Show(mensaje, "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (filasAfectadas == 0)
+                {
+                    MessageBox.Show("Ingrese alumno a eliminar", "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                else
+                {
+                    MessageBox.Show(mensaje, "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
                 CargarAlumnos();
             }
             catch
@@ -86,6 +95,34 @@ namespace BD_Escuela.Forms
         private void frmAlumnos_Load(object sender, EventArgs e)
         {
             CargarAlumnos();
+        }
+
+        private void dgvAlumnos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvAlumnos_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvAlumnos.CurrentRow != null)
+            {
+                txtNombre.Text = dgvAlumnos.CurrentRow.Cells["NOMBRE"].Value.ToString();
+                txtApellido.Text = dgvAlumnos.CurrentRow.Cells["APELLIDO"].Value.ToString();
+                txtEmail.Text = dgvAlumnos.CurrentRow.Cells["EMAIL"].Value.ToString();
+                numAño.Value = Convert.ToInt32(dgvAlumnos.CurrentRow.Cells["AÑO_INGRESO"].Value);
+            }
+        }
+
+        private void dgvAlumnos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvAlumnos.CurrentRow != null)
+            {
+                txtNombre.Text = dgvAlumnos.CurrentRow.Cells["NOMBRE"].Value.ToString();
+                txtApellido.Text = dgvAlumnos.CurrentRow.Cells["APELLIDO"].Value.ToString();
+                txtEmail.Text = dgvAlumnos.CurrentRow.Cells["EMAIL"].Value.ToString();
+                numAño.Value = Convert.ToInt32(dgvAlumnos.CurrentRow.Cells["AÑO_INGRESO"].Value);
+            }
+
         }
     }
 }
