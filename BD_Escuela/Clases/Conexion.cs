@@ -9,7 +9,7 @@ namespace BD_Escuela.Clases
 
         //Revisar los datos de la base de datos y ajustar la cadena de conexión según sea necesario.
         private const string DefaultConnectionString = "User Id=SYSTEM;Password=1234;" +
-                                                        "Data Source=localhost:1521/FREE";
+                                                        "Data Source=localhost:1521/FREEPDB1";
 
         private static string ConnectionString =>
             Environment.GetEnvironmentVariable("ORACLE_CONNECTION_STRING") ?? DefaultConnectionString;
