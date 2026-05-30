@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             label2 = new Label();
-            txtIdCurso = new TextBox();
-            label1 = new Label();
             label3 = new Label();
             label4 = new Label();
             cmbProfesor = new ComboBox();
@@ -52,29 +50,11 @@
             label2.TabIndex = 18;
             label2.Text = "Cursos";
             // 
-            // txtIdCurso
-            // 
-            txtIdCurso.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtIdCurso.Location = new Point(216, 108);
-            txtIdCurso.Name = "txtIdCurso";
-            txtIdCurso.Size = new Size(125, 35);
-            txtIdCurso.TabIndex = 17;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(70, 104);
-            label1.Name = "label1";
-            label1.Size = new Size(121, 28);
-            label1.TabIndex = 16;
-            label1.Text = "Id Curso:";
-            // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(70, 169);
+            label3.Location = new Point(69, 112);
             label3.Name = "label3";
             label3.Size = new Size(118, 28);
             label3.TabIndex = 19;
@@ -84,7 +64,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(70, 231);
+            label4.Location = new Point(69, 174);
             label4.Name = "label4";
             label4.Size = new Size(108, 28);
             label4.TabIndex = 20;
@@ -94,7 +74,7 @@
             // 
             cmbProfesor.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmbProfesor.FormattingEnabled = true;
-            cmbProfesor.Location = new Point(216, 168);
+            cmbProfesor.Location = new Point(215, 111);
             cmbProfesor.Name = "cmbProfesor";
             cmbProfesor.Size = new Size(151, 33);
             cmbProfesor.TabIndex = 21;
@@ -103,7 +83,7 @@
             // 
             cmbMateria.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmbMateria.FormattingEnabled = true;
-            cmbMateria.Location = new Point(216, 230);
+            cmbMateria.Location = new Point(215, 173);
             cmbMateria.Name = "cmbMateria";
             cmbMateria.Size = new Size(151, 33);
             cmbMateria.TabIndex = 22;
@@ -111,40 +91,43 @@
             // btnEliminar
             // 
             btnEliminar.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnEliminar.Location = new Point(615, 315);
+            btnEliminar.Location = new Point(614, 258);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(124, 39);
             btnEliminar.TabIndex = 25;
             btnEliminar.Text = "Eliminar";
             btnEliminar.UseVisualStyleBackColor = true;
+            btnEliminar.Click += btnEliminar_Click;
             // 
             // btnModificar
             // 
             btnModificar.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnModificar.Location = new Point(348, 315);
+            btnModificar.Location = new Point(347, 258);
             btnModificar.Name = "btnModificar";
             btnModificar.Size = new Size(124, 39);
             btnModificar.TabIndex = 24;
             btnModificar.Text = "Modificar";
             btnModificar.UseVisualStyleBackColor = true;
+            btnModificar.Click += btnModificar_Click;
             // 
             // btnGuardar
             // 
             btnGuardar.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnGuardar.Location = new Point(64, 315);
+            btnGuardar.Location = new Point(63, 258);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(124, 39);
             btnGuardar.TabIndex = 23;
             btnGuardar.Text = "Guardar";
             btnGuardar.UseVisualStyleBackColor = true;
+            btnGuardar.Click += btnGuardar_Click;
             // 
             // dgvCursos
             // 
             dgvCursos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCursos.Location = new Point(12, 369);
+            dgvCursos.Location = new Point(11, 312);
             dgvCursos.Name = "dgvCursos";
             dgvCursos.RowHeadersWidth = 51;
-            dgvCursos.Size = new Size(776, 215);
+            dgvCursos.Size = new Size(776, 245);
             dgvCursos.TabIndex = 26;
             // 
             // FormCursos
@@ -161,8 +144,6 @@
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(txtIdCurso);
-            Controls.Add(label1);
             Name = "FormCursos";
             Text = "FormCursos";
             ((System.ComponentModel.ISupportInitialize)dgvCursos).EndInit();
@@ -173,8 +154,6 @@
         #endregion
 
         private Label label2;
-        private TextBox txtIdCurso;
-        private Label label1;
         private Label label3;
         private Label label4;
         private ComboBox cmbProfesor;

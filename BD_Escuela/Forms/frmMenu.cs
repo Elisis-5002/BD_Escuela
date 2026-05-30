@@ -18,5 +18,6 @@ namespace BD_Escuela
         {
             this.Close();
         }
+
     }
 }
