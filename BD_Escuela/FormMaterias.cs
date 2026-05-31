@@ -76,6 +76,9 @@ namespace BD_Escuela
 
         private void FormMaterias_Load(object sender, EventArgs e)
         {
+            btnGuardar.Enabled = Sesion.PuedeInsertar;
+            btnModificar.Enabled = Sesion.PuedeModificar;
+            btnEliminar.Enabled = Sesion.PuedeEliminar;
             CargarMaterias();
         }
 

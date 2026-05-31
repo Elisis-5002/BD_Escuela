@@ -93,6 +93,11 @@ namespace BD_Escuela
 
         private void FormCalificaciones_Load(object sender, EventArgs e)
         {
+            // Aplicar permisos a los botones
+            btnGuardar.Enabled = Sesion.PuedeInsertar;
+            btnModificar.Enabled = Sesion.PuedeModificar;
+            btnEliminar.Enabled = Sesion.PuedeEliminar;
+
             CargarInscripciones();
             CargarCalificaciones();
         }

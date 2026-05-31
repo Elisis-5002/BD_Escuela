@@ -1,3 +1,4 @@
+using BD_Escuela.Clases;
 using BD_Escuela.Forms;
 
 namespace BD_Escuela
@@ -11,7 +12,10 @@ namespace BD_Escuela
 
         private void frmMenu_Load(object sender, EventArgs e)
         {
+            // Mostrar el usuario activo en la barra de título
+            this.Text = $"Menú Principal - {Sesion.Usuario} ({Sesion.Rol})";
 
+            AplicarPermisos();
         }
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
@@ -23,6 +27,45 @@ namespace BD_Escuela
         {
             FormCalificaciones formCalificaciones = new FormCalificaciones();
             formCalificaciones.Show();
+        }
+
+        private void AplicarPermisos()
+        {
+            switch (Sesion.Rol)
+            {
+                case "ADMINISTRADOR":
+                    // Ve todo, no se oculta nada
+                    break;
+
+                case "MAESTRO":
+                    // Solo ve calificaciones y asistencia
+                    profesoresToolStripMenuItem.Visible = false;
+                    alumnosToolStripMenuItem.Visible = false;
+                    materiasToolStripMenuItem.Visible = false;
+                    cursosToolStripMenuItem.Visible = false;
+                    inscripcionesToolStripMenuItem.Visible = false;
+                    usuariosToolStripMenuItem.Visible = false;
+                    break;
+
+                case "ALUMNO":
+                    // Solo ve sus calificaciones y asistencia
+                    profesoresToolStripMenuItem.Visible = false;
+                    alumnosToolStripMenuItem.Visible = false;
+                    materiasToolStripMenuItem.Visible = false;
+                    cursosToolStripMenuItem.Visible = false;
+                    inscripcionesToolStripMenuItem.Visible = false;
+                    calificacionesToolStripMenuItem.Visible = false;
+                    usuariosToolStripMenuItem.Visible = false;
+                    break;
+
+                case "SECRETARIO":
+                    // Ve todo pero sin modificar — eso se controla en cada form
+                    profesoresToolStripMenuItem.Visible = false;
+                    materiasToolStripMenuItem.Visible = false;
+                    cursosToolStripMenuItem.Visible = false;
+                    usuariosToolStripMenuItem.Visible = false;
+                    break;
+            }
         }
     }
 }

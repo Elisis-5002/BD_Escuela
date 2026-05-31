@@ -86,6 +86,9 @@ namespace BD_Escuela
 
         private void FormAsistencia_Load_1(object sender, EventArgs e)
         {
+            btnGuardar.Enabled = Sesion.PuedeInsertar;
+            btnModificar.Enabled = Sesion.PuedeModificar;
+            btnEliminar.Enabled = Sesion.PuedeEliminar;
             CargarInscripciones();
             CargarEstados();
             CargarAsistencia();

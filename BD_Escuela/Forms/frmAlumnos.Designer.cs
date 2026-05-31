@@ -53,7 +53,7 @@
             // 
             splitContainer1.Dock = DockStyle.Fill;
             splitContainer1.Location = new Point(0, 0);
-            splitContainer1.Margin = new Padding(3, 2, 3, 2);
+            splitContainer1.Margin = new Padding(2, 2, 2, 2);
             splitContainer1.Name = "splitContainer1";
             splitContainer1.Orientation = Orientation.Horizontal;
             // 
@@ -70,50 +70,53 @@
             splitContainer1.Panel1.Controls.Add(btnBaja);
             splitContainer1.Panel1.Controls.Add(btnAlta);
             splitContainer1.Panel1.Controls.Add(txtNombre);
+            splitContainer1.Panel1.Paint += splitContainer1_Panel1_Paint;
             // 
             // splitContainer1.Panel2
             // 
             splitContainer1.Panel2.Controls.Add(dgvAlumnos);
-            splitContainer1.Size = new Size(900, 626);
-            splitContainer1.SplitterDistance = 261;
-            splitContainer1.SplitterWidth = 3;
+            splitContainer1.Size = new Size(655, 501);
+            splitContainer1.SplitterDistance = 208;
+            splitContainer1.SplitterWidth = 2;
             splitContainer1.TabIndex = 0;
             // 
             // numAño
             // 
             numAño.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            numAño.Location = new Point(228, 165);
+            numAño.Location = new Point(166, 132);
+            numAño.Margin = new Padding(2, 2, 2, 2);
             numAño.Maximum = new decimal(new int[] { 2026, 0, 0, 0 });
             numAño.Minimum = new decimal(new int[] { 2000, 0, 0, 0 });
             numAño.Name = "numAño";
-            numAño.Size = new Size(229, 45);
+            numAño.Size = new Size(167, 39);
             numAño.TabIndex = 0;
             numAño.TextAlign = HorizontalAlignment.Center;
             numAño.Value = new decimal(new int[] { 2000, 0, 0, 0 });
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(180, 123);
-            txtEmail.Margin = new Padding(3, 2, 3, 2);
+            txtEmail.Location = new Point(131, 98);
+            txtEmail.Margin = new Padding(2, 2, 2, 2);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(277, 33);
+            txtEmail.Size = new Size(203, 27);
             txtEmail.TabIndex = 9;
             // 
             // txtApellido
             // 
-            txtApellido.Location = new Point(180, 78);
-            txtApellido.Margin = new Padding(3, 2, 3, 2);
+            txtApellido.Location = new Point(131, 62);
+            txtApellido.Margin = new Padding(2, 2, 2, 2);
             txtApellido.Name = "txtApellido";
-            txtApellido.Size = new Size(277, 33);
+            txtApellido.Size = new Size(203, 27);
             txtApellido.TabIndex = 8;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(40, 121);
+            label4.Location = new Point(29, 97);
+            label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(76, 32);
+            label4.Size = new Size(63, 28);
             label4.TabIndex = 7;
             label4.Text = "Email:";
             // 
@@ -121,9 +124,10 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(40, 172);
+            label3.Location = new Point(29, 138);
+            label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(182, 32);
+            label3.Size = new Size(149, 28);
             label3.TabIndex = 6;
             label3.Text = "Año de Ingreso:";
             // 
@@ -131,9 +135,10 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(40, 78);
+            label2.Location = new Point(29, 62);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(107, 32);
+            label2.Size = new Size(90, 28);
             label2.TabIndex = 5;
             label2.Text = "Apellido:";
             // 
@@ -141,19 +146,20 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(40, 33);
+            label1.Location = new Point(29, 26);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(107, 32);
+            label1.Size = new Size(89, 28);
             label1.TabIndex = 4;
             label1.Text = "Nombre:";
             // 
             // btnModificar
             // 
             btnModificar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnModificar.Location = new Point(509, 147);
-            btnModificar.Margin = new Padding(3, 2, 3, 2);
+            btnModificar.Location = new Point(370, 118);
+            btnModificar.Margin = new Padding(2, 2, 2, 2);
             btnModificar.Name = "btnModificar";
-            btnModificar.Size = new Size(195, 46);
+            btnModificar.Size = new Size(142, 37);
             btnModificar.TabIndex = 3;
             btnModificar.Text = "Modificar";
             btnModificar.UseVisualStyleBackColor = true;
@@ -162,10 +168,10 @@
             // btnBaja
             // 
             btnBaja.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnBaja.Location = new Point(509, 87);
-            btnBaja.Margin = new Padding(3, 2, 3, 2);
+            btnBaja.Location = new Point(370, 70);
+            btnBaja.Margin = new Padding(2, 2, 2, 2);
             btnBaja.Name = "btnBaja";
-            btnBaja.Size = new Size(195, 42);
+            btnBaja.Size = new Size(142, 34);
             btnBaja.TabIndex = 2;
             btnBaja.Text = "Dar de Baja";
             btnBaja.UseVisualStyleBackColor = true;
@@ -174,10 +180,10 @@
             // btnAlta
             // 
             btnAlta.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnAlta.Location = new Point(509, 22);
-            btnAlta.Margin = new Padding(3, 2, 3, 2);
+            btnAlta.Location = new Point(370, 18);
+            btnAlta.Margin = new Padding(2, 2, 2, 2);
             btnAlta.Name = "btnAlta";
-            btnAlta.Size = new Size(195, 46);
+            btnAlta.Size = new Size(142, 37);
             btnAlta.TabIndex = 1;
             btnAlta.Text = "Dar de Alta";
             btnAlta.UseVisualStyleBackColor = true;
@@ -185,10 +191,10 @@
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(180, 36);
-            txtNombre.Margin = new Padding(3, 2, 3, 2);
+            txtNombre.Location = new Point(131, 29);
+            txtNombre.Margin = new Padding(2, 2, 2, 2);
             txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(277, 33);
+            txtNombre.Size = new Size(203, 27);
             txtNombre.TabIndex = 0;
             // 
             // dgvAlumnos
@@ -196,20 +202,21 @@
             dgvAlumnos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvAlumnos.Dock = DockStyle.Fill;
             dgvAlumnos.Location = new Point(0, 0);
+            dgvAlumnos.Margin = new Padding(2, 2, 2, 2);
             dgvAlumnos.Name = "dgvAlumnos";
             dgvAlumnos.RowHeadersWidth = 62;
-            dgvAlumnos.Size = new Size(900, 362);
+            dgvAlumnos.Size = new Size(655, 291);
             dgvAlumnos.TabIndex = 0;
             dgvAlumnos.CellClick += dgvAlumnos_CellClick;
             dgvAlumnos.CellContentClick += dgvAlumnos_CellContentClick;
             // 
             // frmAlumnos
             // 
-            AutoScaleDimensions = new SizeF(11F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(900, 626);
+            ClientSize = new Size(655, 501);
             Controls.Add(splitContainer1);
-            Margin = new Padding(3, 2, 3, 2);
+            Margin = new Padding(2, 2, 2, 2);
             Name = "frmAlumnos";
             Text = "frmAlumnos";
             Load += frmAlumnos_Load;
