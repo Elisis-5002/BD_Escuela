@@ -72,7 +72,15 @@ namespace BD_Escuela
 
         public void CargarCalificaciones()
         {
-            string consulta = "SELECT * FROM calificaciones ORDER BY id_calificacion";
+            string consulta;
+            if (Sesion.Rol == "ADMINISTRADOR" || Sesion.Rol == "SECRETARIO")
+            {
+                consulta = "SELECT * FROM calificaciones ORDER BY id_calificacion";
+            }
+            else
+            {
+                consulta = "SELECT id_calificacion, id_inscripcion,fecha_creacion, nota,estatus FROM calificaciones ORDER BY id_calificacion";
+            }
             DataTable dt = Conexion.Consultar(consulta);
             dgvCalificaciones.DataSource = dt;
         }

@@ -72,7 +72,15 @@ namespace BD_Escuela
 
         public void CargarInscripciones()
         {
-            string consulta = "SELECT * FROM inscripciones ORDER BY id_inscripcion";
+            string consulta;
+            if (Sesion.Rol == "ADMINISTRADOR" || Sesion.Rol == "SECRETARIO")
+            {
+                consulta = "SELECT * FROM inscripciones ORDER BY id_inscripcion";
+            }
+            else
+            {
+                consulta = "SELECT id_inscripcion, id_alumno, id_curso FROM inscripciones ORDER BY id_inscripcion";
+            }
             DataTable dt = Conexion.Consultar(consulta);
             dgvInscripciones.DataSource = dt;
         }
@@ -114,9 +122,13 @@ namespace BD_Escuela
         {
             if (dgvInscripciones.CurrentRow != null)
             {
-                cmbAlumno.SelectedValue = Convert.ToInt32(dgvInscripciones.CurrentRow.Cells["ID_ALUMNO"].Value);
-                cmbCurso.SelectedValue = Convert.ToInt32(dgvInscripciones.CurrentRow.Cells["ID_CURSO"].Value);
+                int idAlumno =Convert.ToInt32(dgvInscripciones.CurrentRow.Cells["ID_ALUMNO"].Value);
+                cmbAlumno.SelectedValue = idAlumno; 
+                string idCurso = dgvInscripciones.CurrentRow.Cells["ID_CURSO"].Value.ToString();
+                cmbCurso.SelectedValue = idCurso;  
             }
         }
+
+        
     }
 }

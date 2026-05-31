@@ -49,12 +49,12 @@ namespace BD_Escuela
 
                 case "ALUMNO":
                     // Solo ve sus calificaciones y asistencia
-                    profesoresToolStripMenuItem.Visible = false;
+                    profesoresToolStripMenuItem.Visible = true;
                     alumnosToolStripMenuItem.Visible = false;
                     materiasToolStripMenuItem.Visible = false;
                     cursosToolStripMenuItem.Visible = false;
-                    inscripcionesToolStripMenuItem.Visible = false;
-                    calificacionesToolStripMenuItem.Visible = false;
+                    inscripcionesToolStripMenuItem.Visible = true;
+                    calificacionesToolStripMenuItem.Visible = true;
                     usuariosToolStripMenuItem.Visible = false;
                     break;
 
@@ -66,6 +66,19 @@ namespace BD_Escuela
                     usuariosToolStripMenuItem.Visible = false;
                     break;
             }
+        }
+
+        private void cerrarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormLogin formLogin = new FormLogin();
+            formLogin.Show();
+            this.Close();
+        }
+
+        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormUsuarios formUsuarios = new FormUsuarios();
+            formUsuarios.Show();
         }
     }
 }

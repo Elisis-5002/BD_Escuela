@@ -21,7 +21,7 @@ namespace BD_Escuela
             InitializeComponent();
         }
 
-        
+
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
@@ -39,7 +39,7 @@ namespace BD_Escuela
             //}
             string contrasenaPorDefecto = "password123";
 
-            
+
             bool exito = Clases.Conexion.RegistrarProfesorSP(
                 nombre,
                 apellido,
@@ -85,7 +85,7 @@ namespace BD_Escuela
                 string ejecutar = $"DELETE FROM profesores WHERE nombre = '{nombre}' AND apellido = '{apellido}' AND email = '{email}'";
                 Conexion.Ejecutar(ejecutar, out int filasAfectadas, out string mensaje);
                 MessageBox.Show(mensaje, "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                if(filasAfectadas == 0)
+                if (filasAfectadas == 0)
                 {
                     MessageBox.Show("Asegurese de que el profesor no está impartiendo cursos actualmente", "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -101,7 +101,15 @@ namespace BD_Escuela
 
         public void CargarProfesores()
         {
-            string consulta = "SELECT * FROM profesores ORDER BY id_profesor";
+            string consulta;
+            if (Sesion.Rol == "ADMINISTRADOR" || Sesion.Rol == "SECRETARIO")
+            {
+                consulta = "SELECT * FROM profesores ORDER BY id_profesor";
+            }
+            else
+            {
+                consulta = "SELECT id_profesor, nombre, apellido, email FROM profesores ORDER BY id_profesor";
+            }
             DataTable dt = Conexion.Consultar(consulta);
             dgvProfesores.DataSource = dt;
         }
@@ -122,6 +130,11 @@ namespace BD_Escuela
                 txtApellido.Text = dgvProfesores.CurrentRow.Cells["APELLIDO"].Value.ToString();
                 txtEmail.Text = dgvProfesores.CurrentRow.Cells["EMAIL"].Value.ToString();
             }
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

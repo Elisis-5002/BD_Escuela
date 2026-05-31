@@ -14,6 +14,8 @@ namespace BD_Escuela
         public FormLogin()
         {
             InitializeComponent();
+            this.KeyPreview = true;
+
         }
 
         private void btnIniciarSesion_Click(object sender, EventArgs e)
@@ -51,6 +53,7 @@ namespace BD_Escuela
                 // Guardar datos de sesión
                 Sesion.UsrId = Convert.ToInt32(dt.Rows[0]["USR_ID"]);
                 Sesion.Usuario = dt.Rows[0]["USR_NOMBRE"].ToString();
+                
                 Sesion.Rol = dt.Rows[0]["ROL_NOMBRE"].ToString();
                 Sesion.Permisos = dt.Rows[0]["PERM_PERMISOS"].ToString().Trim();
 
@@ -63,6 +66,14 @@ namespace BD_Escuela
             {
                 MessageBox.Show("Error al conectar con la base de datos.",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void FormLogin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnIniciarSesion_Click(sender, e); 
             }
         }
     }

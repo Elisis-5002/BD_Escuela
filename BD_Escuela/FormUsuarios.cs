@@ -163,5 +163,24 @@ namespace BD_Escuela
             DataTable dt = Conexion.Consultar(consulta);
             dgvUsuarios.DataSource = dt;
         }
+
+        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvUsuarios.CurrentRow != null)
+            {
+                txtUsuario.Text = dgvUsuarios.CurrentRow.Cells["USR_NOMBRE"].Value.ToString();
+                txtContraseña.Text = dgvUsuarios.CurrentRow.Cells["USR_PWD"].Value.ToString();
+            }
+        }
     }
 }

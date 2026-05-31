@@ -96,7 +96,15 @@ namespace BD_Escuela.Forms
         }
         public void CargarAlumnos()
         {
-            string consulta = "SELECT * FROM alumnos ORDER BY id_alumno";
+            string consulta;
+            if (Sesion.Rol == "ADMINISTRADOR" || Sesion.Rol == "SECRETARIO")
+            {
+                consulta = "SELECT * FROM alumnos ORDER BY id_alumno";
+            }
+            else
+            {
+                consulta = "SELECT id_alumno, nombre, apellido,año_ingreso, email FROM alumnos ORDER BY id_alumno";
+            }
             DataTable dt = Conexion.Consultar(consulta);
             dgvAlumnos.DataSource = dt;
         }
@@ -107,11 +115,6 @@ namespace BD_Escuela.Forms
             btnModificar.Enabled = Sesion.PuedeModificar;
             btnBaja.Enabled = Sesion.PuedeEliminar;
             CargarAlumnos();
-        }
-
-        private void dgvAlumnos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void dgvAlumnos_SelectionChanged(object sender, EventArgs e)

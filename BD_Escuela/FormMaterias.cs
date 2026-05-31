@@ -69,7 +69,15 @@ namespace BD_Escuela
 
         public void CargarMaterias()
         {
-            string consulta = "SELECT * FROM materias ORDER BY id_materia";
+            string consulta;
+            if (Sesion.Rol == "ADMINISTRADOR" || Sesion.Rol == "SECRETARIO")
+            {
+                consulta = "SELECT * FROM materias ORDER BY id_materia";
+            }
+            else
+            {
+                consulta = "SELECT id_materia, nombre_materia FROM materias ORDER BY id_materia";
+            }
             DataTable dt = Conexion.Consultar(consulta);
             dgvMaterias.DataSource = dt;
         }
