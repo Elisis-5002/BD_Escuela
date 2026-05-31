@@ -1,0 +1,12 @@
+databasetec2026_high = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.us-ashburn-1.oraclecloud.com))(connect_data=(service_name=ga1215d003b3ce9_databasetec2026_high.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+
+databasetec2026_medium = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.us-ashburn-1.oraclecloud.com))(connect_data=(service_name=ga1215d003b3ce9_databasetec2026_medium.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+
+databasetec2026_low = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.us-ashburn-1.oraclecloud.com))(connect_data=(service_name=ga1215d003b3ce9_databasetec2026_low.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+
+databasetec2026_tp = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.us-ashburn-1.oraclecloud.com))(connect_data=(service_name=ga1215d003b3ce9_databasetec2026_tp.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+
+databasetec2026_tpurgent = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.us-ashburn-1.oraclecloud.com))(connect_data=(service_name=ga1215d003b3ce9_databasetec2026_tpurgent.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+
+
+

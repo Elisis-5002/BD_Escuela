@@ -1,4 +1,5 @@
 ﻿using BD_Escuela.Clases;
+using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,19 +21,42 @@ namespace BD_Escuela
             InitializeComponent();
         }
 
+        
+
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            try
+            //try
+            //{
+            //    string ejecutar = $"INSERT INTO profesores(nombre, apellido, email) VALUES('{nombre}', '{apellido}', '{email}')";
+            //    Conexion.Ejecutar(ejecutar, out int filasAfectadas, out string mensaje);
+            //    MessageBox.Show(mensaje, "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    CargarProfesores();
+            //}
+            //catch
+            //{
+            //    MessageBox.Show("Error al agregar el profesor. Rellene y verifique todos los datos ingresados.",
+            //         "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+            string contrasenaPorDefecto = "password123";
+
+            
+            bool exito = Clases.Conexion.RegistrarProfesorSP(
+                nombre,
+                apellido,
+                email,
+                contrasenaPorDefecto,
+                out int idUsuario,
+                out string mensaje
+            );
+
+            if (exito)
             {
-                string ejecutar = $"INSERT INTO profesores(nombre, apellido, email) VALUES('{nombre}', '{apellido}', '{email}')";
-                Conexion.Ejecutar(ejecutar, out int filasAfectadas, out string mensaje);
-                MessageBox.Show(mensaje, "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"{mensaje}\nID Usuario Asignado: {idUsuario}", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CargarProfesores();
             }
-            catch
+            else
             {
-                MessageBox.Show("Error al agregar el profesor. Rellene y verifique todos los datos ingresados.",
-                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(mensaje, "Error al guardar", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

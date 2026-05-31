@@ -28,17 +28,26 @@ namespace BD_Escuela.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            try
+            string contrasenaPorDefecto = "pwd_123";
+
+            // Invocamos el Stored Procedure de Alumnos
+            bool exito = Clases.Conexion.RegistrarAlumnoSP(
+                txtNombre.Text,
+                txtApellido.Text,
+                txtEmail.Text,
+                contrasenaPorDefecto,
+                out int idUsuario,
+                out string mensaje
+            );
+
+            if (exito)
             {
-                string ejecutar = $"INSERT INTO alumnos(nombre, apellido, año_ingreso, email) VALUES('{nombre}', '{apellido}', {añoIngreso}, '{email}')";
-                Conexion.Ejecutar(ejecutar, out int filasAfectadas, out string mensaje);
-                MessageBox.Show(mensaje, "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                CargarAlumnos();
+                MessageBox.Show($"{mensaje}\nID Usuario Asignado: {idUsuario}", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CargarAlumnos(); // Tu método para refrescar el DataGridView
             }
-            catch
+            else
             {
-                MessageBox.Show("Error al agregar el alumno. Rellene y verifique todos los datos ingresados.",
-                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(mensaje, "Error al guardar", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
