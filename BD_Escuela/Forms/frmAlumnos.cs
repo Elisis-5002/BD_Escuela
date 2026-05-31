@@ -94,6 +94,9 @@ namespace BD_Escuela.Forms
 
         private void frmAlumnos_Load(object sender, EventArgs e)
         {
+            btnAlta.Enabled = Sesion.PuedeInsertar;
+            btnModificar.Enabled = Sesion.PuedeModificar;
+            btnBaja.Enabled = Sesion.PuedeEliminar;
             CargarAlumnos();
         }
 
@@ -122,6 +125,11 @@ namespace BD_Escuela.Forms
                 txtEmail.Text = dgvAlumnos.CurrentRow.Cells["EMAIL"].Value.ToString();
                 numAño.Value = Convert.ToInt32(dgvAlumnos.CurrentRow.Cells["AÑO_INGRESO"].Value);
             }
+
+        }
+
+        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     }

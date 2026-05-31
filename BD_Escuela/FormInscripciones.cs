@@ -101,6 +101,9 @@ namespace BD_Escuela
 
         private void FormInscripciones_Load_1(object sender, EventArgs e)
         {
+            btnGuardar.Enabled = Sesion.PuedeInsertar;
+            btnModificar.Enabled = Sesion.PuedeModificar;
+            btnEliminar.Enabled = Sesion.PuedeEliminar;
             CargarAlumnos();
             CargarCursos();
             CargarInscripciones();
