@@ -15,11 +15,11 @@ namespace BD_Escuela.Clases
         // Ruta donde DEBEN estar los archivos extraídos del ZIP
         private static readonly string RutaWallet = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Wallet");
 
-        // Cadena de conexión con ubicación de Wallet explícita
+        // Cadena de conexión con ubicación de Wallet explícita original
         private static string ConnectionString =>
             $"User Id=usr_admin;" +
             $"Password=AdministradorBase123;" +
-            $"Data Source=(description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.us-ashburn-1.oraclecloud.com))(connect_data=(service_name=ga1215d003b3ce9_databasetec2026_high.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)));" +
+            $"Data Source=(description=(retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.us-ashburn-1.oraclecloud.com))(connect_data=(service_name=ga1215d003b3ce9_databasetec2026_high.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)));" +
             $"WALLET_LOCATION=(SOURCE=(METHOD=FILE)(METHOD_DATA=(DIRECTORY={RutaWallet})));";
 
         public static OracleConnection Abrir()
@@ -31,22 +31,50 @@ namespace BD_Escuela.Clases
 
         public static bool Ejecutar(string sql, out int filasAfectadas, out string mensaje)
         {
+            filasAfectadas = 0;
+
             if (string.IsNullOrWhiteSpace(sql))
             {
-                filasAfectadas = 0;
                 mensaje = "La sentencia SQL está vacía.";
                 return false;
             }
 
             try
             {
-                using var conn = new OracleConnection(ConnectionString);
-                conn.Open();
-                using var cmd = conn.CreateCommand();
-                cmd.CommandText = sql;
-                int afectadas = cmd.ExecuteNonQuery();
-                filasAfectadas = afectadas;
-                mensaje = $"Sentencia ejecutada. Filas afectadas: {afectadas}.";
+                // 1. Ejecución Principal
+                using (var conn = new OracleConnection(ConnectionString))
+                {
+                    conn.Open();
+                    using (var cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandText = sql;
+                        filasAfectadas = cmd.ExecuteNonQuery();
+                    }
+                } // La conexión se cierra aquí, liberando el recurso de forma segura.
+
+                // 2. Auditoría de Sesión (Se ejecuta solo si la operación principal fue exitosa)
+                if (filasAfectadas >= 0 && !string.IsNullOrEmpty(Sesion.Token))
+                {
+                    try
+                    {
+                        using (var connAud = new OracleConnection(ConnectionString))
+                        {
+                            connAud.Open();
+                            using (var cmdAud = connAud.CreateCommand())
+                            {
+                                cmdAud.CommandText = "UPDATE sesiones SET ses_ultima_actividad = SYSDATE WHERE ses_token = :token";
+                                cmdAud.Parameters.Add("token", OracleDbType.Varchar2).Value = Sesion.Token;
+                                cmdAud.ExecuteNonQuery();
+                            }
+                        }
+                    }
+                    catch
+                    {
+                        // La auditoría es silenciosa: si falla, no afecta la operación principal
+                    }
+                }
+
+                mensaje = $"Sentencia ejecutada. Filas afectadas: {filasAfectadas}.";
                 return true;
             }
             catch (OracleException oex)
@@ -154,6 +182,7 @@ namespace BD_Escuela.Clases
                 return false;
             }
         }
+
         public static bool RegistrarAlumnoSP(string nombre, string apellido, string email, string contra, out int idUsuarioGenerado, out string mensaje)
         {
             idUsuarioGenerado = -1;
@@ -200,8 +229,11 @@ namespace BD_Escuela.Clases
                 return false;
             }
         }
+
+
     }
 
+ 
 
-}
+    }
 

@@ -11,6 +11,9 @@ namespace BD_Escuela.Clases
         public static string Rol { get; set; }
         public static string Permisos { get; set; }
 
+        public static string Token {  get; set; }
+
+
         // Métodos para verificar permisos fácilmente
         public static bool PuedeConsultar => !string.IsNullOrEmpty(Permisos);
         public static bool PuedeInsertar => Permisos == "0000001F";
