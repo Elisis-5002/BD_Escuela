@@ -26,7 +26,7 @@ namespace BD_Escuela.Forms
         }
 
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnGuardar_Click(object sender, EventArgs e)
         {
             string contrasenaPorDefecto = "pwd_123";
 
@@ -51,7 +51,7 @@ namespace BD_Escuela.Forms
             }
         }
 
-        private void btnBaja_Click(object sender, EventArgs e)
+        private void btnEliminar_Click(object sender, EventArgs e)
         {
             try
             {
@@ -111,9 +111,9 @@ namespace BD_Escuela.Forms
 
         private void frmAlumnos_Load(object sender, EventArgs e)
         {
-            btnAlta.Enabled = Sesion.PuedeInsertar;
+            btnGuardar.Enabled = Sesion.PuedeInsertar;
             btnModificar.Enabled = Sesion.PuedeModificar;
-            btnBaja.Enabled = Sesion.PuedeEliminar;
+            btnEliminar.Enabled = Sesion.PuedeEliminar;
             CargarAlumnos();
         }
 
