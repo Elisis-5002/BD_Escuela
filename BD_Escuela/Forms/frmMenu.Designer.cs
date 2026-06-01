@@ -41,8 +41,9 @@
             cursosToolStripMenuItem = new ToolStripMenuItem();
             calificacionesToolStripMenuItem = new ToolStripMenuItem();
             usuariosToolStripMenuItem = new ToolStripMenuItem();
-            label1 = new Label();
             personasToolStripMenuItem = new ToolStripMenuItem();
+            label1 = new Label();
+            erroresDeInsercionToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -81,7 +82,7 @@
             // 
             // ventanasToolStripMenuItem
             // 
-            ventanasToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { profesoresToolStripMenuItem, alumnosToolStripMenuItem, asistenciaToolStripMenuItem, inscripcionesToolStripMenuItem, materiasToolStripMenuItem, cursosToolStripMenuItem, calificacionesToolStripMenuItem, usuariosToolStripMenuItem, personasToolStripMenuItem });
+            ventanasToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { profesoresToolStripMenuItem, alumnosToolStripMenuItem, asistenciaToolStripMenuItem, inscripcionesToolStripMenuItem, materiasToolStripMenuItem, cursosToolStripMenuItem, calificacionesToolStripMenuItem, usuariosToolStripMenuItem, personasToolStripMenuItem, erroresDeInsercionToolStripMenuItem });
             ventanasToolStripMenuItem.Font = new Font("Times New Roman", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
             ventanasToolStripMenuItem.Name = "ventanasToolStripMenuItem";
             ventanasToolStripMenuItem.Size = new Size(88, 25);
@@ -90,58 +91,65 @@
             // profesoresToolStripMenuItem
             // 
             profesoresToolStripMenuItem.Name = "profesoresToolStripMenuItem";
-            profesoresToolStripMenuItem.Size = new Size(184, 26);
+            profesoresToolStripMenuItem.Size = new Size(230, 26);
             profesoresToolStripMenuItem.Text = "Profesores";
             profesoresToolStripMenuItem.Click += profesoresToolStripMenuItem_Click;
             // 
             // alumnosToolStripMenuItem
             // 
             alumnosToolStripMenuItem.Name = "alumnosToolStripMenuItem";
-            alumnosToolStripMenuItem.Size = new Size(184, 26);
+            alumnosToolStripMenuItem.Size = new Size(230, 26);
             alumnosToolStripMenuItem.Text = "Alumnos";
             alumnosToolStripMenuItem.Click += alumnosToolStripMenuItem_Click;
             // 
             // asistenciaToolStripMenuItem
             // 
             asistenciaToolStripMenuItem.Name = "asistenciaToolStripMenuItem";
-            asistenciaToolStripMenuItem.Size = new Size(184, 26);
+            asistenciaToolStripMenuItem.Size = new Size(230, 26);
             asistenciaToolStripMenuItem.Text = "Asistencia";
             asistenciaToolStripMenuItem.Click += asistenciaToolStripMenuItem_Click;
             // 
             // inscripcionesToolStripMenuItem
             // 
             inscripcionesToolStripMenuItem.Name = "inscripcionesToolStripMenuItem";
-            inscripcionesToolStripMenuItem.Size = new Size(184, 26);
+            inscripcionesToolStripMenuItem.Size = new Size(230, 26);
             inscripcionesToolStripMenuItem.Text = "Inscripciones";
             inscripcionesToolStripMenuItem.Click += inscripcionesToolStripMenuItem_Click;
             // 
             // materiasToolStripMenuItem
             // 
             materiasToolStripMenuItem.Name = "materiasToolStripMenuItem";
-            materiasToolStripMenuItem.Size = new Size(184, 26);
+            materiasToolStripMenuItem.Size = new Size(230, 26);
             materiasToolStripMenuItem.Text = "Materias";
             materiasToolStripMenuItem.Click += materiasToolStripMenuItem_Click;
             // 
             // cursosToolStripMenuItem
             // 
             cursosToolStripMenuItem.Name = "cursosToolStripMenuItem";
-            cursosToolStripMenuItem.Size = new Size(184, 26);
+            cursosToolStripMenuItem.Size = new Size(230, 26);
             cursosToolStripMenuItem.Text = "Cursos";
             cursosToolStripMenuItem.Click += cursosToolStripMenuItem_Click;
             // 
             // calificacionesToolStripMenuItem
             // 
             calificacionesToolStripMenuItem.Name = "calificacionesToolStripMenuItem";
-            calificacionesToolStripMenuItem.Size = new Size(184, 26);
+            calificacionesToolStripMenuItem.Size = new Size(230, 26);
             calificacionesToolStripMenuItem.Text = "Calificaciones";
             calificacionesToolStripMenuItem.Click += calificacionesToolStripMenuItem_Click;
             // 
             // usuariosToolStripMenuItem
             // 
             usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            usuariosToolStripMenuItem.Size = new Size(184, 26);
+            usuariosToolStripMenuItem.Size = new Size(230, 26);
             usuariosToolStripMenuItem.Text = "Usuarios";
             usuariosToolStripMenuItem.Click += usuariosToolStripMenuItem_Click;
+            // 
+            // personasToolStripMenuItem
+            // 
+            personasToolStripMenuItem.Name = "personasToolStripMenuItem";
+            personasToolStripMenuItem.Size = new Size(230, 26);
+            personasToolStripMenuItem.Text = "Personas";
+            personasToolStripMenuItem.Click += personasToolStripMenuItem_Click;
             // 
             // label1
             // 
@@ -154,12 +162,12 @@
             label1.TabIndex = 1;
             label1.Text = "Base de Datos Escolar";
             // 
-            // personasToolStripMenuItem
+            // erroresDeInsercionToolStripMenuItem
             // 
-            personasToolStripMenuItem.Name = "personasToolStripMenuItem";
-            personasToolStripMenuItem.Size = new Size(184, 26);
-            personasToolStripMenuItem.Text = "Personas";
-            personasToolStripMenuItem.Click += personasToolStripMenuItem_Click;
+            erroresDeInsercionToolStripMenuItem.Name = "erroresDeInsercionToolStripMenuItem";
+            erroresDeInsercionToolStripMenuItem.Size = new Size(230, 26);
+            erroresDeInsercionToolStripMenuItem.Text = "Errores de insercion";
+            erroresDeInsercionToolStripMenuItem.Click += erroresDeInsercionToolStripMenuItem_Click;
             // 
             // frmMenu
             // 
@@ -232,5 +240,6 @@
         private ToolStripMenuItem usuariosToolStripMenuItem;
         private ToolStripMenuItem cerrarSesiónToolStripMenuItem;
         private ToolStripMenuItem personasToolStripMenuItem;
+        private ToolStripMenuItem erroresDeInsercionToolStripMenuItem;
     }
 }

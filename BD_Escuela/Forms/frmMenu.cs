@@ -66,7 +66,7 @@ namespace BD_Escuela
                     materiasToolStripMenuItem.Visible = false;
                     cursosToolStripMenuItem.Visible = false;
                     usuariosToolStripMenuItem.Visible = false;
-                    
+
                     break;
             }
         }
@@ -103,6 +103,12 @@ namespace BD_Escuela
         {
             FormPersonas formPersonas = new FormPersonas();
             formPersonas.Show();
+        }
+
+        private void erroresDeInsercionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormErrores formErrores = new FormErrores();
+            formErrores.Show();
         }
     }
 }
