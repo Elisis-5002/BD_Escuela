@@ -122,7 +122,7 @@ namespace BD_Escuela
             }
         }
 
-        
+
 
         private void FormLogin_KeyDown(object sender, KeyEventArgs e)
         {
@@ -132,12 +132,19 @@ namespace BD_Escuela
             }
         }
 
-        private void btnSee_CheckedChanged(object sender, EventArgs e)
+        private void FormLogin_Load(object sender, EventArgs e)
         {
-            if (!btnSee.Checked)
-                txtContraseña.PasswordChar = '●';
-            else
-                txtContraseña.PasswordChar = '\0';
+
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnSee_CheckedChanged_1(object sender, EventArgs e)
+        {
+            txtContraseña.UseSystemPasswordChar = !btnSee.Checked;
         }
     }
 }

@@ -21,7 +21,7 @@ namespace BD_Escuela.Clases
             $"Password=AdministradorBase123;" +
             $"Data Source=(description=(retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.us-ashburn-1.oraclecloud.com))(connect_data=(service_name=ga1215d003b3ce9_databasetec2026_high.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)));" +
             $"WALLET_LOCATION=(SOURCE=(METHOD=FILE)(METHOD_DATA=(DIRECTORY={RutaWallet})));";
-
+        // {RutaWallet}
         public static OracleConnection Abrir()
         {
             var conn = new OracleConnection(ConnectionString);
