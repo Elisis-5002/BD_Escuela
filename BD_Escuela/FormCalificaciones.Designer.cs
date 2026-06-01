@@ -38,6 +38,9 @@
             label4 = new Label();
             txtNota = new TextBox();
             splitContainer1 = new SplitContainer();
+            btnKardex = new Button();
+            cmbCurso = new ComboBox();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvCalificaciones).BeginInit();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -62,10 +65,10 @@
             // btnEliminar
             // 
             btnEliminar.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnEliminar.Location = new Point(854, 295);
+            btnEliminar.Location = new Point(897, 227);
             btnEliminar.Margin = new Padding(4);
             btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(170, 49);
+            btnEliminar.Size = new Size(220, 49);
             btnEliminar.TabIndex = 46;
             btnEliminar.Text = "Eliminar";
             btnEliminar.UseVisualStyleBackColor = true;
@@ -74,10 +77,10 @@
             // btnModificar
             // 
             btnModificar.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnModificar.Location = new Point(479, 278);
+            btnModificar.Location = new Point(897, 167);
             btnModificar.Margin = new Padding(4);
             btnModificar.Name = "btnModificar";
-            btnModificar.Size = new Size(170, 49);
+            btnModificar.Size = new Size(220, 49);
             btnModificar.TabIndex = 45;
             btnModificar.Text = "Modificar";
             btnModificar.UseVisualStyleBackColor = true;
@@ -86,10 +89,10 @@
             // btnGuardar
             // 
             btnGuardar.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnGuardar.Location = new Point(117, 295);
+            btnGuardar.Location = new Point(897, 102);
             btnGuardar.Margin = new Padding(4);
             btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(170, 49);
+            btnGuardar.Size = new Size(220, 49);
             btnGuardar.TabIndex = 44;
             btnGuardar.Text = "Guardar";
             btnGuardar.UseVisualStyleBackColor = true;
@@ -99,22 +102,23 @@
             // 
             cmbInscripcion.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmbInscripcion.FormattingEnabled = true;
-            cmbInscripcion.Location = new Point(395, 132);
+            cmbInscripcion.Location = new Point(181, 159);
             cmbInscripcion.Margin = new Padding(4);
             cmbInscripcion.Name = "cmbInscripcion";
             cmbInscripcion.Size = new Size(521, 37);
             cmbInscripcion.TabIndex = 42;
+            cmbInscripcion.SelectedIndexChanged += cmbInscripcion_SelectedIndexChanged;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(117, 135);
+            label3.Location = new Point(19, 167);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(173, 34);
+            label3.Size = new Size(123, 34);
             label3.TabIndex = 40;
-            label3.Text = "Inscripcion";
+            label3.Text = "Alumno";
             // 
             // label2
             // 
@@ -131,7 +135,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(127, 204);
+            label4.Location = new Point(19, 227);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
             label4.Size = new Size(94, 34);
@@ -141,11 +145,12 @@
             // txtNota
             // 
             txtNota.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtNota.Location = new Point(395, 204);
+            txtNota.Location = new Point(181, 220);
             txtNota.Margin = new Padding(4);
             txtNota.Name = "txtNota";
-            txtNota.Size = new Size(327, 41);
+            txtNota.Size = new Size(521, 41);
             txtNota.TabIndex = 50;
+            txtNota.TextChanged += txtNota_TextChanged;
             // 
             // splitContainer1
             // 
@@ -156,6 +161,9 @@
             // 
             // splitContainer1.Panel1
             // 
+            splitContainer1.Panel1.Controls.Add(btnKardex);
+            splitContainer1.Panel1.Controls.Add(cmbCurso);
+            splitContainer1.Panel1.Controls.Add(label1);
             splitContainer1.Panel1.Controls.Add(txtNota);
             splitContainer1.Panel1.Controls.Add(btnEliminar);
             splitContainer1.Panel1.Controls.Add(label3);
@@ -170,6 +178,41 @@
             splitContainer1.Size = new Size(1174, 749);
             splitContainer1.SplitterDistance = 374;
             splitContainer1.TabIndex = 51;
+            // 
+            // btnKardex
+            // 
+            btnKardex.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnKardex.Location = new Point(821, 296);
+            btnKardex.Margin = new Padding(4);
+            btnKardex.Name = "btnKardex";
+            btnKardex.Size = new Size(296, 49);
+            btnKardex.TabIndex = 53;
+            btnKardex.Text = "Mostrar Kardex";
+            btnKardex.UseVisualStyleBackColor = true;
+            btnKardex.Click += btnKardex_Click;
+            // 
+            // cmbCurso
+            // 
+            cmbCurso.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cmbCurso.FormattingEnabled = true;
+            cmbCurso.Location = new Point(181, 99);
+            cmbCurso.Margin = new Padding(4);
+            cmbCurso.Name = "cmbCurso";
+            cmbCurso.Size = new Size(521, 37);
+            cmbCurso.TabIndex = 52;
+            cmbCurso.SelectedIndexChanged += cmbCurso_SelectedIndexChanged_1;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(19, 102);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(97, 34);
+            label1.TabIndex = 51;
+            label1.Text = "Curso";
+            label1.Click += label1_Click;
             // 
             // FormCalificaciones
             // 
@@ -204,5 +247,8 @@
         private Label label4;
         private TextBox txtNota;
         private SplitContainer splitContainer1;
+        private Label label1;
+        private ComboBox cmbCurso;
+        private Button btnKardex;
     }
 }
