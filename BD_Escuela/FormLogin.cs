@@ -29,13 +29,13 @@ namespace BD_Escuela
 
                 foreach (IPAddress ip in host.AddressList)
                 {
-                    
+
                     if (ip.AddressFamily == AddressFamily.InterNetwork)
                     {
                         return ip.ToString();
                     }
                 }
-                return "127.0.0.1"; 
+                return "127.0.0.1";
             }
             catch
             {
@@ -57,7 +57,7 @@ namespace BD_Escuela
 
             try
             {
-                
+
                 string consulta = $@"SELECT u.usr_id, u.usr_nombre, r.rol_nombre, p.perm_permisos
                                      FROM usuarios u
                                      JOIN usuarios_roles ur ON u.usr_id = ur.usr_id
@@ -75,22 +75,22 @@ namespace BD_Escuela
                     return;
                 }
 
-                
+
                 Sesion.UsrId = Convert.ToInt32(dt.Rows[0]["USR_ID"]);
                 Sesion.Usuario = dt.Rows[0]["USR_NOMBRE"].ToString();
-                
+
                 Sesion.Rol = dt.Rows[0]["ROL_NOMBRE"].ToString();
                 Sesion.Permisos = dt.Rows[0]["PERM_PERMISOS"].ToString().Trim();
 
                 try
                 {
-                   
+
                     string token = Guid.NewGuid().ToString();
 
-                    
+
                     string ip = ObtenerIP();
 
-                    
+
                     string sqlSesion = $@"INSERT INTO sesiones (ses_token, ses_inicio, ses_ultima_actividad, ses_ip, usr_id) 
                           VALUES ('{token}', SYSDATE, SYSDATE, '{ip}', {Sesion.UsrId})";
 
@@ -113,29 +113,31 @@ namespace BD_Escuela
                 }
 
 
-                
+
             }
             catch
             {
                 MessageBox.Show("Error al conectar con la base de datos.",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-     }
-
-        private void btnVer_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!btnVer.Checked)
-                txtContraseña.PasswordChar = '●';
-            else
-                txtContraseña.PasswordChar = '\0';
         }
+
+        
 
         private void FormLogin_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                btnIniciarSesion_Click(sender, e); 
+                btnIniciarSesion_Click(sender, e);
             }
+        }
+
+        private void btnSee_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!btnSee.Checked)
+                txtContraseña.PasswordChar = '●';
+            else
+                txtContraseña.PasswordChar = '\0';
         }
     }
 }

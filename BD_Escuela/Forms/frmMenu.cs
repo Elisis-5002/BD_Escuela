@@ -70,6 +70,21 @@ namespace BD_Escuela
 
         private void cerrarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (!string.IsNullOrEmpty(Sesion.Token))
+            {
+                // Actualizamos la base de datos con la fecha de fin de sesión
+                string sql = $"UPDATE sesiones SET ses_fin = SYSDATE WHERE ses_token = '{Sesion.Token}'";
+
+                // Usamos Ejecutar para actualizar la BD
+                Conexion.Ejecutar(sql, out int filas, out string mensaje);
+            }
+
+            // Limpiamos la sesión en memoria para que no queden datos basura
+            Sesion.Token = null;
+            Sesion.UsrId = 0;
+            Sesion.Limpiar();
+
+            // Abrimos el login y cerramos el formulario actual
             FormLogin formLogin = new FormLogin();
             formLogin.Show();
             this.Close();
