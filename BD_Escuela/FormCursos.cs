@@ -72,7 +72,15 @@ namespace BD_Escuela
 
         public void CargarCursos()
         {
-            string consulta = "SELECT * FROM cursos ORDER BY id_curso";
+            string consulta;
+            if (Sesion.Rol == "ADMINISTRADOR" || Sesion.Rol == "SECRETARIO")
+            {
+                consulta = "SELECT * FROM cursos ORDER BY id_curso";
+            }
+            else
+            {
+                consulta = "SELECT id_curso, id_profesor, id_materia FROM cursos ORDER BY id_curso";
+            }
             DataTable dt = Conexion.Consultar(consulta);
             dgvCursos.DataSource = dt;
         }
@@ -123,6 +131,11 @@ namespace BD_Escuela
                 cmbProfesor.SelectedValue = Convert.ToInt32(dgvCursos.CurrentRow.Cells["ID_PROFESOR"].Value);
                 cmbMateria.SelectedValue = Convert.ToInt32(dgvCursos.CurrentRow.Cells["ID_MATERIA"].Value);
             }
+        }
+
+        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+
         }
     }
 }

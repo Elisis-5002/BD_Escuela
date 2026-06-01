@@ -37,7 +37,12 @@
             btnModificar = new Button();
             btnGuardar = new Button();
             dgvCursos = new DataGridView();
+            splitContainer1 = new SplitContainer();
             ((System.ComponentModel.ISupportInitialize)dgvCursos).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
+            splitContainer1.Panel1.SuspendLayout();
+            splitContainer1.Panel2.SuspendLayout();
+            splitContainer1.SuspendLayout();
             SuspendLayout();
             // 
             // label2
@@ -55,7 +60,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(95, 140);
+            label3.Location = new Point(95, 113);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new Size(145, 34);
@@ -77,7 +82,7 @@
             // 
             cmbProfesor.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmbProfesor.FormattingEnabled = true;
-            cmbProfesor.Location = new Point(296, 139);
+            cmbProfesor.Location = new Point(323, 114);
             cmbProfesor.Margin = new Padding(4);
             cmbProfesor.Name = "cmbProfesor";
             cmbProfesor.Size = new Size(388, 37);
@@ -88,7 +93,7 @@
             // 
             cmbMateria.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmbMateria.FormattingEnabled = true;
-            cmbMateria.Location = new Point(296, 216);
+            cmbMateria.Location = new Point(323, 219);
             cmbMateria.Margin = new Padding(4);
             cmbMateria.Name = "cmbMateria";
             cmbMateria.Size = new Size(388, 37);
@@ -97,7 +102,7 @@
             // btnEliminar
             // 
             btnEliminar.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnEliminar.Location = new Point(844, 322);
+            btnEliminar.Location = new Point(749, 299);
             btnEliminar.Margin = new Padding(4);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(170, 49);
@@ -109,7 +114,7 @@
             // btnModificar
             // 
             btnModificar.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnModificar.Location = new Point(477, 322);
+            btnModificar.Location = new Point(440, 299);
             btnModificar.Margin = new Padding(4);
             btnModificar.Name = "btnModificar";
             btnModificar.Size = new Size(170, 49);
@@ -121,7 +126,7 @@
             // btnGuardar
             // 
             btnGuardar.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnGuardar.Location = new Point(87, 322);
+            btnGuardar.Location = new Point(108, 299);
             btnGuardar.Margin = new Padding(4);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(170, 49);
@@ -132,34 +137,61 @@
             // 
             // dgvCursos
             // 
+            dgvCursos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            dgvCursos.BackgroundColor = SystemColors.Control;
             dgvCursos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCursos.Location = new Point(15, 390);
+            dgvCursos.Dock = DockStyle.Fill;
+            dgvCursos.Location = new Point(0, 0);
             dgvCursos.Margin = new Padding(4);
             dgvCursos.Name = "dgvCursos";
+            dgvCursos.ReadOnly = true;
             dgvCursos.RowHeadersWidth = 51;
-            dgvCursos.Size = new Size(1067, 306);
+            dgvCursos.Size = new Size(1100, 367);
             dgvCursos.TabIndex = 26;
             dgvCursos.CellClick += dgvCursos_CellClick;
+            // 
+            // splitContainer1
+            // 
+            splitContainer1.Dock = DockStyle.Fill;
+            splitContainer1.Location = new Point(0, 0);
+            splitContainer1.Name = "splitContainer1";
+            splitContainer1.Orientation = Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            splitContainer1.Panel1.Controls.Add(label3);
+            splitContainer1.Panel1.Controls.Add(btnEliminar);
+            splitContainer1.Panel1.Controls.Add(cmbProfesor);
+            splitContainer1.Panel1.Controls.Add(btnModificar);
+            splitContainer1.Panel1.Controls.Add(cmbMateria);
+            splitContainer1.Panel1.Controls.Add(btnGuardar);
+            // 
+            // splitContainer1.Panel2
+            // 
+            splitContainer1.Panel2.Controls.Add(dgvCursos);
+            splitContainer1.Size = new Size(1100, 745);
+            splitContainer1.SplitterDistance = 374;
+            splitContainer1.TabIndex = 27;
+            splitContainer1.SplitterMoved += splitContainer1_SplitterMoved;
             // 
             // FormCursos
             // 
             AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1100, 745);
-            Controls.Add(dgvCursos);
-            Controls.Add(btnEliminar);
-            Controls.Add(btnModificar);
-            Controls.Add(btnGuardar);
-            Controls.Add(cmbMateria);
-            Controls.Add(cmbProfesor);
             Controls.Add(label4);
-            Controls.Add(label3);
             Controls.Add(label2);
+            Controls.Add(splitContainer1);
             Margin = new Padding(4);
             Name = "FormCursos";
             Text = "FormCursos";
             Load += FormCursos_Load;
             ((System.ComponentModel.ISupportInitialize)dgvCursos).EndInit();
+            splitContainer1.Panel1.ResumeLayout(false);
+            splitContainer1.Panel1.PerformLayout();
+            splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
+            splitContainer1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -175,5 +207,6 @@
         private Button btnModificar;
         private Button btnGuardar;
         private DataGridView dgvCursos;
+        private SplitContainer splitContainer1;
     }
 }

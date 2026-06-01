@@ -41,9 +41,9 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Verdana", 13.8F);
-            label1.Location = new Point(151, 148);
+            label1.Location = new Point(173, 198);
             label1.Name = "label1";
-            label1.Size = new Size(92, 23);
+            label1.Size = new Size(110, 28);
             label1.TabIndex = 0;
             label1.Text = "Usuario:";
             // 
@@ -51,48 +51,44 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Verdana", 13.8F);
-            label2.Location = new Point(112, 215);
+            label2.Location = new Point(128, 287);
             label2.Name = "label2";
-            label2.Size = new Size(126, 23);
+            label2.Size = new Size(155, 28);
             label2.TabIndex = 1;
             label2.Text = "Contraseña:";
             // 
             // txtUsuario
             // 
             txtUsuario.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtUsuario.Location = new Point(253, 152);
-            txtUsuario.Margin = new Padding(3, 2, 3, 2);
+            txtUsuario.Location = new Point(289, 202);
             txtUsuario.Name = "txtUsuario";
-            txtUsuario.Size = new Size(240, 30);
+            txtUsuario.Size = new Size(274, 35);
             txtUsuario.TabIndex = 2;
             // 
             // txtContraseña
             // 
             txtContraseña.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtContraseña.Location = new Point(253, 213);
-            txtContraseña.Margin = new Padding(3, 2, 3, 2);
+            txtContraseña.Location = new Point(289, 284);
             txtContraseña.Name = "txtContraseña";
-            txtContraseña.PasswordChar = '●';
-            txtContraseña.Size = new Size(240, 30);
+            txtContraseña.Size = new Size(274, 35);
             txtContraseña.TabIndex = 3;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Verdana", 28.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(166, 38);
+            label3.Location = new Point(190, 51);
             label3.Name = "label3";
-            label3.Size = new Size(278, 46);
+            label3.Size = new Size(347, 57);
             label3.TabIndex = 4;
             label3.Text = "Iniciar Sesion";
             // 
             // btnIniciarSesion
             // 
             btnIniciarSesion.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnIniciarSesion.Location = new Point(213, 315);
-            btnIniciarSesion.Margin = new Padding(3, 2, 3, 2);
+            btnIniciarSesion.Location = new Point(243, 420);
             btnIniciarSesion.Name = "btnIniciarSesion";
-            btnIniciarSesion.Size = new Size(185, 29);
+            btnIniciarSesion.Size = new Size(211, 39);
             btnIniciarSesion.TabIndex = 5;
             btnIniciarSesion.Text = "Iniciar Sesion";
             btnIniciarSesion.UseVisualStyleBackColor = true;
@@ -111,19 +107,18 @@
             // 
             // FormLogin
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(631, 439);
-            Controls.Add(btnVer);
+            ClientSize = new Size(721, 585);
             Controls.Add(btnIniciarSesion);
             Controls.Add(label3);
             Controls.Add(txtContraseña);
             Controls.Add(txtUsuario);
             Controls.Add(label2);
             Controls.Add(label1);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "FormLogin";
             Text = "FormLogin";
+            KeyDown += FormLogin_KeyDown;
             ResumeLayout(false);
             PerformLayout();
         }

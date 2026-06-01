@@ -16,6 +16,8 @@ namespace BD_Escuela
         public FormLogin()
         {
             InitializeComponent();
+            this.KeyPreview = true;
+
         }
 
         private string ObtenerIP()
@@ -76,6 +78,7 @@ namespace BD_Escuela
                 
                 Sesion.UsrId = Convert.ToInt32(dt.Rows[0]["USR_ID"]);
                 Sesion.Usuario = dt.Rows[0]["USR_NOMBRE"].ToString();
+                
                 Sesion.Rol = dt.Rows[0]["ROL_NOMBRE"].ToString();
                 Sesion.Permisos = dt.Rows[0]["PERM_PERMISOS"].ToString().Trim();
 
@@ -125,6 +128,14 @@ namespace BD_Escuela
                 txtContraseña.PasswordChar = '●';
             else
                 txtContraseña.PasswordChar = '\0';
+        }
+
+        private void FormLogin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnIniciarSesion_Click(sender, e); 
+            }
         }
     }
 }

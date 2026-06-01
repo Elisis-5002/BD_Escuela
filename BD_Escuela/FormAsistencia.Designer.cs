@@ -54,6 +54,7 @@
             dgvAsistencia.Location = new Point(10, 256);
             dgvAsistencia.Margin = new Padding(3, 2, 3, 2);
             dgvAsistencia.Name = "dgvAsistencia";
+            dgvAsistencia.ReadOnly = true;
             dgvAsistencia.RowHeadersWidth = 51;
             dgvAsistencia.Size = new Size(745, 196);
             dgvAsistencia.TabIndex = 59;
