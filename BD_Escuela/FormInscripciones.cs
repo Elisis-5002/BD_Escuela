@@ -117,7 +117,6 @@ namespace BD_Escuela
             CargarInscripciones();
         }
 
-        //Corregir esto //////
         private void dgvInscripciones_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvInscripciones.CurrentRow != null)
