@@ -11,8 +11,21 @@ namespace BD_Escuela
 {
     public partial class FormCursos : Form
     {
-        private int idProfesor => Convert.ToInt32(cmbProfesor.ValueMember);
-        private int idMateria => Convert.ToInt32(cmbMateria.ValueMember);
+        private int idProfesor
+        {
+            get
+            {
+                return cmbProfesor.SelectedValue != null ? Convert.ToInt32(cmbProfesor.SelectedValue) : 0;
+            }
+        }
+
+        private int idMateria
+        {
+            get
+            {
+                return cmbMateria.SelectedValue != null ? Convert.ToInt32(cmbMateria.SelectedValue) : 0;
+            }
+        }
         public FormCursos()
         {
             InitializeComponent();
@@ -22,15 +35,34 @@ namespace BD_Escuela
         {
             try
             {
-                string ejecutar = $"INSERT INTO cursos(id_profesor, id_materia) VALUES({idProfesor}, {idMateria})";
+                // 1. Validaciones previas
+                string idManual = txtID.Text.Trim();
+                if (string.IsNullOrWhiteSpace(idManual))
+                {
+                    MessageBox.Show("Por favor, ingrese un ID válido.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // 2. Construcción de la consulta con campos de auditoría
+                // Usamos SYSDATE para la fecha actual de Oracle y Sesion.NombreUsuario para quién lo crea
+                string ejecutar = $@"INSERT INTO cursos(id_curso, id_profesor, id_materia, creado_por, fecha_creacion) 
+                             VALUES('{idManual}', {idProfesor}, {idMateria}, '{Sesion.Usuario}', SYSDATE)";
+
                 Conexion.Ejecutar(ejecutar, out int filasAfectadas, out string mensaje);
-                MessageBox.Show(mensaje, "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                CargarCursos();
+
+                if (filasAfectadas > 0)
+                {
+                    MessageBox.Show("Curso guardado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CargarCursos();
+                }
+                else
+                {
+                    MessageBox.Show(mensaje, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Error al agregar el curso. Verifique los datos ingresados.",
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error al agregar el curso: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -56,18 +88,51 @@ namespace BD_Escuela
         {
             try
             {
+                // Aseguramos que haya una fila seleccionada
+                if (dgvCursos.CurrentRow == null) return;
+
                 string idCursoSeleccionado = dgvCursos.CurrentRow.Cells["ID_CURSO"].Value.ToString();
 
-                string ejecutar = $"UPDATE cursos SET id_profesor = {idProfesor}, id_materia = {idMateria} WHERE id_curso = '{idCursoSeleccionado}'";
+                // Construimos el UPDATE incluyendo los campos de auditoría
+                // Nota: Asegúrate de que los nombres de las columnas en tu BD sean exactamente estos
+                string ejecutar = $@"UPDATE cursos 
+                             SET id_profesor = {idProfesor}, 
+                                 id_materia = {idMateria}, 
+                                 modificado_por = '{Sesion.Usuario}', 
+                                 fecha_modificacion = SYSDATE 
+                             WHERE id_curso = '{idCursoSeleccionado}'";
+
                 Conexion.Ejecutar(ejecutar, out int filasAfectadas, out string mensaje);
-                MessageBox.Show(mensaje, "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                CargarCursos();
+
+                if (filasAfectadas > 0)
+                {
+                    MessageBox.Show("Curso modificado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CargarCursos();
+                }
+                else
+                {
+                    MessageBox.Show(mensaje, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Error al modificar el curso. Verifique los datos ingresados.",
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error al modificar el curso: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void CargarCursoMasUno()
+        {
+            string consulta = @"
+        SELECT id_curso, COUNT(*) AS alumnos_en_el_curso 
+        FROM inscripciones 
+        GROUP BY id_curso 
+        HAVING COUNT(*) > 1";
+
+            DataTable dt = Conexion.Consultar(consulta);
+
+            // Si tienes un DataGridView específico para reportes, úsalo aquí. 
+            // Si quieres usar el mismo dgvCursos, ten en cuenta que cambiarán sus columnas.
+            dgvMasUn.DataSource = dt;
         }
 
         public void CargarCursos()
@@ -122,6 +187,7 @@ namespace BD_Escuela
             CargarProfesores();
             CargarMaterias();
             CargarCursos();
+            CargarCursoMasUno();
         }
 
         private void dgvCursos_CellClick(object sender, DataGridViewCellEventArgs e)

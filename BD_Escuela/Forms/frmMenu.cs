@@ -45,6 +45,7 @@ namespace BD_Escuela
                     cursosToolStripMenuItem.Visible = false;
                     inscripcionesToolStripMenuItem.Visible = false;
                     usuariosToolStripMenuItem.Visible = false;
+                    personasToolStripMenuItem.Visible = false;
                     break;
 
                 case "ALUMNO":
@@ -56,6 +57,7 @@ namespace BD_Escuela
                     inscripcionesToolStripMenuItem.Visible = true;
                     calificacionesToolStripMenuItem.Visible = true;
                     usuariosToolStripMenuItem.Visible = false;
+                    personasToolStripMenuItem.Visible = false;
                     break;
 
                 case "SECRETARIO":
@@ -64,6 +66,7 @@ namespace BD_Escuela
                     materiasToolStripMenuItem.Visible = false;
                     cursosToolStripMenuItem.Visible = false;
                     usuariosToolStripMenuItem.Visible = false;
+
                     break;
             }
         }
@@ -94,6 +97,18 @@ namespace BD_Escuela
         {
             FormUsuarios formUsuarios = new FormUsuarios();
             formUsuarios.Show();
+        }
+
+        private void personasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormPersonas formPersonas = new FormPersonas();
+            formPersonas.Show();
+        }
+
+        private void erroresDeInsercionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormErrores formErrores = new FormErrores();
+            formErrores.Show();
         }
     }
 }

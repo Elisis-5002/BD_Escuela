@@ -23,13 +23,29 @@ namespace BD_Escuela
                 btnGuardar.Enabled = true;
                 btnEliminar.Enabled = true;
                 checkFaltas.Enabled = true;
+                CargarCursos();
             }
             else
             {
                 btnGuardar.Enabled = false;
                 btnEliminar.Enabled = false;
                 checkFaltas.Enabled = false;
+                cbCurso.Enabled = false;
             }
+        }
+        private void CargarCursos()
+        {
+            
+            // Consulta para obtener los cursos del profesor logueado
+            string sql = $@"SELECT c.id_curso, c.nombre_curso 
+                   FROM cursos c 
+                   WHERE c.id_profesor = (SELECT p.id_profesor FROM profesores p WHERE p.usr_id = {Sesion.UsrId})";
+
+            DataTable dt = Conexion.Consultar(sql);
+
+            cbCurso.DataSource = dt;
+            cbCurso.DisplayMember = "nombre_curso"; // Lo que el usuario ve
+            cbCurso.ValueMember = "id_curso";       // El ID interno
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -127,37 +143,39 @@ namespace BD_Escuela
             string fechaSeleccionada = dtpFecha.Value.ToString("yyyy-MM-dd");
             string consulta = "";
 
-            // 1. Maestro viendo faltas
-            if (checkFaltas.Checked && Sesion.Permisos == "0000001D")
+            // LÓGICA PARA MAESTRO (Usa el filtro del ComboBox)
+            if (Sesion.Permisos == "0000001D")
             {
-                consulta = $@"SELECT DISTINCT a.nombre || ' ' || a.apellido AS Alumno
-              FROM alumnos a
-              INNER JOIN inscripciones i ON a.id_alumno = i.id_alumno
-              INNER JOIN cursos c ON i.id_curso = c.id_curso
-              INNER JOIN profesores p ON c.id_profesor = p.id_profesor
-              WHERE p.usr_id = {Sesion.UsrId}
-              AND NOT EXISTS(
-                  SELECT 1 FROM asistencia asi 
-                  WHERE asi.id_inscripcion = i.id_inscripcion 
-                  AND asi.estado = 'Falta'
-              )";
+                // Si el combo aún no tiene valor, salimos para evitar error
+                if (cbCurso.SelectedValue == null) return;
+                string idCursoSeleccionado = cbCurso.SelectedValue.ToString();
+
+                if (checkFaltas.Checked)
+                {
+                    consulta = $@"SELECT DISTINCT a.nombre || ' ' || a.apellido AS Alumno
+                  FROM alumnos a
+                  INNER JOIN inscripciones i ON a.id_alumno = i.id_alumno
+                  WHERE i.id_curso = {idCursoSeleccionado}
+                  AND NOT EXISTS(
+                      SELECT 1 FROM asistencia asi 
+                      WHERE asi.id_inscripcion = i.id_inscripcion 
+                      AND asi.estado = 'Falta'
+                      AND TRUNC(asi.fecha) = TO_DATE('{fechaSeleccionada}', 'YYYY-MM-DD')
+                  )";
+                }
+                else
+                {
+                    consulta = $@"SELECT asi.id_asistencia, a.nombre || ' ' || a.apellido AS Alumno, 
+                         asi.estado AS Estado, asi.fecha AS Fecha
+                  FROM asistencia asi
+                  INNER JOIN inscripciones i ON asi.id_inscripcion = i.id_inscripcion
+                  INNER JOIN alumnos a ON i.id_alumno = a.id_alumno
+                  WHERE i.id_curso = {idCursoSeleccionado}
+                  AND TRUNC(asi.fecha) = TO_DATE('{fechaSeleccionada}', 'YYYY-MM-DD')
+                  ORDER BY a.apellido, a.nombre";
+                }
             }
-            // 2. Maestro viendo lista normal
-            else if (Sesion.Permisos == "0000001D")
-            {
-                consulta = $@"SELECT asi.id_asistencia, a.nombre || ' ' || a.apellido AS Alumno, 
-                     m.nombre_materia AS Materia, asi.estado AS Estado, asi.fecha AS Fecha
-              FROM asistencia asi
-              INNER JOIN inscripciones i ON asi.id_inscripcion = i.id_inscripcion
-              INNER JOIN cursos c ON i.id_curso = c.id_curso
-              INNER JOIN materias m ON c.id_materia = m.id_materia
-              INNER JOIN alumnos a ON i.id_alumno = a.id_alumno
-              INNER JOIN profesores p ON c.id_profesor = p.id_profesor
-              WHERE p.usr_id = {Sesion.UsrId}
-              AND TRUNC(asi.fecha) = TO_DATE('{fechaSeleccionada}', 'YYYY-MM-DD')
-              ORDER BY a.apellido, a.nombre";
-            }
-            // 3. ALUMNO viendo su propia asistencia (¡LA PARTE QUE FALTABA!)
+            // LÓGICA PARA ALUMNO (Ignora el ComboBox, filtra directo por su ID)
             else
             {
                 consulta = $@"SELECT asi.id_asistencia, m.nombre_materia AS Materia, 
@@ -171,9 +189,6 @@ namespace BD_Escuela
               AND TRUNC(asi.fecha) = TO_DATE('{fechaSeleccionada}', 'YYYY-MM-DD')
               ORDER BY asi.fecha DESC";
             }
-
-            // Prevención de seguridad por si falla la asignación
-            if (string.IsNullOrWhiteSpace(consulta)) return;
 
             DataTable dt = Conexion.Consultar(consulta);
             dgvAsistencia.DataSource = dt;
@@ -195,7 +210,7 @@ namespace BD_Escuela
 
 
 
-        
+
 
         private void dgvAsistencia_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -246,9 +261,14 @@ namespace BD_Escuela
         {
             CargarAsistencia();
         }
-       
+
 
         private void checkFaltas_CheckedChanged(object sender, EventArgs e)
+        {
+            CargarAsistencia();
+        }
+
+        private void cbCurso_SelectedIndexChanged(object sender, EventArgs e)
         {
             CargarAsistencia();
         }

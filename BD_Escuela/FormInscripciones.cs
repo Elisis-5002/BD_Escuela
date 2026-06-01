@@ -11,8 +11,23 @@ namespace BD_Escuela
 {
     public partial class FormInscripciones : Form
     {
-        private int idAlumno => Convert.ToInt32(cmbAlumno.SelectedValue);
-        private string idCurso => cmbCurso.SelectedValue.ToString();
+        // Para el ID del Alumno (numérico)
+        private int idAlumno
+        {
+            get
+            {
+                return cmbAlumno.SelectedValue != null ? Convert.ToInt32(cmbAlumno.SelectedValue) : 0;
+            }
+        }
+
+        // Para el ID del Curso (VARCHAR2)
+        private string idCurso
+        {
+            get
+            {
+                return cmbCurso.SelectedValue != null ? cmbCurso.SelectedValue.ToString() : string.Empty;
+            }
+        }
         public FormInscripciones()
         {
             InitializeComponent();
@@ -22,33 +37,65 @@ namespace BD_Escuela
         {
             try
             {
-                string ejecutar = $"INSERT INTO inscripciones(id_alumno, id_curso) VALUES({idAlumno}, '{idCurso}')";
+                // 1. Construcción de la consulta con campos de auditoría
+                // Nota: Asegúrate de que idAlumno sea un valor numérico y idCurso sea el string del ID
+                string ejecutar = $@"INSERT INTO inscripciones(id_alumno, id_curso, creado_por, fecha_creacion) 
+                             VALUES({idAlumno}, '{idCurso}', '{Sesion.Usuario}', SYSDATE)";
+
                 Conexion.Ejecutar(ejecutar, out int filasAfectadas, out string mensaje);
-                MessageBox.Show(mensaje, "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                CargarInscripciones();
+
+                // 2. Verificación de resultado
+                if (filasAfectadas > 0)
+                {
+                    MessageBox.Show("Inscripción guardada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CargarInscripciones();
+                }
+                else
+                {
+                    MessageBox.Show(mensaje, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Error al agregar la inscripción. Verifique los datos ingresados.",
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error al agregar la inscripción: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
             try
             {
+                // 1. Validamos que haya una fila seleccionada
+                if (dgvInscripciones.CurrentRow == null) return;
+
                 int idInscripcion = Convert.ToInt32(dgvInscripciones.CurrentRow.Cells["ID_INSCRIPCION"].Value);
 
-                string ejecutar = $"UPDATE inscripciones SET id_alumno = {idAlumno}, id_curso = '{idCurso}' WHERE id_inscripcion = {idInscripcion}";
+                // 2. Construcción del UPDATE incluyendo los campos de auditoría
+                // Nota: Asegúrate de que los nombres de columna en tu BD sean exactamente estos
+                string ejecutar = $@"UPDATE inscripciones 
+                             SET id_alumno = {idAlumno}, 
+                                 id_curso = '{idCurso}', 
+                                 modificado_por = '{Sesion.Usuario}', 
+                                 fecha_modificacion = SYSDATE 
+                             WHERE id_inscripcion = {idInscripcion}";
+
                 Conexion.Ejecutar(ejecutar, out int filasAfectadas, out string mensaje);
-                MessageBox.Show(mensaje, "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                CargarInscripciones();
+
+                // 3. Verificación de resultado
+                if (filasAfectadas > 0)
+                {
+                    MessageBox.Show("Inscripción modificada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CargarInscripciones();
+                }
+                else
+                {
+                    MessageBox.Show(mensaje, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Error al modificar la inscripción. Verifique los datos ingresados.",
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error al modificar la inscripción: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
