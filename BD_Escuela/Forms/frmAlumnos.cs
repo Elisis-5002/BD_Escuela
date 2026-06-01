@@ -99,11 +99,11 @@ namespace BD_Escuela.Forms
             string consulta;
             if (Sesion.Rol == "ADMINISTRADOR" || Sesion.Rol == "SECRETARIO")
             {
-                consulta = "SELECT * FROM alumnos ORDER BY id_alumno";
+                consulta = "SELECT * FROM alumnos ORDER BY UPPER(nombre),UPPER(apellido)";
             }
             else
             {
-                consulta = "SELECT id_alumno, nombre, apellido,año_ingreso, email FROM alumnos ORDER BY id_alumno";
+                consulta = "SELECT id_alumno, nombre, apellido,año_ingreso, email FROM alumnos ORDER BY UPPER(nombre),UPPER(apellido)";
             }
             DataTable dt = Conexion.Consultar(consulta);
             dgvAlumnos.DataSource = dt;

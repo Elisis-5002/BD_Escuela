@@ -35,6 +35,7 @@
             label2 = new Label();
             dtpFecha = new DateTimePicker();
             checkFaltas = new CheckBox();
+            cbCurso = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dgvAsistencia).BeginInit();
             SuspendLayout();
             // 
@@ -114,11 +115,21 @@
             checkFaltas.UseVisualStyleBackColor = true;
             checkFaltas.CheckedChanged += checkFaltas_CheckedChanged;
             // 
+            // cbCurso
+            // 
+            cbCurso.FormattingEnabled = true;
+            cbCurso.Location = new Point(548, 133);
+            cbCurso.Name = "cbCurso";
+            cbCurso.Size = new Size(121, 23);
+            cbCurso.TabIndex = 66;
+            cbCurso.SelectedIndexChanged += cbCurso_SelectedIndexChanged;
+            // 
             // FormAsistencia
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(766, 461);
+            Controls.Add(cbCurso);
             Controls.Add(checkFaltas);
             Controls.Add(dtpFecha);
             Controls.Add(label4);
@@ -146,5 +157,6 @@
         private Label label2;
         private DateTimePicker dtpFecha;
         private CheckBox checkFaltas;
+        private ComboBox cbCurso;
     }
 }

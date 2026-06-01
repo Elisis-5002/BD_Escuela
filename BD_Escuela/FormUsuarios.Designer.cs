@@ -40,6 +40,7 @@
             btnEliminar = new Button();
             dgvUsuarios = new DataGridView();
             splitContainer1 = new SplitContainer();
+            label5 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).BeginInit();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -54,7 +55,7 @@
             label1.Location = new Point(55, 9);
             label1.Margin = new Padding(5, 0, 5, 0);
             label1.Name = "label1";
-            label1.Size = new Size(473, 118);
+            label1.Size = new Size(316, 76);
             label1.TabIndex = 0;
             label1.Text = "Administracion de \r\nusuarios";
             label1.TextAlign = ContentAlignment.TopCenter;
@@ -65,7 +66,7 @@
             label2.Font = new Font("Verdana", 13.8F);
             label2.Location = new Point(55, 186);
             label2.Name = "label2";
-            label2.Size = new Size(137, 34);
+            label2.Size = new Size(92, 23);
             label2.TabIndex = 1;
             label2.Text = "Usuario:";
             label2.Click += label2_Click;
@@ -76,7 +77,7 @@
             label3.Font = new Font("Verdana", 13.8F);
             label3.Location = new Point(17, 260);
             label3.Name = "label3";
-            label3.Size = new Size(190, 34);
+            label3.Size = new Size(126, 23);
             label3.TabIndex = 2;
             label3.Text = "Contraseña:";
             // 
@@ -86,7 +87,7 @@
             label4.Font = new Font("Verdana", 13.8F);
             label4.Location = new Point(100, 334);
             label4.Name = "label4";
-            label4.Size = new Size(72, 34);
+            label4.Size = new Size(50, 23);
             label4.TabIndex = 3;
             label4.Text = "Rol:";
             // 
@@ -95,7 +96,7 @@
             txtUsuario.Font = new Font("Verdana", 13.8F);
             txtUsuario.Location = new Point(203, 183);
             txtUsuario.Name = "txtUsuario";
-            txtUsuario.Size = new Size(303, 41);
+            txtUsuario.Size = new Size(303, 30);
             txtUsuario.TabIndex = 4;
             // 
             // txtContraseña
@@ -103,7 +104,7 @@
             txtContraseña.Font = new Font("Verdana", 13.8F);
             txtContraseña.Location = new Point(203, 257);
             txtContraseña.Name = "txtContraseña";
-            txtContraseña.Size = new Size(303, 41);
+            txtContraseña.Size = new Size(303, 30);
             txtContraseña.TabIndex = 5;
             // 
             // cmbRol
@@ -112,7 +113,7 @@
             cmbRol.FormattingEnabled = true;
             cmbRol.Location = new Point(203, 331);
             cmbRol.Name = "cmbRol";
-            cmbRol.Size = new Size(303, 42);
+            cmbRol.Size = new Size(303, 30);
             cmbRol.TabIndex = 6;
             // 
             // btnGuardar
@@ -167,6 +168,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            splitContainer1.Panel1.Controls.Add(label5);
             splitContainer1.Panel1.Controls.Add(label1);
             splitContainer1.Panel1.Controls.Add(btnEliminar);
             splitContainer1.Panel1.Controls.Add(btnModificar);
@@ -186,9 +188,19 @@
             splitContainer1.SplitterDistance = 570;
             splitContainer1.TabIndex = 11;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Verdana", 13.8F);
+            label5.Location = new Point(71, 446);
+            label5.Name = "label5";
+            label5.Size = new Size(403, 23);
+            label5.TabIndex = 10;
+            label5.Text = "SOLO para administradores y secretarios";
+            // 
             // FormUsuarios
             // 
-            AutoScaleDimensions = new SizeF(15F, 29F);
+            AutoScaleDimensions = new SizeF(10F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1268, 637);
             Controls.Add(splitContainer1);
@@ -220,5 +232,6 @@
         private Button btnEliminar;
         private DataGridView dgvUsuarios;
         private SplitContainer splitContainer1;
+        private Label label5;
     }
 }
