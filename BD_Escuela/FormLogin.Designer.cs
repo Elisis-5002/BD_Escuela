@@ -122,6 +122,7 @@
             // 
             // txtUsuario
             // 
+            txtUsuario.BackColor = Color.White;
             txtUsuario.BorderColor = Color.FromArgb(133, 183, 235);
             txtUsuario.BorderRadius = 10;
             txtUsuario.CustomizableEdges = customizableEdges7;
@@ -145,6 +146,7 @@
             // 
             // txtContraseña
             // 
+            txtContraseña.BackColor = Color.White;
             txtContraseña.BorderColor = Color.FromArgb(133, 183, 235);
             txtContraseña.BorderRadius = 10;
             txtContraseña.CustomizableEdges = customizableEdges9;
@@ -214,6 +216,7 @@
             // btnSee
             // 
             btnSee.AutoSize = true;
+            btnSee.BackColor = Color.White;
             btnSee.CheckedState.BorderColor = Color.FromArgb(94, 148, 255);
             btnSee.CheckedState.BorderRadius = 0;
             btnSee.CheckedState.BorderThickness = 0;
@@ -229,6 +232,7 @@
             btnSee.UncheckedState.BorderRadius = 0;
             btnSee.UncheckedState.BorderThickness = 0;
             btnSee.UncheckedState.FillColor = Color.FromArgb(125, 137, 149);
+            btnSee.UseVisualStyleBackColor = false;
             btnSee.CheckedChanged += btnSee_CheckedChanged_1;
             // 
             // guna2HtmlLabel1
