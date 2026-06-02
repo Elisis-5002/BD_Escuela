@@ -18,6 +18,8 @@ namespace BD_Escuela
         }
         private void CargarCursos()
         {
+            if (Sesion.Rol == "ALUMNO") return;
+
             string sql;
 
             if (Sesion.Rol == "ADMINISTRADOR" || Sesion.Rol == "SECRETARIO")
@@ -28,7 +30,7 @@ namespace BD_Escuela
                 JOIN materias m ON c.id_materia = m.id_materia
                 ORDER BY c.id_curso";
             }
-            else
+            else 
             {
                 // Maestro solo ve sus cursos
                 sql = $@"SELECT c.id_curso, c.id_curso || ' - ' || m.nombre_materia AS nombre_curso
@@ -37,6 +39,7 @@ namespace BD_Escuela
                  WHERE c.id_profesor = (SELECT p.id_profesor FROM profesores p WHERE p.usr_id = {Sesion.UsrId})
                  ORDER BY c.id_curso";
             }
+            
 
             DataTable dt = Conexion.Consultar(sql);
             cmbCurso.DataSource = dt;
@@ -133,64 +136,56 @@ namespace BD_Escuela
 
         public void CargarAsistencia()
         {
-            if (cmbCurso.SelectedValue == null) return;
-
             string fechaSeleccionada = dtpFecha.Value.ToString("yyyy-MM-dd");
-            string idCursoSeleccionado = cmbCurso.SelectedValue.ToString();
             string consulta = "";
 
-            if (Sesion.Rol == "ADMINISTRADOR" || Sesion.Rol == "SECRETARIO")
+            // 1. Lógica para roles que dependen del ComboBox (Admin, Sec, Maestro)
+            if (Sesion.Rol == "ADMINISTRADOR" || Sesion.Rol == "SECRETARIO" || Sesion.Rol == "MAESTRO")
             {
-                consulta = $@"SELECT asi.id_asistencia, a.nombre || ' ' || a.apellido AS Alumno, 
-                       asi.estado AS Estado, asi.fecha AS Fecha
-                FROM asistencia asi
-                INNER JOIN inscripciones i ON asi.id_inscripcion = i.id_inscripcion
-                INNER JOIN alumnos a ON i.id_alumno = a.id_alumno
-                WHERE i.id_curso = '{idCursoSeleccionado}'
-                AND TRUNC(asi.fecha) = TO_DATE('{fechaSeleccionada}', 'YYYY-MM-DD')
-                ORDER BY a.apellido, a.nombre";
-            }
-            else if (Sesion.Rol == "MAESTRO")
-            {
-                if (checkFaltas.Checked)
+                // Validación específica para roles que requieren el curso
+                if (cmbCurso.SelectedValue == null) return;
+
+                string idCursoSeleccionado = cmbCurso.SelectedValue.ToString();
+
+                if (Sesion.Rol == "MAESTRO" && checkFaltas.Checked)
                 {
                     consulta = $@"SELECT DISTINCT a.nombre || ' ' || a.apellido AS Alumno
-              FROM alumnos a
-              INNER JOIN inscripciones i ON a.id_alumno = i.id_alumno
-              WHERE i.id_curso = '{idCursoSeleccionado}'
-              AND NOT EXISTS(
-                  SELECT 1 FROM asistencia asi 
-                  WHERE asi.id_inscripcion = i.id_inscripcion 
-                  AND asi.estado = 'Falta'
-                  AND TRUNC(asi.fecha) = TO_DATE('{fechaSeleccionada}', 'YYYY-MM-DD')
-              )";
+                          FROM alumnos a
+                          INNER JOIN inscripciones i ON a.id_alumno = i.id_alumno
+                          WHERE i.id_curso = '{idCursoSeleccionado}'
+                          AND NOT EXISTS(SELECT 1 FROM asistencia asi 
+                                         WHERE asi.id_inscripcion = i.id_inscripcion 
+                                         AND asi.estado = 'Falta'
+                                         AND TRUNC(asi.fecha) = TO_DATE('{fechaSeleccionada}', 'YYYY-MM-DD'))";
                 }
                 else
                 {
                     consulta = $@"SELECT asi.id_asistencia, a.nombre || ' ' || a.apellido AS Alumno, 
-                         asi.estado AS Estado, asi.fecha AS Fecha
-                  FROM asistencia asi
-                  INNER JOIN inscripciones i ON asi.id_inscripcion = i.id_inscripcion
-                  INNER JOIN alumnos a ON i.id_alumno = a.id_alumno
-                  WHERE i.id_curso = '{idCursoSeleccionado}'
-                  AND TRUNC(asi.fecha) = TO_DATE('{fechaSeleccionada}', 'YYYY-MM-DD')
-                  ORDER BY a.apellido, a.nombre";
+                                 asi.estado AS Estado, asi.fecha AS Fecha
+                          FROM asistencia asi
+                          INNER JOIN inscripciones i ON asi.id_inscripcion = i.id_inscripcion
+                          INNER JOIN alumnos a ON i.id_alumno = a.id_alumno
+                          WHERE i.id_curso = '{idCursoSeleccionado}'
+                          AND TRUNC(asi.fecha) = TO_DATE('{fechaSeleccionada}', 'YYYY-MM-DD')
+                          ORDER BY a.apellido, a.nombre";
                 }
             }
+            // 2. Lógica específica para ALUMNO (No depende del ComboBox)
             else
             {
                 consulta = $@"SELECT asi.id_asistencia, m.nombre_materia AS Materia, 
-                     asi.estado AS Estado, asi.fecha AS Fecha
-              FROM asistencia asi
-              INNER JOIN inscripciones i ON asi.id_inscripcion = i.id_inscripcion
-              INNER JOIN cursos c ON i.id_curso = c.id_curso
-              INNER JOIN materias m ON c.id_materia = m.id_materia
-              INNER JOIN alumnos a ON i.id_alumno = a.id_alumno
-              WHERE a.usr_id = {Sesion.UsrId} 
-              AND TRUNC(asi.fecha) = TO_DATE('{fechaSeleccionada}', 'YYYY-MM-DD')
-              ORDER BY asi.fecha DESC";
+                             asi.estado AS Estado, asi.fecha AS Fecha
+                      FROM asistencia asi
+                      INNER JOIN inscripciones i ON asi.id_inscripcion = i.id_inscripcion
+                      INNER JOIN cursos c ON i.id_curso = c.id_curso
+                      INNER JOIN materias m ON c.id_materia = m.id_materia
+                      INNER JOIN alumnos a ON i.id_alumno = a.id_alumno
+                      WHERE a.usr_id = {Sesion.UsrId} 
+                      AND TRUNC(asi.fecha) = TO_DATE('{fechaSeleccionada}', 'YYYY-MM-DD')
+                      ORDER BY asi.fecha DESC";
             }
 
+            // 3. Ejecución y visualización
             DataTable dt = Conexion.Consultar(consulta);
             dgvAsistencia.DataSource = dt;
 
