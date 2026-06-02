@@ -94,12 +94,12 @@ namespace BD_Escuela
             dgvUsuarios.DefaultCellStyle = dataGridViewCellStyle3;
             dgvUsuarios.EnableHeadersVisualStyles = false;
             dgvUsuarios.GridColor = Color.FromArgb(181, 212, 244);
-            dgvUsuarios.Location = new Point(-9, 52);
+            dgvUsuarios.Location = new Point(4, 52);
             dgvUsuarios.Margin = new Padding(4, 3, 4, 3);
             dgvUsuarios.Name = "dgvUsuarios";
             dgvUsuarios.RowHeadersVisible = false;
             dgvUsuarios.RowHeadersWidth = 51;
-            dgvUsuarios.Size = new Size(933, 494);
+            dgvUsuarios.Size = new Size(920, 494);
             dgvUsuarios.TabIndex = 5;
             dgvUsuarios.CellClick += dgvUsuarios_CellClick;
             // 
@@ -174,7 +174,7 @@ namespace BD_Escuela
             txtContraseña.ForeColor = Color.FromArgb(12, 68, 124);
             txtContraseña.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtContraseña.Location = new Point(227, 226);
-            txtContraseña.Margin = new Padding(5, 5, 5, 5);
+            txtContraseña.Margin = new Padding(5);
             txtContraseña.Name = "txtContraseña";
             txtContraseña.PlaceholderText = "Escribe tu  contraseña...";
             txtContraseña.SelectedText = "";
@@ -198,7 +198,7 @@ namespace BD_Escuela
             txtUsuario.ForeColor = Color.FromArgb(12, 68, 124);
             txtUsuario.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtUsuario.Location = new Point(227, 162);
-            txtUsuario.Margin = new Padding(5, 5, 5, 5);
+            txtUsuario.Margin = new Padding(5);
             txtUsuario.Name = "txtUsuario";
             txtUsuario.PlaceholderText = "Escribe tu usuario...";
             txtUsuario.SelectedText = "";
