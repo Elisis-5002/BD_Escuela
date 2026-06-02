@@ -11,41 +11,37 @@ namespace BD_Escuela
 {
     public partial class FormAsistencia : Form
     {
-        private int idInscripcion => Convert.ToInt32(cmbInscripcion.SelectedValue);
         private string fecha => dtpFecha.Value.ToString("yyyy-MM-dd");
-        //private string estado => cmbEstado.SelectedItem.ToString();
         public FormAsistencia()
         {
             InitializeComponent();
-            CargarAsistencia();
-            if (Sesion.Permisos == "0000001D" || Sesion.Permisos == "0000001F")
-            {
-                btnGuardar.Enabled = true;
-                btnEliminar.Enabled = true;
-                checkFaltas.Enabled = true;
-                CargarCursos();
-            }
-            else
-            {
-                btnGuardar.Enabled = false;
-                btnEliminar.Enabled = false;
-                checkFaltas.Enabled = false;
-                cbCurso.Enabled = false;
-            }
         }
         private void CargarCursos()
         {
-            
-            // Consulta para obtener los cursos del profesor logueado
-            string sql = $@"SELECT c.id_curso, c.nombre_curso 
-                   FROM cursos c 
-                   WHERE c.id_profesor = (SELECT p.id_profesor FROM profesores p WHERE p.usr_id = {Sesion.UsrId})";
+            string sql;
+
+            if (Sesion.Rol == "ADMINISTRADOR" || Sesion.Rol == "SECRETARIO")
+            {
+                // Admin ve todos los cursos
+                sql = @"SELECT c.id_curso, c.id_curso || ' - ' || m.nombre_materia AS nombre_curso
+                FROM cursos c
+                JOIN materias m ON c.id_materia = m.id_materia
+                ORDER BY c.id_curso";
+            }
+            else
+            {
+                // Maestro solo ve sus cursos
+                sql = $@"SELECT c.id_curso, c.id_curso || ' - ' || m.nombre_materia AS nombre_curso
+                 FROM cursos c
+                 JOIN materias m ON c.id_materia = m.id_materia
+                 WHERE c.id_profesor = (SELECT p.id_profesor FROM profesores p WHERE p.usr_id = {Sesion.UsrId})
+                 ORDER BY c.id_curso";
+            }
 
             DataTable dt = Conexion.Consultar(sql);
-
-            cbCurso.DataSource = dt;
-            cbCurso.DisplayMember = "nombre_curso"; // Lo que el usuario ve
-            cbCurso.ValueMember = "id_curso";       // El ID interno
+            cmbCurso.DataSource = dt;
+            cmbCurso.DisplayMember = "NOMBRE_CURSO";
+            cmbCurso.ValueMember = "ID_CURSO";
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -90,7 +86,6 @@ namespace BD_Escuela
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            // Solo permitir a Maestros o Administradores
             if (Sesion.Permisos != "0000001D" && Sesion.Permisos != "0000001F")
             {
                 MessageBox.Show("No tiene permisos para eliminar registros de asistencia.", "Acceso Denegado", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -107,8 +102,6 @@ namespace BD_Escuela
             {
                 string fechaSeleccionada = dtpFecha.Value.ToString("yyyy-MM-dd");
 
-                // Borramos usando una subconsulta que verifica la propiedad del curso
-                // Esto asegura que el profesor solo borre sus propios datos
                 string sqlDelete = $@"
                 DELETE FROM asistencia 
                 WHERE TRUNC(fecha) = TO_DATE('{fechaSeleccionada}', 'YYYY-MM-DD')
@@ -140,28 +133,37 @@ namespace BD_Escuela
 
         public void CargarAsistencia()
         {
+            if (cmbCurso.SelectedValue == null) return;
+
             string fechaSeleccionada = dtpFecha.Value.ToString("yyyy-MM-dd");
+            string idCursoSeleccionado = cmbCurso.SelectedValue.ToString();
             string consulta = "";
 
-            // LÓGICA PARA MAESTRO (Usa el filtro del ComboBox)
-            if (Sesion.Permisos == "0000001D")
+            if (Sesion.Rol == "ADMINISTRADOR" || Sesion.Rol == "SECRETARIO")
             {
-                // Si el combo aún no tiene valor, salimos para evitar error
-                if (cbCurso.SelectedValue == null) return;
-                string idCursoSeleccionado = cbCurso.SelectedValue.ToString();
-
+                consulta = $@"SELECT asi.id_asistencia, a.nombre || ' ' || a.apellido AS Alumno, 
+                       asi.estado AS Estado, asi.fecha AS Fecha
+                FROM asistencia asi
+                INNER JOIN inscripciones i ON asi.id_inscripcion = i.id_inscripcion
+                INNER JOIN alumnos a ON i.id_alumno = a.id_alumno
+                WHERE i.id_curso = '{idCursoSeleccionado}'
+                AND TRUNC(asi.fecha) = TO_DATE('{fechaSeleccionada}', 'YYYY-MM-DD')
+                ORDER BY a.apellido, a.nombre";
+            }
+            else if (Sesion.Rol == "MAESTRO")
+            {
                 if (checkFaltas.Checked)
                 {
                     consulta = $@"SELECT DISTINCT a.nombre || ' ' || a.apellido AS Alumno
-                  FROM alumnos a
-                  INNER JOIN inscripciones i ON a.id_alumno = i.id_alumno
-                  WHERE i.id_curso = {idCursoSeleccionado}
-                  AND NOT EXISTS(
-                      SELECT 1 FROM asistencia asi 
-                      WHERE asi.id_inscripcion = i.id_inscripcion 
-                      AND asi.estado = 'Falta'
-                      AND TRUNC(asi.fecha) = TO_DATE('{fechaSeleccionada}', 'YYYY-MM-DD')
-                  )";
+              FROM alumnos a
+              INNER JOIN inscripciones i ON a.id_alumno = i.id_alumno
+              WHERE i.id_curso = '{idCursoSeleccionado}'
+              AND NOT EXISTS(
+                  SELECT 1 FROM asistencia asi 
+                  WHERE asi.id_inscripcion = i.id_inscripcion 
+                  AND asi.estado = 'Falta'
+                  AND TRUNC(asi.fecha) = TO_DATE('{fechaSeleccionada}', 'YYYY-MM-DD')
+              )";
                 }
                 else
                 {
@@ -170,12 +172,11 @@ namespace BD_Escuela
                   FROM asistencia asi
                   INNER JOIN inscripciones i ON asi.id_inscripcion = i.id_inscripcion
                   INNER JOIN alumnos a ON i.id_alumno = a.id_alumno
-                  WHERE i.id_curso = {idCursoSeleccionado}
+                  WHERE i.id_curso = '{idCursoSeleccionado}'
                   AND TRUNC(asi.fecha) = TO_DATE('{fechaSeleccionada}', 'YYYY-MM-DD')
                   ORDER BY a.apellido, a.nombre";
                 }
             }
-            // LÓGICA PARA ALUMNO (Ignora el ComboBox, filtra directo por su ID)
             else
             {
                 consulta = $@"SELECT asi.id_asistencia, m.nombre_materia AS Materia, 
@@ -194,18 +195,27 @@ namespace BD_Escuela
             dgvAsistencia.DataSource = dt;
 
             if (dgvAsistencia.Columns["ID_ASISTENCIA"] != null)
-            {
                 dgvAsistencia.Columns["ID_ASISTENCIA"].Visible = false;
-            }
         }
 
         private void FormAsistencia_Load_1(object sender, EventArgs e)
         {
-            //btnGuardar.Enabled = Sesion.PuedeInsertar;
+            if (Sesion.Permisos == "0000001D" || Sesion.Permisos == "0000001F")
+            {
+                btnGuardar.Enabled = true;
+                btnEliminar.Enabled = true;
+                checkFaltas.Enabled = true;
+                CargarCursos();
+            }
+            else
+            {
+                btnGuardar.Enabled = false;
+                btnEliminar.Enabled = false;
+                checkFaltas.Enabled = false;
+                cmbCurso.Enabled = false;
+            }
+            CargarAsistencia();
 
-            //btnEliminar.Enabled = Sesion.PuedeEliminar;
-            //CargarEstados();
-            //CargarAsistencia();
         }
 
 
@@ -268,9 +278,27 @@ namespace BD_Escuela
             CargarAsistencia();
         }
 
-        private void cbCurso_SelectedIndexChanged(object sender, EventArgs e)
+        private void cmbCurso_SelectedIndexChanged(object sender, EventArgs e)
         {
             CargarAsistencia();
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnMaximizar_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+                this.WindowState = FormWindowState.Normal;
+            else
+                this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void btnMinimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

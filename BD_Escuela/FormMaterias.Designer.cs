@@ -306,6 +306,7 @@
             Controls.Add(dgvMaterias);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormMaterias";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FormMaterias";
             Load += FormMaterias_Load;
             pnlTitulo.ResumeLayout(false);

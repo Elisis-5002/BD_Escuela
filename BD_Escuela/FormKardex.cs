@@ -23,6 +23,9 @@ namespace BD_Escuela
             dgvKardex.DataSource = dt;
 
 
+            dgvKardex.DataSource = dt;
+
+
         }
 
         private void dgvKardex_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -33,6 +36,24 @@ namespace BD_Escuela
         private void FormKardex_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnMaximizar_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+                this.WindowState = FormWindowState.Normal;
+            else
+                this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void btnMinimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

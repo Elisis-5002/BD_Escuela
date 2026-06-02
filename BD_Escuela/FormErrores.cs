@@ -39,5 +39,23 @@ namespace BD_Escuela
                 MessageBox.Show($"No se pudieron cargar los errores: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnMaximizar_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+                this.WindowState = FormWindowState.Normal;
+            else
+                this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void btnMinimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
     }
 }
