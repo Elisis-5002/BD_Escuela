@@ -60,7 +60,7 @@ namespace BD_Escuela
                 MessageBox.Show($"Error al agregar la inscripción: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        
+
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
@@ -168,13 +168,30 @@ namespace BD_Escuela
         {
             if (dgvInscripciones.CurrentRow != null)
             {
-                int idAlumno =Convert.ToInt32(dgvInscripciones.CurrentRow.Cells["ID_ALUMNO"].Value);
-                cmbAlumno.SelectedValue = idAlumno; 
+                int idAlumno = Convert.ToInt32(dgvInscripciones.CurrentRow.Cells["ID_ALUMNO"].Value);
+                cmbAlumno.SelectedValue = idAlumno;
                 string idCurso = dgvInscripciones.CurrentRow.Cells["ID_CURSO"].Value.ToString();
-                cmbCurso.SelectedValue = idCurso;  
+                cmbCurso.SelectedValue = idCurso;
             }
         }
 
-        
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnMaximizar_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+                this.WindowState = FormWindowState.Normal;
+            else
+                this.WindowState = FormWindowState.Maximized;
+            
+        }
+
+        private void btnMinimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
     }
 }

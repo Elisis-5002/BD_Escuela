@@ -132,7 +132,7 @@ namespace BD_Escuela
                 btnEliminar.Visible = false;
                 btnModificar.Visible = false;
                 txtNota.Visible = false;
-                label4.Visible = false;
+                lblNota.Visible = false;
                 consulta = "SELECT c.id_curso, c.id_curso || ' - ' || m.nombre_materia AS CURSO " +
                     "FROM cursos c " +
                     "INNER JOIN profesores p " +
@@ -161,8 +161,8 @@ namespace BD_Escuela
                     "ON c.id_materia = m.id_materia " +
                     "WHERE i.id_alumno = " + idAlumno +
                     " ORDER BY c.id_curso;";
-                label3.Visible = false;
-                label4.Visible = false;
+                lblInscripcion.Visible = false;
+                lblNota.Visible = false;
                 cmbInscripcion.Visible = false;
                 txtNota.Visible = false;
 
@@ -214,63 +214,37 @@ namespace BD_Escuela
             {
                 int ins = Convert.ToInt32(dgvCalificaciones.CurrentRow.Cells["ID_INSCRIPCION"].Value);
                 cmbInscripcion.SelectedValue = ins;
-                txtNota.Text = dgvCalificaciones.CurrentRow.Cells["NOTA"].Value.ToString();
-                txtParcial.Text = dgvCalificaciones.CurrentRow.Cells["PARCIAL"].Value.ToString();
-
-            }
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cmbCurso_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-            CargarAlumnos();
-            CargarCalificaciones();
-
-        }
-
-        private void btnKardex_Click(object sender, EventArgs e)
-        {
-            if (cmbInscripcion.SelectedItem is DataRowView fila)
-            {
-                int idAlumno = Convert.ToInt32(fila["ID_ALUMNO"]);
-
-                string consulta = "SELECT ID_ALUMNO, ALUMNO, MATERIA, NOTA, ESTATUS " +
-                            "FROM v_kardex " +
-                            "WHERE id_alumno = " + idAlumno +
-                            " UNION ALL " +
-                            "SELECT NULL, NULL, 'PROMEDIO GENERAL', " +
-                            "calcular_promedio(" + idAlumno + "), NULL " +
-                            "FROM DUAL";
-
-                DataTable dt = Conexion.Consultar(consulta);
-
-                FormKardex frmKardex = new FormKardex(dt);
-                frmKardex.Show();
-            }
-
-
-        }
-
-        private void txtNota_TextChanged(object sender, EventArgs e)
-        {
 
         }
 
         private void cmbInscripcion_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-/*
-            if (cmbInscripcion.SelectedItem != null)
-            {
-                DataRowView fila = (DataRowView)cmbInscripcion.SelectedItem;
-                idAlumno = Convert.ToInt32(fila["ID_ALUMNO"]);
-            }*/
+            /*
+                        if (cmbInscripcion.SelectedItem != null)
+                        {
+                            DataRowView fila = (DataRowView)cmbInscripcion.SelectedItem;
+                            idAlumno = Convert.ToInt32(fila["ID_ALUMNO"]);
+                        }*/
 
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnMaximizar_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+                this.WindowState = FormWindowState.Normal;
+            else
+                this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void btnMinimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

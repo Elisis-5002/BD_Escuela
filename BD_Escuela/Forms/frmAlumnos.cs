@@ -150,16 +150,35 @@ namespace BD_Escuela.Forms
             this.Close();
         }
 
-        private void dgvAlumnos_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        private void btnMaximizar_Click(object sender, EventArgs e)
         {
-            if (dgvAlumnos.CurrentRow != null)
-            {
-                txtNombre.Text = dgvAlumnos.CurrentRow.Cells["NOMBRE"].Value.ToString();
-                txtApellido.Text = dgvAlumnos.CurrentRow.Cells["APELLIDO"].Value.ToString();
-                txtEmail.Text = dgvAlumnos.CurrentRow.Cells["EMAIL"].Value.ToString();
-                numAño.Value = Convert.ToInt32(dgvAlumnos.CurrentRow.Cells["AÑO_INGRESO"].Value);
-            }
+            if (this.WindowState == FormWindowState.Maximized)
+                this.WindowState = FormWindowState.Normal;
+            else
+                this.WindowState = FormWindowState.Maximized;
+        }
 
+        private void btnMinimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnMaximizar_Click_1(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+                this.WindowState = FormWindowState.Normal;
+            else
+                this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void btnMinimizar_Click_1(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }
