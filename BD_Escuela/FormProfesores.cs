@@ -25,18 +25,6 @@ namespace BD_Escuela
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    string ejecutar = $"INSERT INTO profesores(nombre, apellido, email) VALUES('{nombre}', '{apellido}', '{email}')";
-            //    Conexion.Ejecutar(ejecutar, out int filasAfectadas, out string mensaje);
-            //    MessageBox.Show(mensaje, "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    CargarProfesores();
-            //}
-            //catch
-            //{
-            //    MessageBox.Show("Error al agregar el profesor. Rellene y verifique todos los datos ingresados.",
-            //         "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
             string contrasenaPorDefecto = "password123";
 
 
