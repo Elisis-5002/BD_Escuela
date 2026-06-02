@@ -126,7 +126,12 @@ namespace BD_Escuela.Clases
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error en Consulta: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(
+       ex.Message + "\n\n" + ex.StackTrace,
+       "Error",
+       MessageBoxButtons.OK,
+       MessageBoxIcon.Error);
+                //MessageBox.Show($"Error en Consulta: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return dt;
         }

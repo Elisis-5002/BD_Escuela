@@ -12,6 +12,8 @@ namespace BD_Escuela
 
         private void frmMenu_Load(object sender, EventArgs e)
         {
+
+            AplicarEstiloMenu();
             // Mostrar el usuario activo en la barra de título
             this.Text = $"Menú Principal - {Sesion.Usuario} ({Sesion.Rol})";
 
@@ -46,6 +48,7 @@ namespace BD_Escuela
                     inscripcionesToolStripMenuItem.Visible = false;
                     usuariosToolStripMenuItem.Visible = false;
                     personasToolStripMenuItem.Visible = false;
+                    erroresDeInsercionToolStripMenuItem.Visible = false;
                     break;
 
                 case "ALUMNO":
@@ -58,6 +61,8 @@ namespace BD_Escuela
                     calificacionesToolStripMenuItem.Visible = true;
                     usuariosToolStripMenuItem.Visible = false;
                     personasToolStripMenuItem.Visible = false;
+                    erroresDeInsercionToolStripMenuItem.Visible = false;
+
                     break;
 
                 case "SECRETARIO":
@@ -109,6 +114,99 @@ namespace BD_Escuela
         {
             FormErrores formErrores = new FormErrores();
             formErrores.Show();
+        }
+
+        private void CambiarColorSubmenus(ToolStripItemCollection items)
+        {
+            foreach (ToolStripItem item in items)
+            {
+                item.ForeColor = Color.White;
+
+                if (item is ToolStripMenuItem menuItem)
+                {
+                    menuItem.BackColor =
+                        Color.FromArgb(24, 95, 165);
+
+                    CambiarColorSubmenus(
+                        menuItem.DropDownItems);
+                }
+            }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2HtmlLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AplicarEstiloMenu()
+        {
+            menuStrip1.RenderMode = ToolStripRenderMode.Professional;
+
+            foreach (ToolStripMenuItem item in menuStrip1.Items)
+            {
+                item.BackColor = Color.FromArgb(24, 95, 165);
+                item.ForeColor = Color.White;
+
+                AplicarEstiloSubMenu(item);
+            }
+        }
+
+        private void AplicarEstiloSubMenu(ToolStripMenuItem menu)
+        {
+            foreach (ToolStripItem subItem in menu.DropDownItems)
+            {
+                subItem.BackColor = Color.FromArgb(24, 95, 165);
+                subItem.ForeColor = Color.White;
+
+                if (subItem is ToolStripMenuItem menuItem)
+                {
+                    AplicarEstiloSubMenu(menuItem);
+                }
+            }
+        }
+
+        private void btnMinimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
+        }
+
+        private void btnMaximizar_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+                this.WindowState = FormWindowState.Normal;
+            else
+                this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void btnCerrar_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnMinimizar_Click_1(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+
+        }
+
+        private void btnMaximizar_Click_1(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+                this.WindowState = FormWindowState.Normal;
+            else
+                this.WindowState = FormWindowState.Maximized;
         }
     }
 }

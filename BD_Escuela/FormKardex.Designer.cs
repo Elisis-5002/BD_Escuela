@@ -28,20 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             dgvKardex = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)dgvKardex).BeginInit();
             SuspendLayout();
             // 
             // dgvKardex
             // 
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(245, 249, 254);
+            dgvKardex.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dgvKardex.BackgroundColor = Color.White;
+            dgvKardex.BorderStyle = BorderStyle.None;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(24, 95, 165);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvKardex.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvKardex.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Window;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(12, 68, 124);
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(181, 212, 244);
+            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(12, 68, 124);
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dgvKardex.DefaultCellStyle = dataGridViewCellStyle3;
             dgvKardex.Dock = DockStyle.Fill;
+            dgvKardex.EnableHeadersVisualStyles = false;
+            dgvKardex.GridColor = Color.FromArgb(181, 212, 244);
             dgvKardex.Location = new Point(0, 0);
             dgvKardex.Name = "dgvKardex";
-            dgvKardex.RowHeadersWidth = 62;
+            dgvKardex.RowHeadersVisible = false;
+            dgvKardex.RowHeadersWidth = 51;
             dgvKardex.Size = new Size(800, 450);
-            dgvKardex.TabIndex = 0;
-            dgvKardex.CellContentClick += dgvKardex_CellContentClick;
+            dgvKardex.TabIndex = 5;
             // 
             // FormKardex
             // 

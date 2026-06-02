@@ -14,7 +14,7 @@ namespace BD_Escuela
     public partial class FormUsuarios : Form
     {
 
-        
+
 
         public FormUsuarios()
         {
@@ -288,6 +288,39 @@ namespace BD_Escuela
                 txtUsuario.Text = dgvUsuarios.CurrentRow.Cells["USR_NOMBRE"].Value.ToString();
                 txtContraseña.Text = dgvUsuarios.CurrentRow.Cells["USR_PWD"].Value.ToString();
             }
+        }
+
+        private void btnModificar_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEliminar_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnMaximizar_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+                this.WindowState = FormWindowState.Normal;
+            else
+                this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void btnMinimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

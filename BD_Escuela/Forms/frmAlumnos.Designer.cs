@@ -94,7 +94,8 @@
             pblTitulo.TabIndex = 0;
             // 
             // guna2Button1
-            // 
+            // /
+            /*
             guna2Button1.BackColor = Color.FromArgb(24, 95, 165);
             guna2Button1.BorderRadius = 17;
             guna2Button1.CustomizableEdges = customizableEdges1;
@@ -113,6 +114,7 @@
             guna2Button1.TabIndex = 1;
             guna2Button1.Text = "✕";
             guna2Button1.Click += guna2Button1_Click;
+            */
             // 
             // guna2HtmlLabel1
             // 

@@ -15,7 +15,14 @@ namespace BD_Escuela
             btnGuardar.Enabled = Sesion.PuedeInsertar;
             if (Sesion.Rol == "ALUMNO")
             {
-                idAlumno = Convert.ToInt32(Conexion.Consultar("select id_alumno from alumnos a JOIN usuarios u on u.usr_id = a.usr_id where u.usr_id = " + Sesion.UsrId).Rows[0][0]);
+                idAlumno = Convert.ToInt32(Conexion.Consultar("SELECT id_alumno " +
+                                                            "FROM alumnos " +
+                                                            "WHERE usr_id = " + Sesion.UsrId).Rows[0][0]);
+            }
+            if(Sesion.Rol != "MAESTRO")
+            {
+                lblParcial.Visible = false;
+                txtParcial.Visible = false;
             }
         }
 
@@ -105,7 +112,6 @@ namespace BD_Escuela
                 consulta = @"SELECT
                             a.nombre || ' ' || a.apellido AS alumno,
                             i.id_curso,
-                            c.parcial,
                             c.nota,
                             c.parcial,
                             c.estatus
@@ -116,7 +122,7 @@ namespace BD_Escuela
                             ON i.id_alumno = a.id_alumno
                         WHERE i.id_alumno = " + idAlumno + @"
                         AND i.id_curso = '" + cmbCurso.SelectedValue + @"'
-                        ORDER BY c.parcial;";
+                        ORDER BY c.parcial";
             }
             DataTable dt = Conexion.Consultar(consulta);
             dgvCalificaciones.DataSource = dt;
@@ -160,7 +166,7 @@ namespace BD_Escuela
                     "INNER JOIN materias m " +
                     "ON c.id_materia = m.id_materia " +
                     "WHERE i.id_alumno = " + idAlumno +
-                    " ORDER BY c.id_curso;";
+                    " ORDER BY c.id_curso";
                 lblInscripcion.Visible = false;
                 lblNota.Visible = false;
                 cmbInscripcion.Visible = false;
@@ -190,44 +196,24 @@ namespace BD_Escuela
             cmbInscripcion.DataSource = dt;
             cmbInscripcion.DisplayMember = "alumno";
             cmbInscripcion.ValueMember = "ID_INSCRIPCION";
+
             if (cmbInscripcion.SelectedItem != null)
             {
                 DataRowView fila = (DataRowView)cmbInscripcion.SelectedItem;
                 idAlumno = Convert.ToInt32(fila["ID_ALUMNO"]);
             }
         }
-       
+
         private void FormCalificaciones_Load(object sender, EventArgs e)
         {
             // Aplicar permisos a los botones
             btnGuardar.Enabled = Sesion.PuedeInsertar;
             btnModificar.Enabled = Sesion.PuedeModificar;
             btnEliminar.Enabled = Sesion.PuedeEliminar;
-            
+
             cargarCursos();
-            CargarCalificaciones();
         }
 
-        private void dgvCalificaciones_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dgvCalificaciones.CurrentRow != null)
-            {
-                int ins = Convert.ToInt32(dgvCalificaciones.CurrentRow.Cells["ID_INSCRIPCION"].Value);
-                cmbInscripcion.SelectedValue = ins;
-
-        }
-
-        private void cmbInscripcion_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-            /*
-                        if (cmbInscripcion.SelectedItem != null)
-                        {
-                            DataRowView fila = (DataRowView)cmbInscripcion.SelectedItem;
-                            idAlumno = Convert.ToInt32(fila["ID_ALUMNO"]);
-                        }*/
-
-        }
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
@@ -245,6 +231,56 @@ namespace BD_Escuela
         private void btnMinimizar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void cmbCurso_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(Sesion.Rol == "ALUMNO")
+            {
+                CargarCalificaciones();
+
+            } else
+            {
+                CargarAlumnos();
+                CargarCalificaciones();
+
+            }
+        }
+
+        
+
+        private void btnKardex_Click(object sender, EventArgs e)
+        {
+            
+            if (cmbInscripcion.SelectedItem is DataRowView fila && Sesion.Rol != "ALUMNO")
+            {
+                 idAlumno = Convert.ToInt32(fila["ID_ALUMNO"]);
+
+
+            }
+          
+                string consulta = "SELECT ID_ALUMNO, ALUMNO, MATERIA, NOTA, ESTATUS " +
+                            "FROM v_kardex " +
+                            "WHERE id_alumno = " + idAlumno +
+                            " UNION ALL " +
+                            "SELECT NULL, NULL, 'PROMEDIO:', " +
+                            "calcular_promedio(" + idAlumno + "), NULL " +
+                            "FROM DUAL";
+
+                DataTable dt = Conexion.Consultar(consulta);
+
+                FormKardex frmKardex = new FormKardex(dt);
+                frmKardex.Show();
+
+        }
+
+        private void cmbInscripcion_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            if (cmbInscripcion.SelectedItem is DataRowView fila)
+            {
+                idAlumno = Convert.ToInt32(fila["ID_ALUMNO"]);
+            }
+
         }
     }
 }
