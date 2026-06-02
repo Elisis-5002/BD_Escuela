@@ -30,8 +30,6 @@
         {
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -55,8 +53,9 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             pblTitulo = new Guna.UI2.WinForms.Guna2Panel();
-            btnCerrar = new Guna.UI2.WinForms.Guna2Button();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             pnlCaptura = new Guna.UI2.WinForms.Guna2Panel();
             numAño = new Guna.UI2.WinForms.Guna2NumericUpDown();
@@ -73,6 +72,7 @@
             dgvAlumnos = new DataGridView();
             btnMaximizar = new Guna.UI2.WinForms.Guna2Button();
             btnMinimizar = new Guna.UI2.WinForms.Guna2Button();
+            btnCerrar = new Guna.UI2.WinForms.Guna2Button();
             pblTitulo.SuspendLayout();
             pnlCaptura.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numAño).BeginInit();
@@ -87,38 +87,18 @@
             pblTitulo.Controls.Add(guna2HtmlLabel1);
             pblTitulo.CustomizableEdges = customizableEdges7;
             pblTitulo.FillColor = Color.FromArgb(24, 95, 165);
-            pblTitulo.Location = new Point(0, 0);
+            pblTitulo.Location = new Point(-3, 0);
             pblTitulo.Name = "pblTitulo";
             pblTitulo.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            pblTitulo.Size = new Size(850, 55);
+            pblTitulo.Size = new Size(853, 55);
             pblTitulo.TabIndex = 0;
-            // 
-            // btnCerrar
-            // 
-            btnCerrar.BackColor = Color.FromArgb(24, 95, 165);
-            btnCerrar.BorderRadius = 17;
-            btnCerrar.CustomizableEdges = customizableEdges5;
-            btnCerrar.DisabledState.BorderColor = Color.DarkGray;
-            btnCerrar.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnCerrar.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnCerrar.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnCerrar.FillColor = Color.FromArgb(226, 75, 74);
-            btnCerrar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnCerrar.ForeColor = Color.White;
-            btnCerrar.Location = new Point(805, 10);
-            btnCerrar.Name = "btnCerrar";
-            btnCerrar.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            btnCerrar.Size = new Size(34, 34);
-            btnCerrar.TabIndex = 1;
-            btnCerrar.Text = "✕";
-            btnCerrar.Click += guna2Button1_Click;
             // 
             // guna2HtmlLabel1
             // 
             guna2HtmlLabel1.BackColor = Color.Transparent;
             guna2HtmlLabel1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2HtmlLabel1.ForeColor = Color.White;
-            guna2HtmlLabel1.Location = new Point(16, 12);
+            guna2HtmlLabel1.Location = new Point(13, 12);
             guna2HtmlLabel1.Name = "guna2HtmlLabel1";
             guna2HtmlLabel1.Size = new Size(99, 33);
             guna2HtmlLabel1.TabIndex = 0;
@@ -143,10 +123,10 @@
             pnlCaptura.Controls.Add(guna2HtmlLabel4);
             pnlCaptura.CustomizableEdges = customizableEdges23;
             pnlCaptura.FillColor = Color.White;
-            pnlCaptura.Location = new Point(20, 70);
+            pnlCaptura.Location = new Point(18, 69);
             pnlCaptura.Name = "pnlCaptura";
             pnlCaptura.ShadowDecoration.CustomizableEdges = customizableEdges24;
-            pnlCaptura.Size = new Size(810, 195);
+            pnlCaptura.Size = new Size(813, 195);
             pnlCaptura.TabIndex = 1;
             // 
             // numAño
@@ -157,11 +137,11 @@
             numAño.FillColor = Color.FromArgb(230, 241, 251);
             numAño.Font = new Font("Segoe UI", 9F);
             numAño.ForeColor = Color.FromArgb(12, 68, 124);
-            numAño.Location = new Point(647, 70);
-            numAño.Margin = new Padding(3, 4, 3, 4);
+            numAño.Location = new Point(642, 69);
+            numAño.Margin = new Padding(3, 5, 3, 5);
             numAño.Name = "numAño";
             numAño.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            numAño.Size = new Size(145, 41);
+            numAño.Size = new Size(154, 36);
             numAño.TabIndex = 14;
             // 
             // btnEliminar
@@ -175,7 +155,7 @@
             btnEliminar.FillColor = Color.FromArgb(226, 75, 74);
             btnEliminar.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             btnEliminar.ForeColor = Color.White;
-            btnEliminar.Location = new Point(629, 142);
+            btnEliminar.Location = new Point(642, 144);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.ShadowDecoration.CustomizableEdges = customizableEdges12;
             btnEliminar.Size = new Size(160, 38);
@@ -194,7 +174,7 @@
             btnModificar.FillColor = Color.FromArgb(55, 138, 221);
             btnModificar.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             btnModificar.ForeColor = Color.White;
-            btnModificar.Location = new Point(456, 142);
+            btnModificar.Location = new Point(469, 144);
             btnModificar.Name = "btnModificar";
             btnModificar.ShadowDecoration.CustomizableEdges = customizableEdges14;
             btnModificar.Size = new Size(160, 38);
@@ -213,7 +193,7 @@
             btnGuardar.FillColor = Color.FromArgb(24, 95, 165);
             btnGuardar.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             btnGuardar.ForeColor = Color.White;
-            btnGuardar.Location = new Point(280, 142);
+            btnGuardar.Location = new Point(293, 144);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.ShadowDecoration.CustomizableEdges = customizableEdges16;
             btnGuardar.Size = new Size(160, 38);
@@ -237,7 +217,7 @@
             txtEmail.Font = new Font("Segoe UI", 10.2F);
             txtEmail.ForeColor = Color.FromArgb(12, 68, 124);
             txtEmail.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtEmail.Location = new Point(431, 70);
+            txtEmail.Location = new Point(428, 69);
             txtEmail.Margin = new Padding(3, 5, 3, 5);
             txtEmail.Name = "txtEmail";
             txtEmail.PlaceholderText = "Escribe el email...";
@@ -262,7 +242,7 @@
             txtApellido.Font = new Font("Segoe UI", 10.2F);
             txtApellido.ForeColor = Color.FromArgb(12, 68, 124);
             txtApellido.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtApellido.Location = new Point(223, 70);
+            txtApellido.Location = new Point(220, 69);
             txtApellido.Margin = new Padding(3, 5, 3, 5);
             txtApellido.Name = "txtApellido";
             txtApellido.PlaceholderText = "Escribe los apellidos...";
@@ -287,7 +267,7 @@
             txtNombre.Font = new Font("Segoe UI", 10.2F);
             txtNombre.ForeColor = Color.FromArgb(12, 68, 124);
             txtNombre.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtNombre.Location = new Point(17, 70);
+            txtNombre.Location = new Point(14, 69);
             txtNombre.Margin = new Padding(3, 5, 3, 5);
             txtNombre.Name = "txtNombre";
             txtNombre.PlaceholderText = "Escribe el nombre...";
@@ -301,7 +281,7 @@
             guna2HtmlLabel5.BackColor = Color.Transparent;
             guna2HtmlLabel5.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2HtmlLabel5.ForeColor = Color.FromArgb(24, 95, 165);
-            guna2HtmlLabel5.Location = new Point(645, 27);
+            guna2HtmlLabel5.Location = new Point(642, 27);
             guna2HtmlLabel5.Name = "guna2HtmlLabel5";
             guna2HtmlLabel5.Size = new Size(110, 22);
             guna2HtmlLabel5.TabIndex = 6;
@@ -312,7 +292,7 @@
             guna2HtmlLabel3.BackColor = Color.Transparent;
             guna2HtmlLabel3.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             guna2HtmlLabel3.ForeColor = Color.FromArgb(24, 95, 165);
-            guna2HtmlLabel3.Location = new Point(431, 27);
+            guna2HtmlLabel3.Location = new Point(428, 27);
             guna2HtmlLabel3.Name = "guna2HtmlLabel3";
             guna2HtmlLabel3.Size = new Size(41, 22);
             guna2HtmlLabel3.TabIndex = 5;
@@ -323,7 +303,7 @@
             guna2HtmlLabel2.BackColor = Color.Transparent;
             guna2HtmlLabel2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             guna2HtmlLabel2.ForeColor = Color.FromArgb(24, 95, 165);
-            guna2HtmlLabel2.Location = new Point(223, 27);
+            guna2HtmlLabel2.Location = new Point(220, 27);
             guna2HtmlLabel2.Name = "guna2HtmlLabel2";
             guna2HtmlLabel2.Size = new Size(61, 22);
             guna2HtmlLabel2.TabIndex = 4;
@@ -334,7 +314,7 @@
             guna2HtmlLabel4.BackColor = Color.Transparent;
             guna2HtmlLabel4.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             guna2HtmlLabel4.ForeColor = Color.FromArgb(24, 95, 165);
-            guna2HtmlLabel4.Location = new Point(17, 27);
+            guna2HtmlLabel4.Location = new Point(14, 27);
             guna2HtmlLabel4.Name = "guna2HtmlLabel4";
             guna2HtmlLabel4.Size = new Size(61, 22);
             guna2HtmlLabel4.TabIndex = 3;
@@ -365,11 +345,11 @@
             dgvAlumnos.DefaultCellStyle = dataGridViewCellStyle3;
             dgvAlumnos.EnableHeadersVisualStyles = false;
             dgvAlumnos.GridColor = Color.FromArgb(181, 212, 244);
-            dgvAlumnos.Location = new Point(20, 285);
+            dgvAlumnos.Location = new Point(18, 285);
             dgvAlumnos.Name = "dgvAlumnos";
             dgvAlumnos.RowHeadersVisible = false;
             dgvAlumnos.RowHeadersWidth = 51;
-            dgvAlumnos.Size = new Size(810, 280);
+            dgvAlumnos.Size = new Size(813, 280);
             dgvAlumnos.TabIndex = 6;
             dgvAlumnos.CellContentClick += dgvAlumnos_CellClick;
             // 
@@ -385,13 +365,13 @@
             btnMaximizar.FillColor = Color.FromArgb(55, 138, 221);
             btnMaximizar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnMaximizar.ForeColor = Color.White;
-            btnMaximizar.Location = new Point(770, 10);
+            btnMaximizar.Location = new Point(770, 11);
             btnMaximizar.Name = "btnMaximizar";
             btnMaximizar.ShadowDecoration.CustomizableEdges = customizableEdges2;
             btnMaximizar.Size = new Size(34, 34);
-            btnMaximizar.TabIndex = 7;
+            btnMaximizar.TabIndex = 10;
             btnMaximizar.Text = "□";
-            btnMaximizar.Click += btnMaximizar_Click;
+            btnMaximizar.Click += btnMaximizar_Click_1;
             // 
             // btnMinimizar
             // 
@@ -405,13 +385,33 @@
             btnMinimizar.FillColor = Color.FromArgb(55, 138, 221);
             btnMinimizar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnMinimizar.ForeColor = Color.White;
-            btnMinimizar.Location = new Point(735, 10);
+            btnMinimizar.Location = new Point(735, 11);
             btnMinimizar.Name = "btnMinimizar";
             btnMinimizar.ShadowDecoration.CustomizableEdges = customizableEdges4;
             btnMinimizar.Size = new Size(34, 34);
-            btnMinimizar.TabIndex = 6;
+            btnMinimizar.TabIndex = 9;
             btnMinimizar.Text = "─";
-            btnMinimizar.Click += btnMinimizar_Click;
+            btnMinimizar.Click += btnMinimizar_Click_1;
+            // 
+            // btnCerrar
+            // 
+            btnCerrar.BackColor = Color.FromArgb(24, 95, 165);
+            btnCerrar.BorderRadius = 17;
+            btnCerrar.CustomizableEdges = customizableEdges5;
+            btnCerrar.DisabledState.BorderColor = Color.DarkGray;
+            btnCerrar.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnCerrar.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnCerrar.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnCerrar.FillColor = Color.FromArgb(226, 75, 74);
+            btnCerrar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCerrar.ForeColor = Color.White;
+            btnCerrar.Location = new Point(805, 10);
+            btnCerrar.Name = "btnCerrar";
+            btnCerrar.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            btnCerrar.Size = new Size(34, 34);
+            btnCerrar.TabIndex = 8;
+            btnCerrar.Text = "✕";
+            btnCerrar.Click += btnCerrar_Click;
             // 
             // frmAlumnos
             // 
@@ -423,7 +423,7 @@
             Controls.Add(pnlCaptura);
             Controls.Add(pblTitulo);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(2);
+            Margin = new Padding(2, 3, 2, 3);
             Name = "frmAlumnos";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmAlumnos";
@@ -440,7 +440,6 @@
         #endregion
         private DataGridView dataGridView1;
         private Guna.UI2.WinForms.Guna2Panel pblTitulo;
-        private Guna.UI2.WinForms.Guna2Button btnCerrar;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private Guna.UI2.WinForms.Guna2Panel pnlCaptura;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
@@ -457,5 +456,6 @@
         private Guna.UI2.WinForms.Guna2NumericUpDown numAño;
         private Guna.UI2.WinForms.Guna2Button btnMaximizar;
         private Guna.UI2.WinForms.Guna2Button btnMinimizar;
+        private Guna.UI2.WinForms.Guna2Button btnCerrar;
     }
 }

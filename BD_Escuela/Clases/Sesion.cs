@@ -16,9 +16,9 @@ namespace BD_Escuela.Clases
 
         // Métodos para verificar permisos fácilmente
         public static bool PuedeConsultar => !string.IsNullOrEmpty(Permisos);
-        public static bool PuedeInsertar => Permisos == "0000001F";
+        public static bool PuedeInsertar => Permisos == "0000001F" || Permisos == "0000001D";
         public static bool PuedeModificar => Permisos == "0000001F" || Permisos == "0000001D";
-        public static bool PuedeEliminar => Permisos == "0000001F";
+        public static bool PuedeEliminar => Permisos == "0000001F" || Permisos == "0000001D";
 
         public static void Limpiar()
         {

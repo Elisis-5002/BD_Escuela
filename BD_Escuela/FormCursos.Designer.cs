@@ -35,6 +35,10 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -53,13 +57,11 @@
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             dgvCursos = new DataGridView();
             btnEliminar = new Guna.UI2.WinForms.Guna2Button();
             pnlCaptura = new Guna.UI2.WinForms.Guna2Panel();
+            cmbMateria = new Guna.UI2.WinForms.Guna2ComboBox();
+            cmbProfesor = new Guna.UI2.WinForms.Guna2ComboBox();
             btnModificar = new Guna.UI2.WinForms.Guna2Button();
             btnGuardar = new Guna.UI2.WinForms.Guna2Button();
             txtID = new Guna.UI2.WinForms.Guna2TextBox();
@@ -72,8 +74,6 @@
             btnMinimizar = new Guna.UI2.WinForms.Guna2Button();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             dgvMasUn = new DataGridView();
-            cmbMateria = new Guna.UI2.WinForms.Guna2ComboBox();
-            cmbProfesor = new Guna.UI2.WinForms.Guna2ComboBox();
             ((System.ComponentModel.ISupportInitialize)dgvCursos).BeginInit();
             pnlCaptura.SuspendLayout();
             pblTitulo.SuspendLayout();
@@ -154,6 +154,46 @@
             pnlCaptura.ShadowDecoration.CustomizableEdges = customizableEdges14;
             pnlCaptura.Size = new Size(860, 195);
             pnlCaptura.TabIndex = 8;
+            // 
+            // cmbMateria
+            // 
+            cmbMateria.BackColor = Color.Transparent;
+            cmbMateria.BorderColor = Color.FromArgb(133, 183, 235);
+            cmbMateria.BorderRadius = 10;
+            cmbMateria.CustomizableEdges = customizableEdges3;
+            cmbMateria.DrawMode = DrawMode.OwnerDrawFixed;
+            cmbMateria.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbMateria.FillColor = Color.FromArgb(230, 241, 251);
+            cmbMateria.FocusedColor = Color.FromArgb(94, 148, 255);
+            cmbMateria.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            cmbMateria.Font = new Font("Segoe UI", 10F);
+            cmbMateria.ForeColor = Color.FromArgb(12, 68, 124);
+            cmbMateria.ItemHeight = 30;
+            cmbMateria.Location = new Point(286, 70);
+            cmbMateria.Name = "cmbMateria";
+            cmbMateria.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            cmbMateria.Size = new Size(214, 36);
+            cmbMateria.TabIndex = 12;
+            // 
+            // cmbProfesor
+            // 
+            cmbProfesor.BackColor = Color.Transparent;
+            cmbProfesor.BorderColor = Color.FromArgb(133, 183, 235);
+            cmbProfesor.BorderRadius = 10;
+            cmbProfesor.CustomizableEdges = customizableEdges5;
+            cmbProfesor.DrawMode = DrawMode.OwnerDrawFixed;
+            cmbProfesor.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbProfesor.FillColor = Color.FromArgb(230, 241, 251);
+            cmbProfesor.FocusedColor = Color.FromArgb(94, 148, 255);
+            cmbProfesor.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            cmbProfesor.Font = new Font("Segoe UI", 10F);
+            cmbProfesor.ForeColor = Color.FromArgb(12, 68, 124);
+            cmbProfesor.ItemHeight = 30;
+            cmbProfesor.Location = new Point(34, 70);
+            cmbProfesor.Name = "cmbProfesor";
+            cmbProfesor.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            cmbProfesor.Size = new Size(214, 36);
+            cmbProfesor.TabIndex = 11;
             // 
             // btnModificar
             // 
@@ -269,6 +309,7 @@
             btnMaximizar.Size = new Size(34, 34);
             btnMaximizar.TabIndex = 7;
             btnMaximizar.Text = "□";
+            btnMaximizar.Click += btnMaximizar_Click;
             // 
             // btnCerrar
             // 
@@ -288,6 +329,7 @@
             btnCerrar.Size = new Size(34, 34);
             btnCerrar.TabIndex = 1;
             btnCerrar.Text = "✕";
+            btnCerrar.Click += btnCerrar_Click;
             // 
             // pblTitulo
             // 
@@ -321,6 +363,7 @@
             btnMinimizar.Size = new Size(34, 34);
             btnMinimizar.TabIndex = 6;
             btnMinimizar.Text = "─";
+            btnMinimizar.Click += btnMinimizar_Click;
             // 
             // guna2HtmlLabel1
             // 
@@ -372,46 +415,6 @@
             dgvMasUn.RowHeadersWidth = 51;
             dgvMasUn.Size = new Size(420, 380);
             dgvMasUn.TabIndex = 10;
-            // 
-            // cmbMateria
-            // 
-            cmbMateria.BackColor = Color.Transparent;
-            cmbMateria.BorderColor = Color.FromArgb(133, 183, 235);
-            cmbMateria.BorderRadius = 10;
-            cmbMateria.CustomizableEdges = customizableEdges3;
-            cmbMateria.DrawMode = DrawMode.OwnerDrawFixed;
-            cmbMateria.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbMateria.FillColor = Color.FromArgb(230, 241, 251);
-            cmbMateria.FocusedColor = Color.FromArgb(94, 148, 255);
-            cmbMateria.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            cmbMateria.Font = new Font("Segoe UI", 10F);
-            cmbMateria.ForeColor = Color.FromArgb(12, 68, 124);
-            cmbMateria.ItemHeight = 30;
-            cmbMateria.Location = new Point(286, 70);
-            cmbMateria.Name = "cmbMateria";
-            cmbMateria.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            cmbMateria.Size = new Size(214, 36);
-            cmbMateria.TabIndex = 12;
-            // 
-            // cmbProfesor
-            // 
-            cmbProfesor.BackColor = Color.Transparent;
-            cmbProfesor.BorderColor = Color.FromArgb(133, 183, 235);
-            cmbProfesor.BorderRadius = 10;
-            cmbProfesor.CustomizableEdges = customizableEdges5;
-            cmbProfesor.DrawMode = DrawMode.OwnerDrawFixed;
-            cmbProfesor.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbProfesor.FillColor = Color.FromArgb(230, 241, 251);
-            cmbProfesor.FocusedColor = Color.FromArgb(94, 148, 255);
-            cmbProfesor.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            cmbProfesor.Font = new Font("Segoe UI", 10F);
-            cmbProfesor.ForeColor = Color.FromArgb(12, 68, 124);
-            cmbProfesor.ItemHeight = 30;
-            cmbProfesor.Location = new Point(34, 70);
-            cmbProfesor.Name = "cmbProfesor";
-            cmbProfesor.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            cmbProfesor.Size = new Size(214, 36);
-            cmbProfesor.TabIndex = 11;
             // 
             // FormCursos
             // 

@@ -154,27 +154,65 @@ namespace BD_Escuela
                                 WHERE ur.usr_id = {idUsuario}";
 
                 DataTable dt = Conexion.Consultar(consultaRol);
+                string mensajeConfirmacion = "";
 
                 if (dt.Rows.Count > 0)
                 {
                     string rolUsuario = dt.Rows[0]["ROL_NOMBRE"].ToString();
 
-                    // 2. Aplicamos la regla: SOLO borrar si es 'SECRETARIO'
-                    if (rolUsuario != "SECRETARIO")
+                    // 2. Evaluamos según el rol
+                    switch (rolUsuario)
                     {
-                        MessageBox.Show($"No tiene permisos para eliminar un usuario con rol: {rolUsuario}.",
-                            "Acción Denegada", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                        return;
+                        case "SECRETARIO":
+                            // El secretario se puede borrar directamente
+                            mensajeConfirmacion = $"¿Está seguro que desea eliminar al secretario {nombreUsuario}?";
+                            break;
+
+                        case "MAESTRO":
+                            // Verificamos si aún existe en la tabla maestros
+                            string sqlCheckMaestro = $"SELECT COUNT(*) FROM maestros WHERE usr_id = {idUsuario}";
+                            int countMaestro = Convert.ToInt32(Conexion.Consultar(sqlCheckMaestro).Rows[0][0]);
+
+                            if (countMaestro > 0)
+                            {
+                                MessageBox.Show("Acción denegada: Este usuario aún tiene un perfil activo en la tabla MAESTROS.", "Protección de datos", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                                return;
+                            }
+                            mensajeConfirmacion = $"El maestro {nombreUsuario} ya fue dado de baja de su tabla principal. ¿Desea eliminar su usuario huérfano?";
+                            break;
+
+                        case "ALUMNO":
+                            // Verificamos si aún existe en la tabla alumnos
+                            string sqlCheckAlumno = $"SELECT COUNT(*) FROM alumnos WHERE usr_id = {idUsuario}";
+                            int countAlumno = Convert.ToInt32(Conexion.Consultar(sqlCheckAlumno).Rows[0][0]);
+
+                            if (countAlumno > 0)
+                            {
+                                MessageBox.Show("Acción denegada: Este usuario aún tiene un perfil activo en la tabla ALUMNOS.", "Protección de datos", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                                return;
+                            }
+                            mensajeConfirmacion = $"El alumno {nombreUsuario} ya fue dado de baja de su tabla principal. ¿Desea eliminar su usuario huérfano?";
+                            break;
+
+                        case "ADMINISTRADOR":
+                        default:
+                            // Se bloquea al administrador o cualquier otro rol no contemplado
+                            MessageBox.Show($"No tiene permisos para eliminar un usuario con rol: {rolUsuario}.", "Acción Denegada", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                            return;
                     }
                 }
+                else
+                {
+                    // Opcional: Si el usuario existe pero no tiene rol asignado en usuarios_roles
+                    mensajeConfirmacion = $"El usuario {nombreUsuario} no tiene rol asignado. ¿Desea eliminar este usuario huérfano?";
+                }
 
-                // 3. Confirmación de eliminación
-                DialogResult confirm = MessageBox.Show($"¿Está seguro que desea eliminar al secretario {nombreUsuario}?",
-                    "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                // 3. Confirmación de eliminación dinámica
+                DialogResult confirm = MessageBox.Show(mensajeConfirmacion, "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if (confirm == DialogResult.Yes)
                 {
-                    // Nota: Debido a tus FKs (sesiones, usuarios_roles), primero borramos dependencias
+                    // 4. Borramos dependencias y luego el usuario
                     string[] pasosEliminacion = {
                 $"DELETE FROM usuarios_roles WHERE usr_id = {idUsuario}",
                 $"DELETE FROM sesiones WHERE usr_id = {idUsuario}",
@@ -186,7 +224,7 @@ namespace BD_Escuela
                         Conexion.Ejecutar(sql, out _, out _);
                     }
 
-                    MessageBox.Show("Secretario eliminado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Usuario eliminado correctamente de la base de datos.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     CargarUsuarios();
                 }
             }

@@ -50,10 +50,10 @@
             txtUsuario = new Guna.UI2.WinForms.Guna2TextBox();
             txtContraseña = new Guna.UI2.WinForms.Guna2TextBox();
             pnlTargeta = new Guna.UI2.WinForms.Guna2Panel();
+            guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             btnCerrar = new Guna.UI2.WinForms.Guna2Button();
             btnSee = new Guna.UI2.WinForms.Guna2CheckBox();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             pnlTargeta.SuspendLayout();
             SuspendLayout();
             // 
@@ -62,10 +62,11 @@
             pnlBurbuja1.BorderRadius = 110;
             pnlBurbuja1.CustomizableEdges = customizableEdges1;
             pnlBurbuja1.FillColor = Color.FromArgb(214, 232, 247);
-            pnlBurbuja1.Location = new Point(380, -70);
+            pnlBurbuja1.Location = new Point(332, -52);
+            pnlBurbuja1.Margin = new Padding(3, 2, 3, 2);
             pnlBurbuja1.Name = "pnlBurbuja1";
             pnlBurbuja1.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            pnlBurbuja1.Size = new Size(220, 220);
+            pnlBurbuja1.Size = new Size(192, 165);
             pnlBurbuja1.TabIndex = 0;
             // 
             // pnlBurbuja2
@@ -73,10 +74,11 @@
             pnlBurbuja2.BorderRadius = 80;
             pnlBurbuja2.CustomizableEdges = customizableEdges3;
             pnlBurbuja2.FillColor = Color.FromArgb(230, 241, 251);
-            pnlBurbuja2.Location = new Point(-30, 500);
+            pnlBurbuja2.Location = new Point(-26, 375);
+            pnlBurbuja2.Margin = new Padding(3, 2, 3, 2);
             pnlBurbuja2.Name = "pnlBurbuja2";
             pnlBurbuja2.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            pnlBurbuja2.Size = new Size(160, 170);
+            pnlBurbuja2.Size = new Size(140, 128);
             pnlBurbuja2.TabIndex = 1;
             // 
             // btnIniciarSesion
@@ -91,21 +93,24 @@
             btnIniciarSesion.FillColor = Color.FromArgb(24, 95, 165);
             btnIniciarSesion.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnIniciarSesion.ForeColor = Color.White;
-            btnIniciarSesion.Location = new Point(80, 380);
+            btnIniciarSesion.Location = new Point(70, 285);
+            btnIniciarSesion.Margin = new Padding(3, 2, 3, 2);
             btnIniciarSesion.Name = "btnIniciarSesion";
             btnIniciarSesion.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            btnIniciarSesion.Size = new Size(260, 42);
+            btnIniciarSesion.Size = new Size(228, 32);
             btnIniciarSesion.TabIndex = 2;
             btnIniciarSesion.Text = "Iniciar Sesion";
+            btnIniciarSesion.Click += btnIniciarSesion_Click_1;
             // 
             // lblUsuario
             // 
             lblUsuario.BackColor = Color.Transparent;
             lblUsuario.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblUsuario.ForeColor = Color.FromArgb(24, 95, 165);
-            lblUsuario.Location = new Point(80, 146);
+            lblUsuario.Location = new Point(70, 110);
+            lblUsuario.Margin = new Padding(3, 2, 3, 2);
             lblUsuario.Name = "lblUsuario";
-            lblUsuario.Size = new Size(57, 22);
+            lblUsuario.Size = new Size(45, 17);
             lblUsuario.TabIndex = 3;
             lblUsuario.Text = "Usuario";
             // 
@@ -114,9 +119,10 @@
             lblContraseña.BackColor = Color.Transparent;
             lblContraseña.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblContraseña.ForeColor = Color.FromArgb(24, 95, 165);
-            lblContraseña.Location = new Point(80, 243);
+            lblContraseña.Location = new Point(70, 182);
+            lblContraseña.Margin = new Padding(3, 2, 3, 2);
             lblContraseña.Name = "lblContraseña";
-            lblContraseña.Size = new Size(82, 22);
+            lblContraseña.Size = new Size(65, 17);
             lblContraseña.TabIndex = 4;
             lblContraseña.Text = "Contraseña";
             // 
@@ -135,13 +141,13 @@
             txtUsuario.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtUsuario.ForeColor = Color.FromArgb(12, 68, 124);
             txtUsuario.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtUsuario.Location = new Point(80, 176);
-            txtUsuario.Margin = new Padding(3, 5, 3, 5);
+            txtUsuario.Location = new Point(70, 132);
+            txtUsuario.Margin = new Padding(3, 4, 3, 4);
             txtUsuario.Name = "txtUsuario";
             txtUsuario.PlaceholderText = "Escribe tu usuario...";
             txtUsuario.SelectedText = "";
             txtUsuario.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            txtUsuario.Size = new Size(260, 36);
+            txtUsuario.Size = new Size(228, 27);
             txtUsuario.TabIndex = 5;
             // 
             // txtContraseña
@@ -159,13 +165,13 @@
             txtContraseña.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtContraseña.ForeColor = Color.FromArgb(12, 68, 124);
             txtContraseña.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtContraseña.Location = new Point(80, 273);
-            txtContraseña.Margin = new Padding(3, 5, 3, 5);
+            txtContraseña.Location = new Point(70, 205);
+            txtContraseña.Margin = new Padding(3, 4, 3, 4);
             txtContraseña.Name = "txtContraseña";
             txtContraseña.PlaceholderText = "Escribe tu contraseña...";
             txtContraseña.SelectedText = "";
             txtContraseña.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            txtContraseña.Size = new Size(260, 36);
+            txtContraseña.Size = new Size(228, 27);
             txtContraseña.TabIndex = 6;
             txtContraseña.UseSystemPasswordChar = true;
             // 
@@ -186,11 +192,24 @@
             pnlTargeta.Controls.Add(txtUsuario);
             pnlTargeta.CustomizableEdges = customizableEdges13;
             pnlTargeta.FillColor = Color.White;
-            pnlTargeta.Location = new Point(70, 75);
+            pnlTargeta.Location = new Point(61, 56);
+            pnlTargeta.Margin = new Padding(3, 2, 3, 2);
             pnlTargeta.Name = "pnlTargeta";
             pnlTargeta.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            pnlTargeta.Size = new Size(420, 500);
+            pnlTargeta.Size = new Size(368, 375);
             pnlTargeta.TabIndex = 7;
+            // 
+            // guna2HtmlLabel2
+            // 
+            guna2HtmlLabel2.BackColor = Color.Transparent;
+            guna2HtmlLabel2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            guna2HtmlLabel2.ForeColor = Color.FromArgb(55, 138, 221);
+            guna2HtmlLabel2.Location = new Point(104, 64);
+            guna2HtmlLabel2.Margin = new Padding(3, 2, 3, 2);
+            guna2HtmlLabel2.Name = "guna2HtmlLabel2";
+            guna2HtmlLabel2.Size = new Size(147, 17);
+            guna2HtmlLabel2.TabIndex = 10;
+            guna2HtmlLabel2.Text = "Inicia sesion para continuar";
             // 
             // btnCerrar
             // 
@@ -205,10 +224,11 @@
             btnCerrar.FillColor = Color.FromArgb(214, 232, 247);
             btnCerrar.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnCerrar.ForeColor = Color.FromArgb(24, 95, 165);
-            btnCerrar.Location = new Point(370, 10);
+            btnCerrar.Location = new Point(324, 8);
+            btnCerrar.Margin = new Padding(3, 2, 3, 2);
             btnCerrar.Name = "btnCerrar";
             btnCerrar.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            btnCerrar.Size = new Size(35, 35);
+            btnCerrar.Size = new Size(31, 26);
             btnCerrar.TabIndex = 9;
             btnCerrar.Text = "✕";
             btnCerrar.Click += btnCerrar_Click;
@@ -223,9 +243,10 @@
             btnSee.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
             btnSee.CheckMarkColor = Color.FromArgb(24, 95, 165);
             btnSee.ForeColor = Color.FromArgb(24, 95, 165);
-            btnSee.Location = new Point(89, 317);
+            btnSee.Location = new Point(78, 238);
+            btnSee.Margin = new Padding(3, 2, 3, 2);
             btnSee.Name = "btnSee";
-            btnSee.Size = new Size(128, 24);
+            btnSee.Size = new Size(103, 19);
             btnSee.TabIndex = 8;
             btnSee.Text = "Ver contraseña";
             btnSee.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
@@ -240,33 +261,24 @@
             guna2HtmlLabel1.BackColor = Color.Transparent;
             guna2HtmlLabel1.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2HtmlLabel1.ForeColor = Color.FromArgb(12, 68, 124);
-            guna2HtmlLabel1.Location = new Point(110, 40);
+            guna2HtmlLabel1.Location = new Point(96, 30);
+            guna2HtmlLabel1.Margin = new Padding(3, 2, 3, 2);
             guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            guna2HtmlLabel1.Size = new Size(201, 39);
+            guna2HtmlLabel1.Size = new Size(163, 32);
             guna2HtmlLabel1.TabIndex = 7;
             guna2HtmlLabel1.Text = "Sistema Escolar";
             // 
-            // guna2HtmlLabel2
-            // 
-            guna2HtmlLabel2.BackColor = Color.Transparent;
-            guna2HtmlLabel2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            guna2HtmlLabel2.ForeColor = Color.FromArgb(55, 138, 221);
-            guna2HtmlLabel2.Location = new Point(119, 85);
-            guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            guna2HtmlLabel2.Size = new Size(183, 22);
-            guna2HtmlLabel2.TabIndex = 10;
-            guna2HtmlLabel2.Text = "Inicia sesion para continuar";
-            // 
             // FormLogin
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(181, 212, 244);
-            ClientSize = new Size(560, 650);
+            ClientSize = new Size(490, 488);
             Controls.Add(pnlTargeta);
             Controls.Add(pnlBurbuja2);
             Controls.Add(pnlBurbuja1);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(3, 2, 3, 2);
             Name = "FormLogin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormLogin";
