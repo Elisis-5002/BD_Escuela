@@ -51,6 +51,7 @@
             Controls.Add(dgvKardex);
             Name = "FormKardex";
             Text = "FormKardex";
+            Load += FormKardex_Load;
             ((System.ComponentModel.ISupportInitialize)dgvKardex).EndInit();
             ResumeLayout(false);
         }

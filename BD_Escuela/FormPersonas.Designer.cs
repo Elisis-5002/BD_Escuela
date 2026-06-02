@@ -37,10 +37,9 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(142, 26);
-            label1.Margin = new Padding(2, 0, 2, 0);
+            label1.Location = new Point(223, 43);
             label1.Name = "label1";
-            label1.Size = new Size(524, 27);
+            label1.Size = new Size(798, 41);
             label1.TabIndex = 2;
             label1.Text = "TODOS LOS ALUMNOS Y MAESTROS EN LA BD";
             label1.Click += label1_Click;
@@ -48,20 +47,24 @@
             // dgvPersonas
             // 
             dgvPersonas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvPersonas.Location = new Point(51, 91);
+            dgvPersonas.Location = new Point(80, 152);
+            dgvPersonas.Margin = new Padding(5, 5, 5, 5);
             dgvPersonas.Name = "dgvPersonas";
-            dgvPersonas.Size = new Size(711, 297);
+            dgvPersonas.RowHeadersWidth = 62;
+            dgvPersonas.Size = new Size(1117, 495);
             dgvPersonas.TabIndex = 3;
             // 
             // FormPersonas
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1257, 750);
             Controls.Add(dgvPersonas);
             Controls.Add(label1);
+            Margin = new Padding(5, 5, 5, 5);
             Name = "FormPersonas";
             Text = "FormPersonas";
+            Load += FormPersonas_Load;
             ((System.ComponentModel.ISupportInitialize)dgvPersonas).EndInit();
             ResumeLayout(false);
             PerformLayout();

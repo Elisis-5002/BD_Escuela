@@ -41,6 +41,8 @@
             btnKardex = new Button();
             cmbCurso = new ComboBox();
             label1 = new Label();
+            label5 = new Label();
+            txtParcial = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvCalificaciones).BeginInit();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -161,6 +163,8 @@
             // 
             // splitContainer1.Panel1
             // 
+            splitContainer1.Panel1.Controls.Add(txtParcial);
+            splitContainer1.Panel1.Controls.Add(label5);
             splitContainer1.Panel1.Controls.Add(btnKardex);
             splitContainer1.Panel1.Controls.Add(cmbCurso);
             splitContainer1.Panel1.Controls.Add(label1);
@@ -214,6 +218,26 @@
             label1.Text = "Curso";
             label1.Click += label1_Click;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.Location = new Point(19, 290);
+            label5.Margin = new Padding(4, 0, 4, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(110, 34);
+            label5.TabIndex = 54;
+            label5.Text = "Parcial";
+            // 
+            // txtParcial
+            // 
+            txtParcial.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtParcial.Location = new Point(181, 283);
+            txtParcial.Margin = new Padding(4);
+            txtParcial.Name = "txtParcial";
+            txtParcial.Size = new Size(521, 41);
+            txtParcial.TabIndex = 55;
+            // 
             // FormCalificaciones
             // 
             AutoScaleDimensions = new SizeF(11F, 25F);
@@ -250,5 +274,7 @@
         private Label label1;
         private ComboBox cmbCurso;
         private Button btnKardex;
+        private TextBox txtParcial;
+        private Label label5;
     }
 }

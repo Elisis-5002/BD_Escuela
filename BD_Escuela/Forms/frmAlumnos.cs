@@ -149,5 +149,17 @@ namespace BD_Escuela.Forms
         {
             this.Close();
         }
+
+        private void dgvAlumnos_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvAlumnos.CurrentRow != null)
+            {
+                txtNombre.Text = dgvAlumnos.CurrentRow.Cells["NOMBRE"].Value.ToString();
+                txtApellido.Text = dgvAlumnos.CurrentRow.Cells["APELLIDO"].Value.ToString();
+                txtEmail.Text = dgvAlumnos.CurrentRow.Cells["EMAIL"].Value.ToString();
+                numAño.Value = Convert.ToInt32(dgvAlumnos.CurrentRow.Cells["AÑO_INGRESO"].Value);
+            }
+
+        }
     }
 }

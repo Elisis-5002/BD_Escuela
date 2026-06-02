@@ -7,6 +7,7 @@ namespace BD_Escuela
     {
         private int idInscripcion => Convert.ToInt32(cmbInscripcion.SelectedValue);
         private decimal nota => Convert.ToDecimal(txtNota.Text);
+        private int parcial => Convert.ToInt32(txtParcial.Text);
         private int idAlumno;
         public FormCalificaciones()
         {
@@ -24,7 +25,7 @@ namespace BD_Escuela
             try
             {
                 int id_inscripcion = Convert.ToInt32(cmbInscripcion.SelectedValue);
-                string ejecutar = $"INSERT INTO calificaciones(id_inscripcion, nota) VALUES({idInscripcion}, {nota})";
+                string ejecutar = $"INSERT INTO calificaciones(id_inscripcion, nota,parcial) VALUES({idInscripcion}, {nota}, {parcial})";
                 Conexion.Ejecutar(ejecutar, out int filasAfectadas, out string mensaje);
                 MessageBox.Show(mensaje, "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CargarCalificaciones();
@@ -60,7 +61,7 @@ namespace BD_Escuela
             {
                 int idCalificacion = Convert.ToInt32(dgvCalificaciones.CurrentRow.Cells["ID_CALIFICACION"].Value);
 
-                string ejecutar = $"UPDATE calificaciones SET id_inscripcion = {idInscripcion}, nota = {nota} WHERE id_calificacion = {idCalificacion}";
+                string ejecutar = $"UPDATE calificaciones SET id_inscripcion = {idInscripcion}, nota = {nota}, parcial = {parcial} WHERE id_calificacion = {idCalificacion}";
                 Conexion.Ejecutar(ejecutar, out int filasAfectadas, out string mensaje);
                 MessageBox.Show(mensaje, "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CargarCalificaciones();
@@ -78,7 +79,7 @@ namespace BD_Escuela
             if (Sesion.Rol == "ADMINISTRADOR" || Sesion.Rol == "SECRETARIO")
             {
                 consulta = "SELECT cal.id_calificacion, a.id_alumno, a.nombre || ' ' || a.apellido AS alumno," +
-                            " i.id_inscripcion, i.id_curso, cal.nota, cal.estatus , cal.creado_por, cal.fecha_creacion, cal.modificado_por, cal.fecha_modificacion, cal.ses_id " +
+                            " i.id_inscripcion, i.id_curso, cal.nota, cal.parcial, cal.estatus , cal.creado_por, cal.fecha_creacion, cal.modificado_por, cal.fecha_modificacion, cal.ses_id " +
                         " FROM calificaciones cal" +
                         " INNER JOIN inscripciones i" +
                             " ON cal.id_inscripcion = i.id_inscripcion" +
@@ -87,10 +88,10 @@ namespace BD_Escuela
                         " WHERE i.id_curso = '" + cmbCurso.SelectedValue + "'";
 
             }
-            else if (Sesion.Rol == "PROFESOR")
+            else if (Sesion.Rol == "MAESTRO")
             {
                 consulta = "SELECT cal.id_calificacion, a.id_alumno, a.nombre || ' ' || a.apellido AS alumno," +
-                            " i.id_inscripcion, i.id_curso, cal.nota, cal.estatus " +
+                            " i.id_inscripcion, i.id_curso, cal.nota, cal.parcial, cal.estatus " +
                         " FROM calificaciones cal" +
                         " INNER JOIN inscripciones i" +
                             " ON cal.id_inscripcion = i.id_inscripcion" +
@@ -106,6 +107,7 @@ namespace BD_Escuela
                             i.id_curso,
                             c.parcial,
                             c.nota,
+                            c.parcial,
                             c.estatus
                         FROM calificaciones c
                         INNER JOIN inscripciones i
@@ -138,7 +140,7 @@ namespace BD_Escuela
                     "INNER JOIN materias m " +
                     "ON c.id_materia = m.id_materia";
             }
-            else if (Sesion.Rol == "PROFESOR")
+            else if (Sesion.Rol == "MAESTRO")
             {
                 int idProfesor = Convert.ToInt32(Conexion.Consultar("select id_profesor from profesores p JOIN usuarios u on u.usr_id = p.usr_id where u.usr_id = " + Sesion.UsrId).Rows[0][0]);
                 consulta = "SELECT c.id_curso, c.id_curso || ' - ' || m.nombre_materia AS CURSO " +
@@ -194,27 +196,14 @@ namespace BD_Escuela
                 idAlumno = Convert.ToInt32(fila["ID_ALUMNO"]);
             }
         }
-
-        private void CargarInscripciones()
-        {
-            // Muestra: nombre del alumno + id del curso
-            string consulta = @"SELECT i.id_inscripcion, a.nombre || ' ' || a.apellido || ' - ' || i.id_curso AS descripcion
-                                FROM inscripciones i JOIN alumnos a ON i.id_alumno = a.id_alumno ORDER BY a.nombre";
-            DataTable dt = Conexion.Consultar(consulta);
-
-            cmbInscripcion.DataSource = dt;
-            cmbInscripcion.DisplayMember = "DESCRIPCION";
-            cmbInscripcion.ValueMember = "ID_INSCRIPCION";
-        }
-
+       
         private void FormCalificaciones_Load(object sender, EventArgs e)
         {
             // Aplicar permisos a los botones
             btnGuardar.Enabled = Sesion.PuedeInsertar;
             btnModificar.Enabled = Sesion.PuedeModificar;
             btnEliminar.Enabled = Sesion.PuedeEliminar;
-
-
+            
             cargarCursos();
             CargarCalificaciones();
         }
@@ -225,6 +214,8 @@ namespace BD_Escuela
             {
                 int ins = Convert.ToInt32(dgvCalificaciones.CurrentRow.Cells["ID_INSCRIPCION"].Value);
                 cmbInscripcion.SelectedValue = ins;
+                txtNota.Text = dgvCalificaciones.CurrentRow.Cells["NOTA"].Value.ToString();
+                txtParcial.Text = dgvCalificaciones.CurrentRow.Cells["PARCIAL"].Value.ToString();
 
             }
 

@@ -15,7 +15,7 @@ namespace BD_Escuela
         {
             InitializeComponent();
             // Tu consulta de unión
-                string sql = @"
+            string sql = @"
             SELECT nombre || ' ' || apellido AS Nombre, 'Profesor' AS Tipo FROM profesores
             UNION
             SELECT nombre || ' ' || apellido AS Nombre, 'Alumno' AS Tipo FROM alumnos
@@ -35,6 +35,11 @@ namespace BD_Escuela
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormPersonas_Load(object sender, EventArgs e)
         {
 
         }
