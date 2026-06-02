@@ -144,5 +144,23 @@ namespace BD_Escuela.Forms
         {
 
         }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnMaximizar_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+                this.WindowState = FormWindowState.Normal;
+            else
+                this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void btnMinimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
     }
 }

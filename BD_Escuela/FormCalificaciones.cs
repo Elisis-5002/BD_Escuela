@@ -112,7 +112,28 @@ namespace BD_Escuela
 
         private void dgvCalificaciones_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+            if (dgvCalificaciones.CurrentRow != null)
+            {
+                txtNota.Text = dgvCalificaciones.CurrentRow.Cells["NOTA"].Value.ToString();
+            }
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnMaximizar_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+                this.WindowState = FormWindowState.Normal;
+            else
+                this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void btnMinimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }
