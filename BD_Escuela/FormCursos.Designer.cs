@@ -428,6 +428,7 @@
             Controls.Add(pblTitulo);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormCursos";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FormCursos";
             Load += FormCursos_Load;
             ((System.ComponentModel.ISupportInitialize)dgvCursos).EndInit();

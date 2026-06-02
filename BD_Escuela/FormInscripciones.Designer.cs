@@ -30,6 +30,10 @@
         {
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -47,11 +51,9 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             pnlTitulo = new Guna.UI2.WinForms.Guna2Panel();
+            btnMaximizar = new Guna.UI2.WinForms.Guna2Button();
+            btnMinimizar = new Guna.UI2.WinForms.Guna2Button();
             btnCerrar = new Guna.UI2.WinForms.Guna2Button();
             lblProfesores = new Guna.UI2.WinForms.Guna2HtmlLabel();
             pnlCaptura = new Guna.UI2.WinForms.Guna2Panel();
@@ -63,8 +65,6 @@
             guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             lblAlumno = new Guna.UI2.WinForms.Guna2HtmlLabel();
             dgvInscripciones = new DataGridView();
-            btnMaximizar = new Guna.UI2.WinForms.Guna2Button();
-            btnMinimizar = new Guna.UI2.WinForms.Guna2Button();
             pnlTitulo.SuspendLayout();
             pnlCaptura.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvInscripciones).BeginInit();
@@ -83,6 +83,46 @@
             pnlTitulo.ShadowDecoration.CustomizableEdges = customizableEdges8;
             pnlTitulo.Size = new Size(750, 55);
             pnlTitulo.TabIndex = 6;
+            // 
+            // btnMaximizar
+            // 
+            btnMaximizar.BackColor = Color.FromArgb(24, 95, 165);
+            btnMaximizar.BorderRadius = 17;
+            btnMaximizar.CustomizableEdges = customizableEdges1;
+            btnMaximizar.DisabledState.BorderColor = Color.DarkGray;
+            btnMaximizar.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnMaximizar.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnMaximizar.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnMaximizar.FillColor = Color.FromArgb(55, 138, 221);
+            btnMaximizar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnMaximizar.ForeColor = Color.White;
+            btnMaximizar.Location = new Point(670, 10);
+            btnMaximizar.Name = "btnMaximizar";
+            btnMaximizar.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btnMaximizar.Size = new Size(34, 34);
+            btnMaximizar.TabIndex = 5;
+            btnMaximizar.Text = "□";
+            btnMaximizar.Click += btnMaximizar_Click;
+            // 
+            // btnMinimizar
+            // 
+            btnMinimizar.BackColor = Color.FromArgb(24, 95, 165);
+            btnMinimizar.BorderRadius = 17;
+            btnMinimizar.CustomizableEdges = customizableEdges3;
+            btnMinimizar.DisabledState.BorderColor = Color.DarkGray;
+            btnMinimizar.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnMinimizar.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnMinimizar.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnMinimizar.FillColor = Color.FromArgb(55, 138, 221);
+            btnMinimizar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnMinimizar.ForeColor = Color.White;
+            btnMinimizar.Location = new Point(635, 10);
+            btnMinimizar.Name = "btnMinimizar";
+            btnMinimizar.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            btnMinimizar.Size = new Size(34, 34);
+            btnMinimizar.TabIndex = 4;
+            btnMinimizar.Text = "─";
+            btnMinimizar.Click += btnMinimizar_Click;
             // 
             // btnCerrar
             // 
@@ -287,46 +327,6 @@
             dgvInscripciones.TabIndex = 8;
             dgvInscripciones.CellContentClick += dgvInscripciones_CellClick;
             // 
-            // btnMaximizar
-            // 
-            btnMaximizar.BackColor = Color.FromArgb(24, 95, 165);
-            btnMaximizar.BorderRadius = 17;
-            btnMaximizar.CustomizableEdges = customizableEdges1;
-            btnMaximizar.DisabledState.BorderColor = Color.DarkGray;
-            btnMaximizar.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnMaximizar.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnMaximizar.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnMaximizar.FillColor = Color.FromArgb(55, 138, 221);
-            btnMaximizar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnMaximizar.ForeColor = Color.White;
-            btnMaximizar.Location = new Point(670, 10);
-            btnMaximizar.Name = "btnMaximizar";
-            btnMaximizar.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            btnMaximizar.Size = new Size(34, 34);
-            btnMaximizar.TabIndex = 5;
-            btnMaximizar.Text = "□";
-            btnMaximizar.Click += btnMaximizar_Click;
-            // 
-            // btnMinimizar
-            // 
-            btnMinimizar.BackColor = Color.FromArgb(24, 95, 165);
-            btnMinimizar.BorderRadius = 17;
-            btnMinimizar.CustomizableEdges = customizableEdges3;
-            btnMinimizar.DisabledState.BorderColor = Color.DarkGray;
-            btnMinimizar.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnMinimizar.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnMinimizar.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnMinimizar.FillColor = Color.FromArgb(55, 138, 221);
-            btnMinimizar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnMinimizar.ForeColor = Color.White;
-            btnMinimizar.Location = new Point(635, 10);
-            btnMinimizar.Name = "btnMinimizar";
-            btnMinimizar.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            btnMinimizar.Size = new Size(34, 34);
-            btnMinimizar.TabIndex = 4;
-            btnMinimizar.Text = "─";
-            btnMinimizar.Click += btnMinimizar_Click;
-            // 
             // FormInscripciones
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -338,6 +338,7 @@
             Controls.Add(dgvInscripciones);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormInscripciones";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FormInscripciones";
             Load += FormInscripciones_Load_1;
             pnlTitulo.ResumeLayout(false);
